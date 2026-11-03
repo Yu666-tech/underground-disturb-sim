@@ -1,0 +1,48 @@
+Panels:
+  - Class: rviz_common/Displays
+    Name: Displays
+Visualization Manager:
+  Class: ""
+  Global Options:
+    Fixed Frame: world
+    Background Color: 40; 40; 40
+    Frame Rate: 20
+  Displays:
+    - Class: rviz_default_plugins/Grid
+      Name: Grid
+      Enabled: true
+      Cell Size: 1
+      Plane: XY
+      Plane Cell Count: 40
+      Reference Frame: world
+    - Class: rviz_default_plugins/TF
+      Name: TF
+      Enabled: true
+      Show Axes: true
+      Show Names: true
+      Show Arrows: true
+    - Class: rviz_default_plugins/LaserScan
+      Name: Raw Laser
+      Enabled: true
+      Topic:
+        Value: /scan_raw
+        Reliability Policy: Best Effort
+        Durability Policy: Volatile
+        History Policy: Keep Last
+        Depth: 10
+      Size (m): 0.04
+      Style: Points
+      Color Transformer: FlatColor
+      Color: 255; 80; 40
+      Decay Time: 0
+  Views:
+    Current:
+      Class: rviz_default_plugins/TopDownOrtho
+      Name: Current View
+      Target Frame: world
+      Scale: 30
+      X: 0
+      Y: 0
+Window Geometry:
+  Width: 1100
+  Height: 800

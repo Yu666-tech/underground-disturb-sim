@@ -1,0 +1,16 @@
+build/
+install/
+log/
+__pycache__/
+*.pyc
+*.db3
+*.mcap
+*.mp4
+*.zip
+*.tar.gz
+.env
+.venv/
+*.download
+src/coal_face_sim/scenarios/coal_face_v1/models/**/*.dae
+src/coal_face_sim/scenarios/coal_face_v1/models/**/*.png
+src/coal_face_sim/scenarios/coal_face_v1/models/**/*.jpg

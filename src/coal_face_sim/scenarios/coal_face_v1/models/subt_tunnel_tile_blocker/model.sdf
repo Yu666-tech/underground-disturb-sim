@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='utf-8'?>
+<sdf version="1.6">
+  <model name="subt_tunnel_tile_blocker">
+    <static>true</static>
+    <link name="link">
+      <pose>0 0 0 0 0 0</pose>
+      <collision name="collision">
+        <geometry>
+          <mesh>
+            <uri>model://subt_tunnel_tile_blocker/meshes/tunnel_tile_blocker.dae</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name="visual">
+        <geometry>
+          <mesh>
+            <uri>model://subt_tunnel_tile_blocker/meshes/tunnel_tile_blocker.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <diffuse>1.0 1.0 1.0</diffuse>
+          <specular>1.0 1.0 1.0</specular>
+        </material>
+      </visual>
+    </link>
+  </model>
+</sdf>

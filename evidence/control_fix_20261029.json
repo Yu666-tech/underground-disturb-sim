@@ -1,0 +1,82 @@
+{
+  "passed": true,
+  "checks": {
+    "complete_full_cycle": true,
+    "max_trajectory_error_below_1mm": true,
+    "no_unexplained_position_jump_over_1mm": true,
+    "both_endpoints_within_1mm": true,
+    "peak_speed_below_0_5_ms": true,
+    "truth_reference_imu_scan_no_message_gaps": true,
+    "truth_reference_imu_finite": true,
+    "scan_has_720_beams": true,
+    "bag_matches_monitor": true,
+    "tf_matches_independent_truth": true,
+    "scan_p95_collision_alignment": true
+  },
+  "duration_sim_s": 1231.58,
+  "max_trajectory_error_m": 1.1368683772161603e-13,
+  "trajectory_rmse_m": 2.8713506567239305e-14,
+  "max_unexplained_increment_m": 1.7053025658242404e-13,
+  "turns": [
+    {
+      "expected_sim_elapsed_s": 600.0,
+      "measured_sim_elapsed_s": 600.0,
+      "actual_y_m": 195.0,
+      "error_m": 0.0
+    },
+    {
+      "expected_sim_elapsed_s": 1200.0,
+      "measured_sim_elapsed_s": 1200.0,
+      "actual_y_m": 5.0,
+      "error_m": 0.0
+    }
+  ],
+  "rates": {
+    "truth": {
+      "count": 61580,
+      "first_s": 0.02,
+      "last_s": 1231.6,
+      "hz_sim": 50.0,
+      "median_dt_s": 0.01999999999998181,
+      "max_dt_s": 0.020000000000209184,
+      "gaps_over_1_5_nominal": 0,
+      "duplicate_or_reversed_stamps": 0
+    },
+    "reference": {
+      "count": 61580,
+      "first_s": 0.02,
+      "last_s": 1231.6,
+      "hz_sim": 50.0,
+      "median_dt_s": 0.01999999999998181,
+      "max_dt_s": 0.020000000000209184,
+      "gaps_over_1_5_nominal": 0,
+      "duplicate_or_reversed_stamps": 0
+    },
+    "imu": {
+      "count": 61576,
+      "first_s": 0.060000000000000005,
+      "last_s": 1231.56,
+      "hz_sim": 50.0,
+      "median_dt_s": 0.01999999999998181,
+      "max_dt_s": 0.020000000000209184,
+      "gaps_over_1_5_nominal": 0,
+      "duplicate_or_reversed_stamps": 0
+    },
+    "scan": {
+      "count": 12315,
+      "first_s": 0.1,
+      "last_s": 1231.528,
+      "hz_sim": 9.999772621704231,
+      "median_dt_s": 0.10000000000002274,
+      "max_dt_s": 0.10300000000006548,
+      "gaps_over_1_5_nominal": 0,
+      "duplicate_or_reversed_stamps": 0
+    }
+  },
+  "scope": "Prescribed kinematic trajectory and ideal raw chains. First 30 sim seconds at 1x, then target 10x with unchanged 1ms step. Does not validate traction dynamics or disturbance models. Single-pose scan maxima retain moving-edge timing sensitivity diagnosed in root_cause_20261029.",
+  "source_sha256": {
+    "scenarios/coal_face_v1/worlds/coal_face.sdf": "017f786e9b200000a92070479dfd686c2c2096d8707ef1cd97a073f6ec85cd26",
+    "src/coal_face_trajectory.cpp": "f0bdd82c49f51c07df834b3d378907abba3389e749aaa3680cab38aba2fcb3e4",
+    "launch/coal_face_full.launch.py": "8e44bfc2fda2499f67e4b502aaaaf3005acb37af29bb2a2af63370df95731d9d"
+  }
+}

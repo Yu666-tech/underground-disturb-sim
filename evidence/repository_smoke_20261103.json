@@ -1,0 +1,15 @@
+{
+  "passed": true,
+  "checks": {
+    "all_topics_received": true,
+    "scan_720": true,
+    "duration_15s": true
+  },
+  "counts": {
+    "truth": 751,
+    "reference": 751,
+    "imu": 746,
+    "scan": 150
+  },
+  "test": "Fresh independent build, local archive restoration, headless launch for >=15 simulation seconds. Historical full-cycle regression is separate."
+}

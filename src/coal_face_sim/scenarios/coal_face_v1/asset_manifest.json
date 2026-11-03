@@ -1,0 +1,265 @@
+{
+  "repository": "https://github.com/osrf/subt",
+  "commit": "ba15f9ff35ccfb43f44937d6d84e047615d174ff",
+  "purpose": "Offline resource archive, not a complete coal-face world",
+  "models": [
+    {
+      "id": "subt_tunnel_tile_1",
+      "fuel_name": "tunnel tile 1",
+      "version": 5,
+      "source_url": "https://fuel.gazebosim.org/1.0/OpenRobotics/models/Tunnel%20Tile%201/5",
+      "raw_directory": "subt-asset-archive/upstream/tunnel tile 1/5",
+      "source_model_sdf_sha256": "7b5be64a74432a517654ab02d6a5b7179f4635153ff76ed1b5a4e84d607c1bb8",
+      "added_shared_dependencies": [],
+      "removed_unsupported_pbr_blocks": 5,
+      "dae_geometry": [
+        {
+          "file": "meshes/tunnel_tile_1.dae",
+          "geometry_sha256": "493f4da891f7fde84c5320b86932cb8105af188567b61bf1682146d1280e9ba0",
+          "geometry_preserved": true
+        }
+      ],
+      "removed_ignition_competition_plugins": [
+        {
+          "filename": "gz-sim-performer-detector-system",
+          "name": "gz::sim::systems::PerformerDetector"
+        }
+      ],
+      "shared_fuel_depend_declarations_localized": true
+    },
+    {
+      "id": "subt_tunnel_tile_2",
+      "fuel_name": "tunnel tile 2",
+      "version": 16,
+      "source_url": "https://fuel.gazebosim.org/1.0/OpenRobotics/models/Tunnel%20Tile%202/16",
+      "raw_directory": "subt-asset-archive/upstream/tunnel tile 2/16",
+      "source_model_sdf_sha256": "2c5ffc89be114fe5f04e1f89ba31541d122bbdca4c898c56f0a5bb4ffbdb3bd5",
+      "added_shared_dependencies": [
+        {
+          "texture": "Light_Albedo.jpg",
+          "from": "tunnel tile 1/5/materials/textures/Light_Albedo.jpg",
+          "sha256": "0826ccb0e7b6932d0a00903ae202ccea5832dbd359d83b2c388de3f9bd92f05b"
+        },
+        {
+          "texture": "Ground_Albedo.jpg",
+          "from": "tunnel tile 1/5/materials/textures/Ground_Albedo.jpg",
+          "sha256": "c5f9d5dcd7a128a266fb2d2dff2098ba0542c03fffcb9f29aedc530557afc2cb"
+        },
+        {
+          "texture": "Chainlink_Albedo.jpg",
+          "from": "tunnel tile 1/5/materials/textures/Chainlink_Albedo.jpg",
+          "sha256": "f1f7a21867389155a7ded632ce3cad196a60417ec582acaf2feb698ff9171155"
+        },
+        {
+          "texture": "Wood_Albedo.jpg",
+          "from": "tunnel tile 1/5/materials/textures/Wood_Albedo.jpg",
+          "sha256": "06e53075ab9de9fe0a3c632a080c956feca401cf7d620327783417ab23b6fbb7"
+        },
+        {
+          "texture": "Walls_Albedo.jpg",
+          "from": "tunnel tile 1/5/materials/textures/Walls_Albedo.jpg",
+          "sha256": "f5c3bac18a4f83b8a49f0d360d1af97e82bbd9e5e26ffd45d7cbea46ac8012a3"
+        }
+      ],
+      "removed_unsupported_pbr_blocks": 5,
+      "dae_geometry": [
+        {
+          "file": "meshes/tunnel_tile_2.dae",
+          "geometry_sha256": "06608eadc6a51a8a50277ea56faee29520a7bc7ec7a7ebba7e19141238277db7",
+          "geometry_preserved": true
+        }
+      ],
+      "removed_ignition_competition_plugins": [],
+      "shared_fuel_depend_declarations_localized": true
+    },
+    {
+      "id": "subt_tunnel_tile_5",
+      "fuel_name": "tunnel tile 5",
+      "version": 14,
+      "source_url": "https://fuel.gazebosim.org/1.0/OpenRobotics/models/Tunnel%20Tile%205/14",
+      "raw_directory": "subt-asset-archive/upstream/tunnel tile 5/14",
+      "source_model_sdf_sha256": "40bf7aa6c5a84fd87162ed991ceaae91e5a63c9996afcb9b4c1bbca314fe83ce",
+      "added_shared_dependencies": [
+        {
+          "texture": "Ground_Albedo.jpg",
+          "from": "tunnel tile 1/5/materials/textures/Ground_Albedo.jpg",
+          "sha256": "c5f9d5dcd7a128a266fb2d2dff2098ba0542c03fffcb9f29aedc530557afc2cb"
+        },
+        {
+          "texture": "Walls_Albedo.jpg",
+          "from": "tunnel tile 1/5/materials/textures/Walls_Albedo.jpg",
+          "sha256": "f5c3bac18a4f83b8a49f0d360d1af97e82bbd9e5e26ffd45d7cbea46ac8012a3"
+        },
+        {
+          "texture": "Wood_Albedo.jpg",
+          "from": "tunnel tile 1/5/materials/textures/Wood_Albedo.jpg",
+          "sha256": "06e53075ab9de9fe0a3c632a080c956feca401cf7d620327783417ab23b6fbb7"
+        },
+        {
+          "texture": "Light_Albedo.jpg",
+          "from": "tunnel tile 1/5/materials/textures/Light_Albedo.jpg",
+          "sha256": "0826ccb0e7b6932d0a00903ae202ccea5832dbd359d83b2c388de3f9bd92f05b"
+        },
+        {
+          "texture": "Chainlink_Albedo.jpg",
+          "from": "tunnel tile 1/5/materials/textures/Chainlink_Albedo.jpg",
+          "sha256": "f1f7a21867389155a7ded632ce3cad196a60417ec582acaf2feb698ff9171155"
+        }
+      ],
+      "removed_unsupported_pbr_blocks": 5,
+      "dae_geometry": [
+        {
+          "file": "meshes/tunnel_tile_5.dae",
+          "geometry_sha256": "cfb8b00cc0d31220dedc9f2bec9265df47e14395912c70912b897cc6b88b0b68",
+          "geometry_preserved": true
+        }
+      ],
+      "removed_ignition_competition_plugins": [],
+      "shared_fuel_depend_declarations_localized": true
+    },
+    {
+      "id": "subt_tunnel_tile_blocker",
+      "fuel_name": "tunnel tile blocker",
+      "version": 12,
+      "source_url": "https://fuel.gazebosim.org/1.0/OpenRobotics/models/Tunnel%20Tile%20Blocker/12",
+      "raw_directory": "subt-asset-archive/upstream/tunnel tile blocker/12",
+      "source_model_sdf_sha256": "97c0f7ffbffd5bb27b73249686d7a43fac4622d8e3a86f85e021d4644f189c01",
+      "added_shared_dependencies": [
+        {
+          "texture": "ConstrainedWall_Albedo.jpg",
+          "from": "tunnel tile 1/5/materials/textures/ConstrainedWall_Albedo.jpg",
+          "sha256": "79d0af720cb0a51a687e2f914a6e391b921ac4750d3dc2bcf5f2b0862aec0744"
+        }
+      ],
+      "removed_unsupported_pbr_blocks": 1,
+      "dae_geometry": [
+        {
+          "file": "meshes/tunnel_tile_blocker.dae",
+          "geometry_sha256": "87aafcffa2e5795a348b7ab5452af4c07c02e7fa22094179e6e35387a82aef60",
+          "geometry_preserved": true
+        }
+      ],
+      "removed_ignition_competition_plugins": [],
+      "shared_fuel_depend_declarations_localized": true
+    }
+  ],
+  "files": {
+    "subt_tunnel_tile_1/materials/scripts/tunnel_tile.material": "81d88c32d7b36fb0930db06bad04184788794273e887a402da0cc6ca7628dd69",
+    "subt_tunnel_tile_1/materials/textures/Chainlink_Albedo.jpg": "f1f7a21867389155a7ded632ce3cad196a60417ec582acaf2feb698ff9171155",
+    "subt_tunnel_tile_1/materials/textures/Chainlink_Albedo.png": "307e7f5d44d217ef674d5c182b6410010471087c5cfef919302684d7840f49a5",
+    "subt_tunnel_tile_1/materials/textures/Chainlink_Metalness.jpg": "c4730281f2aaf629c45a4c2966b796c157d42ab4a965ba3b908bfccea106aa78",
+    "subt_tunnel_tile_1/materials/textures/Chainlink_Metalness.png": "7ec43f635a4d5ca23efa16962555c5b658ea7e7312d999dacff7bb9df0782e01",
+    "subt_tunnel_tile_1/materials/textures/Chainlink_Normal.jpg": "e621e155249fd0cce945159110a53abfb9adc5b8fe0ef85cc907611d7c58f51a",
+    "subt_tunnel_tile_1/materials/textures/Chainlink_Normal.png": "f5bddcfec470aa9672c8eaa2439d997990335a00d4b297cce1227d8616a9dc22",
+    "subt_tunnel_tile_1/materials/textures/Chainlink_Roughness.jpg": "e1f1b74332d2f32190bdb64039901e8778cd43e191a06cdcaec43510a6c4d830",
+    "subt_tunnel_tile_1/materials/textures/Chainlink_Roughness.png": "a3b4b14b5b79f6aee3059b89a1e283d4edebd132b2e361847bdbcdedfae3c887",
+    "subt_tunnel_tile_1/materials/textures/ConcreteRubble_Albedo.jpg": "b47ffd7bff74195b79f174c8251ce7f46a956ec97b4c37d20d686c0015261e57",
+    "subt_tunnel_tile_1/materials/textures/ConcreteRubble_Albedo.png": "a6c0cbbe753c8c387897fea0aca9e560bba70c985a0048f601f1244aa6df3a24",
+    "subt_tunnel_tile_1/materials/textures/ConcreteRubble_Metalness.jpg": "9bd22b8beaa019472a83247231c7665b5d07e74be2b0cd3d991c4bc7fb082c93",
+    "subt_tunnel_tile_1/materials/textures/ConcreteRubble_Metalness.png": "41a8c2d58782abca9d4b79dc2b4d59fa460a731b081212ba4723c7b64017b780",
+    "subt_tunnel_tile_1/materials/textures/ConcreteRubble_Normal.jpg": "dcc5e3fb4f54278d887ba1fa5e6a35533caaee8d11a2ba8b1e3888e2fc984177",
+    "subt_tunnel_tile_1/materials/textures/ConcreteRubble_Normal.png": "d00d914d3f10b19eb9153db6642576daad090a4bfc95ed188a5ae2f639158b8b",
+    "subt_tunnel_tile_1/materials/textures/ConcreteRubble_Roughness.jpg": "06e83dc2e560f5a8b88e910be2febbded36159b53c39d28669236f47f367391c",
+    "subt_tunnel_tile_1/materials/textures/ConcreteRubble_Roughness.png": "4e5b197889e708b26b2ddf59f439e137c3b150c6220b9f40bd781e3b0a84fed3",
+    "subt_tunnel_tile_1/materials/textures/ConstrainedWall_Albedo.jpg": "79d0af720cb0a51a687e2f914a6e391b921ac4750d3dc2bcf5f2b0862aec0744",
+    "subt_tunnel_tile_1/materials/textures/ConstrainedWall_Normal.jpg": "6e4d1f86c66bb4f5e9f14208dfa0cec0b2d1e2a1e9e54d83bdeba0eef6a6f097",
+    "subt_tunnel_tile_1/materials/textures/Entrance.jpg": "514e39b31e91f6f131b5697ef156ab9c088542dc964b95d6c5d049a596f3aae4",
+    "subt_tunnel_tile_1/materials/textures/Ground_Albedo.jpg": "c5f9d5dcd7a128a266fb2d2dff2098ba0542c03fffcb9f29aedc530557afc2cb",
+    "subt_tunnel_tile_1/materials/textures/Ground_Albedo.png": "dda2f649442d36fa981ec96eb7c279c5ef2b34a013005274fcac5f3a58d2030c",
+    "subt_tunnel_tile_1/materials/textures/Ground_Normal.jpg": "95437ced1f102c12b08ee9869a905de4ed445c8bd3dcac8ce0eb017a49add55c",
+    "subt_tunnel_tile_1/materials/textures/Ground_Normal.png": "f69be8d7bd24eb34ac7622f3a6255549d2e3efc2d8fce019a0484c45e5e740b2",
+    "subt_tunnel_tile_1/materials/textures/Ground_Roughness.jpg": "d42c1ae4da4e38e6bd2c9f6706344eae0d693600e158d5ee20bfb9f09db762f6",
+    "subt_tunnel_tile_1/materials/textures/Ground_Roughness.png": "e288d4991aa2b6c1945b46056bd1dcc7bc01e14d2c1069f21adc58b5b781a2c9",
+    "subt_tunnel_tile_1/materials/textures/Light_Albedo.jpg": "0826ccb0e7b6932d0a00903ae202ccea5832dbd359d83b2c388de3f9bd92f05b",
+    "subt_tunnel_tile_1/materials/textures/Light_Albedo.png": "16522c582b3f3e7cb30c6129cf7e6de20e47f1bb4fe80b465f6e39a5ccbf1736",
+    "subt_tunnel_tile_1/materials/textures/Light_Emissive.jpg": "862c3510e4af75e207c6830d311cc6f0e6038ebbcf2d0ea0aec0b1b88075681b",
+    "subt_tunnel_tile_1/materials/textures/Light_Emissive.png": "93d97f9940a26a07a6ba30fe904ade2d9d7b42c0e0ff1233b229e65baf8729d0",
+    "subt_tunnel_tile_1/materials/textures/Light_Metalness.jpg": "eb04e25fe4e3b0ba8b1e8deff274bc13c591987806697ddb9582b66f281a14e8",
+    "subt_tunnel_tile_1/materials/textures/Light_Metalness.png": "d8e828af4e948d6c6073c8dc5920d713eec1e710de3b0da05f362d4121ebc9f5",
+    "subt_tunnel_tile_1/materials/textures/Light_Normal.jpg": "fd8ebc47bfdb1b106cd9e6bd50527dfc031fd21efcaef465a1bc38ad73986702",
+    "subt_tunnel_tile_1/materials/textures/Light_Normal.png": "574b8375547eec0133fef23dad7f9a79320e058ed2db1c0e4b041f145c33eff6",
+    "subt_tunnel_tile_1/materials/textures/Light_Roughness.jpg": "786a4f84ddb2d455515baaf1665409971aa805aef798fa2f9d8bdde0143fb8a2",
+    "subt_tunnel_tile_1/materials/textures/Light_Roughness.png": "f4041fa64665cc67617fff554c76411dd896ea5b72ee80749ab284a9aefbbc23",
+    "subt_tunnel_tile_1/materials/textures/RockPile_Albedo.jpg": "a7e47b3d7e652c3b5c292b4882d2d532979dbd9e9fadc60177868f5b57546ae4",
+    "subt_tunnel_tile_1/materials/textures/RockPile_Albedo.png": "1dadf0d107c5d137aff796c11362f832267a8d4b03b42f1502fb9a41b1dee892",
+    "subt_tunnel_tile_1/materials/textures/RockPile_Normal.jpg": "86995b565fdda2abebbea2303082cd1cbb6c8986e7200ebe12a3014d48b47368",
+    "subt_tunnel_tile_1/materials/textures/RockPile_Normal.png": "ff2728ee9c7bfd1e9747dc566325a9edb14f00ea47531007b7df1b9738b6907a",
+    "subt_tunnel_tile_1/materials/textures/RockPile_Roughness.jpg": "3633d77e6c8df05bcc684a74da4646af59e30e76d0c3ea4a0db965b34ab8e44f",
+    "subt_tunnel_tile_1/materials/textures/RockPile_Roughness.png": "2751e42514780c345d34f619b840b91147de24f05b846c70e380f13522faeb62",
+    "subt_tunnel_tile_1/materials/textures/Rocks_Albedo.jpg": "9d59429b8bcbe0fd2ea71cb1df1551f2b94870d79843ccb0f2186127564a1e29",
+    "subt_tunnel_tile_1/materials/textures/Rocks_Albedo.png": "859de90fae0bf711f78e5ae4e050ea9b0f6e402bc8b3068e716ce1c4be844170",
+    "subt_tunnel_tile_1/materials/textures/Rocks_Normal.jpg": "76b2f22ed0d28bcc4d9012cbb467b789b912d02302f87ce02c7c396f01b29073",
+    "subt_tunnel_tile_1/materials/textures/Rocks_Normal.png": "5d61b1ea2a82bf0c86eeac8b13612cb058ca100aae13af12d12d46389f8ac5d0",
+    "subt_tunnel_tile_1/materials/textures/Rocks_Roughness.jpg": "36938fbcd63deed898263f6b6dbe572cf163a0248aa7858d428840acc1a34b6f",
+    "subt_tunnel_tile_1/materials/textures/Rocks_Roughness.png": "0ffc825d3b50ba2182a6eaa015bd3715ce6507544d5c7ee8338d453a1d25f31f",
+    "subt_tunnel_tile_1/materials/textures/RoughWood_Albedo.jpg": "f2ba05a82e7062fc801d5691a50db325fc7ef6f12225511a75d1ab4db97e9f45",
+    "subt_tunnel_tile_1/materials/textures/RoughWood_Albedo.png": "876b3fa882d2af41559f8c0f1ca549dd23ba6d837675de1c61d1db73a1a30c6f",
+    "subt_tunnel_tile_1/materials/textures/RoughWood_Normal.jpg": "b5883b8a364087fc0bb6d9267047a3321b553ecc355ab91a933cb6a2b1084281",
+    "subt_tunnel_tile_1/materials/textures/RoughWood_Normal.png": "89a5d1dce3e5e0dbc006287642a651aa887863df42d5884fe64249215e6daf00",
+    "subt_tunnel_tile_1/materials/textures/RoughWood_Roughness.jpg": "5d97ce1ede53aed12dd064b2d3908580df046161f5ef22d5085c89ca43319a1e",
+    "subt_tunnel_tile_1/materials/textures/RoughWood_Roughness.png": "2ce6168d20bec0f5c0c9024ea536632f0d525b7dca16360e1c8d0d417414f061",
+    "subt_tunnel_tile_1/materials/textures/Shaft_Tunnel.jpg": "ab5d813959c411115193cef3edc8b4cad94e08d7509ca1b50041c07c641b27c8",
+    "subt_tunnel_tile_1/materials/textures/Tunnel_Shaft.jpg": "ab5d813959c411115193cef3edc8b4cad94e08d7509ca1b50041c07c641b27c8",
+    "subt_tunnel_tile_1/materials/textures/Walls_Albedo.jpg": "f5c3bac18a4f83b8a49f0d360d1af97e82bbd9e5e26ffd45d7cbea46ac8012a3",
+    "subt_tunnel_tile_1/materials/textures/Walls_Albedo.png": "9d3e27879573cef2957decfb4e79338e04e7e8cf2dcaea21cf72bb050c3638cb",
+    "subt_tunnel_tile_1/materials/textures/Walls_Metalness.jpg": "f1986721d61baf65d97b2c320de9f29ec5367ca7f10d60081eb3cc5991a2a33c",
+    "subt_tunnel_tile_1/materials/textures/Walls_Metalness.png": "4cd51d10c432c67ab0ab7a2953798a762d7503e8e9ce6e6ab9601b9b07428e58",
+    "subt_tunnel_tile_1/materials/textures/Walls_Normal.jpg": "1226153485c31a2472bf24523a6ed083e2d3fd52eb2bf7739dad61b32836fdd2",
+    "subt_tunnel_tile_1/materials/textures/Walls_Normal.png": "ba4f80a80c72d703ee31426a3f7efb47d614b9dcb37bc92cfd6ebda69f03994f",
+    "subt_tunnel_tile_1/materials/textures/Walls_Roughness.jpg": "b79d5b7ecb6014cd0193ff361f92b637bba0269a3f7c969396f5b2a543c338bd",
+    "subt_tunnel_tile_1/materials/textures/Walls_Roughness.png": "5c05ed01aa34ec62bc058508a686388d96e480468410c4c0b91f4cfac7c1df9a",
+    "subt_tunnel_tile_1/materials/textures/Wood_Albedo.jpg": "06e53075ab9de9fe0a3c632a080c956feca401cf7d620327783417ab23b6fbb7",
+    "subt_tunnel_tile_1/materials/textures/Wood_Albedo.png": "b5da64aedb4d4c37a7beda10a61acfe5e46ce7f903e54f2303088ba298bdf460",
+    "subt_tunnel_tile_1/materials/textures/Wood_Normal.jpg": "3d1c6f098b66d93e52071b41834dd14a424d8cd2f7c4130c62dc062acfa65011",
+    "subt_tunnel_tile_1/materials/textures/rails.jpg": "95abeab03d753400c5a698adc2350c4477e0a302559bebdc794308da5c0b475d",
+    "subt_tunnel_tile_1/meshes/tunnel_tile_1.dae": "cddc3cf51824a1fffa41affd267977637534f68591b1dcdfb5d07ee6e6a4da37",
+    "subt_tunnel_tile_1/metadata.pbtxt": "a5451cc19f5c87064fe00b2126ee64bfa555b9e78083ceb5ef8d080968a93a71",
+    "subt_tunnel_tile_1/model.config": "4a69e3f65d79f61f92c79425cc35b47fbe628db047c79b443979772fdbfa30fb",
+    "subt_tunnel_tile_1/model.sdf": "a20eac132865773b5056ffb1be770602ec3c6d3e85ac902f2789941482773af3",
+    "subt_tunnel_tile_1/thumbnails/1.jpg": "78c162b684a478b6f021da0dcba5bfabfdfcfea366e7cf07fa3f7978a3946c67",
+    "subt_tunnel_tile_1/thumbnails/2.jpg": "f4be4d17c66091c4ed3c6a10b347199423259e1482a89a845292e29986755e38",
+    "subt_tunnel_tile_1/thumbnails/3.jpg": "ff7b06a2691fddddde63284544cc831f246c0fe27cac9736eedfc013bf4ee174",
+    "subt_tunnel_tile_1/thumbnails/4.jpg": "ea3eb02103f137e187b5c1265f01b3877d46bbfe42468aed7709bf5437445029",
+    "subt_tunnel_tile_1/thumbnails/5.jpg": "7871abd9e904a47398cb249397733f566f0e5d09c4b1a13fb0b711a8b1a32f52",
+    "subt_tunnel_tile_2/materials/scripts/tunnel_tile.material": "d4bafca69cfa9e8b1a9121041dd2a7b685bcf7d0a70ab24ba78ca603fec868dd",
+    "subt_tunnel_tile_2/materials/textures/Chainlink_Albedo.jpg": "f1f7a21867389155a7ded632ce3cad196a60417ec582acaf2feb698ff9171155",
+    "subt_tunnel_tile_2/materials/textures/Ground_Albedo.jpg": "c5f9d5dcd7a128a266fb2d2dff2098ba0542c03fffcb9f29aedc530557afc2cb",
+    "subt_tunnel_tile_2/materials/textures/Light_Albedo.jpg": "0826ccb0e7b6932d0a00903ae202ccea5832dbd359d83b2c388de3f9bd92f05b",
+    "subt_tunnel_tile_2/materials/textures/Walls_Albedo.jpg": "f5c3bac18a4f83b8a49f0d360d1af97e82bbd9e5e26ffd45d7cbea46ac8012a3",
+    "subt_tunnel_tile_2/materials/textures/Wood_Albedo.jpg": "06e53075ab9de9fe0a3c632a080c956feca401cf7d620327783417ab23b6fbb7",
+    "subt_tunnel_tile_2/meshes/tunnel_tile_2.dae": "031a9623a186c2213df42e64ebfe61b46f19386191c4b64ea1c113cc651f1a6e",
+    "subt_tunnel_tile_2/metadata.pbtxt": "d0b0cf16a008972333f191bc5262899f65011d748e60dbda8a4b04e1565be577",
+    "subt_tunnel_tile_2/model.config": "9b66ee8035d236059fbb88a7faa1a32530410fdeab98107006de50b0f522eb59",
+    "subt_tunnel_tile_2/model.sdf": "ec3cea481ce8e049222b00b0350cb0e914eb396d1e4c33755600c863c20e7aae",
+    "subt_tunnel_tile_2/thumbnails/1.jpg": "761e1c1978457df330e5685aacf8c41075afba0c033192628d4cfc02e0a79a95",
+    "subt_tunnel_tile_2/thumbnails/2.jpg": "6b2ff2feedc68e705bd60a60e4ae3b75d888142a382920313a7f0aa32788d6d2",
+    "subt_tunnel_tile_2/thumbnails/3.jpg": "33ec8662c1eebaff57449fb9c385aed19116c7d1824fc1444af65050bf4d9ab3",
+    "subt_tunnel_tile_2/thumbnails/4.jpg": "06b67ebfe31b4bd5b05609e4057ae819c8d7ee0e4657405a5fa116c20407a2bb",
+    "subt_tunnel_tile_2/thumbnails/5.jpg": "868f8d814a9ea34220547dc222bbcef7d4daa4ce5c9cdab1424a864b4f83abbb",
+    "subt_tunnel_tile_5/materials/scripts/tunnel_tile.material": "9f92432495903202a94438b88b54300925abb27f4f9ddeb672e3c4a8f956615d",
+    "subt_tunnel_tile_5/materials/textures/Chainlink_Albedo.jpg": "f1f7a21867389155a7ded632ce3cad196a60417ec582acaf2feb698ff9171155",
+    "subt_tunnel_tile_5/materials/textures/Ground_Albedo.jpg": "c5f9d5dcd7a128a266fb2d2dff2098ba0542c03fffcb9f29aedc530557afc2cb",
+    "subt_tunnel_tile_5/materials/textures/Light_Albedo.jpg": "0826ccb0e7b6932d0a00903ae202ccea5832dbd359d83b2c388de3f9bd92f05b",
+    "subt_tunnel_tile_5/materials/textures/Walls_Albedo.jpg": "f5c3bac18a4f83b8a49f0d360d1af97e82bbd9e5e26ffd45d7cbea46ac8012a3",
+    "subt_tunnel_tile_5/materials/textures/Wood_Albedo.jpg": "06e53075ab9de9fe0a3c632a080c956feca401cf7d620327783417ab23b6fbb7",
+    "subt_tunnel_tile_5/meshes/tunnel_tile_5.dae": "cceb7742c06596700e41231d600bbd9a53e13d0932a26e9997238132744ba3d5",
+    "subt_tunnel_tile_5/metadata.pbtxt": "66d83b671ce632c2ed0c511eb797aa947afd7e745b8a9bc24ba7f840ead9a2c7",
+    "subt_tunnel_tile_5/model.config": "25ffb8dbd22686b51047c1b131b26e1253ce8c2ef44695762d8b3ddff02883e6",
+    "subt_tunnel_tile_5/model.sdf": "0c8788dd1d62964bce7944da6a58a3e5cd6ed42d8aef43428097876cd7afb957",
+    "subt_tunnel_tile_5/thumbnails/1.jpg": "e4e033fe58f768a200aa9b4576831a75f58425c076bbebc8892eb41c4e46e5f0",
+    "subt_tunnel_tile_5/thumbnails/2.jpg": "3ed89bea70e8d75872cc82af89097804d7a60b4012645752ff230b84eba50710",
+    "subt_tunnel_tile_5/thumbnails/3.jpg": "944d43a651691387a286466f502b35f8e5718ffd300efeb1989f84876a148d1e",
+    "subt_tunnel_tile_5/thumbnails/4.jpg": "2ba56b25968e7092ff775e756119d30aea6fb287cf9562c5cd8edc0318eb8ae5",
+    "subt_tunnel_tile_5/thumbnails/5.jpg": "a9e8b1a60ddfb714c242e386292712164b703dc75163bcda09d320fffd6d9d05",
+    "subt_tunnel_tile_blocker/materials/textures/ConstrainedWall_Albedo.jpg": "79d0af720cb0a51a687e2f914a6e391b921ac4750d3dc2bcf5f2b0862aec0744",
+    "subt_tunnel_tile_blocker/meshes/tunnel_tile_blocker.dae": "55e9dbba49c2049ac6a23bfbbad4474ebb320f100c9700a2d3ae2cc76f429a40",
+    "subt_tunnel_tile_blocker/metadata.pbtxt": "9a08b3db7e59d2936b8a2715a8ef46b8705fe1014c47c965bf77855843b641ee",
+    "subt_tunnel_tile_blocker/model.config": "c626f3d7254763d7ec100ef889ba21032831b9c0c312d3a1b6287478d5f60beb",
+    "subt_tunnel_tile_blocker/model.sdf": "a754dae51daccf90901e191e44db61811cd113a20d6fabc576e804c8ad66db5a",
+    "subt_tunnel_tile_blocker/thumbnails/1.jpg": "d3f143c1026d76b247b3f12b2d467774b86c8fe32b08fc40870e2072f973d394",
+    "subt_tunnel_tile_blocker/thumbnails/2.jpg": "8fe4f7375796e6e49a226df66139dec9cd0be7b60b9d2f2e55ca1d184413cfde",
+    "subt_tunnel_tile_blocker/thumbnails/3.jpg": "b09d256ffb3c714a8267c5eee675b011cc0352acfb482b13bbf8bbf1814a3eff",
+    "subt_tunnel_tile_blocker/thumbnails/4.jpg": "0831e4710d31ca2d500c86f20389e9d142b830172650a5fb979ff69c1c9bce06",
+    "subt_tunnel_tile_blocker/thumbnails/5.jpg": "c3a82069494f3a70ae56a1acc319be1450b726833207c130b3c22f018a17acec"
+  }
+}

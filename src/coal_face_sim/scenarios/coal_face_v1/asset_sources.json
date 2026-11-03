@@ -1,0 +1,694 @@
+[
+  {
+    "path": "subt_tunnel_tile_1/materials/textures/Chainlink_Albedo.jpg",
+    "sha256": "f1f7a21867389155a7ded632ce3cad196a60417ec582acaf2feb698ff9171155",
+    "url": "https://fuel.gazebosim.org/1.0/OpenRobotics/models/Tunnel%20Tile%201/5/files/materials/textures/Chainlink_Albedo.jpg",
+    "raw_relative": "tunnel tile 1/5/materials/textures/Chainlink_Albedo.jpg"
+  },
+  {
+    "path": "subt_tunnel_tile_1/materials/textures/Chainlink_Albedo.png",
+    "sha256": "307e7f5d44d217ef674d5c182b6410010471087c5cfef919302684d7840f49a5",
+    "url": "https://fuel.gazebosim.org/1.0/OpenRobotics/models/Tunnel%20Tile%201/5/files/materials/textures/Chainlink_Albedo.png",
+    "raw_relative": "tunnel tile 1/5/materials/textures/Chainlink_Albedo.png"
+  },
+  {
+    "path": "subt_tunnel_tile_1/materials/textures/Chainlink_Metalness.jpg",
+    "sha256": "c4730281f2aaf629c45a4c2966b796c157d42ab4a965ba3b908bfccea106aa78",
+    "url": "https://fuel.gazebosim.org/1.0/OpenRobotics/models/Tunnel%20Tile%201/5/files/materials/textures/Chainlink_Metalness.jpg",
+    "raw_relative": "tunnel tile 1/5/materials/textures/Chainlink_Metalness.jpg"
+  },
+  {
+    "path": "subt_tunnel_tile_1/materials/textures/Chainlink_Metalness.png",
+    "sha256": "7ec43f635a4d5ca23efa16962555c5b658ea7e7312d999dacff7bb9df0782e01",
+    "url": "https://fuel.gazebosim.org/1.0/OpenRobotics/models/Tunnel%20Tile%201/5/files/materials/textures/Chainlink_Metalness.png",
+    "raw_relative": "tunnel tile 1/5/materials/textures/Chainlink_Metalness.png"
+  },
+  {
+    "path": "subt_tunnel_tile_1/materials/textures/Chainlink_Normal.jpg",
+    "sha256": "e621e155249fd0cce945159110a53abfb9adc5b8fe0ef85cc907611d7c58f51a",
+    "url": "https://fuel.gazebosim.org/1.0/OpenRobotics/models/Tunnel%20Tile%201/5/files/materials/textures/Chainlink_Normal.jpg",
+    "raw_relative": "tunnel tile 1/5/materials/textures/Chainlink_Normal.jpg"
+  },
+  {
+    "path": "subt_tunnel_tile_1/materials/textures/Chainlink_Normal.png",
+    "sha256": "f5bddcfec470aa9672c8eaa2439d997990335a00d4b297cce1227d8616a9dc22",
+    "url": "https://fuel.gazebosim.org/1.0/OpenRobotics/models/Tunnel%20Tile%201/5/files/materials/textures/Chainlink_Normal.png",
+    "raw_relative": "tunnel tile 1/5/materials/textures/Chainlink_Normal.png"
+  },
+  {
+    "path": "subt_tunnel_tile_1/materials/textures/Chainlink_Roughness.jpg",
+    "sha256": "e1f1b74332d2f32190bdb64039901e8778cd43e191a06cdcaec43510a6c4d830",
+    "url": "https://fuel.gazebosim.org/1.0/OpenRobotics/models/Tunnel%20Tile%201/5/files/materials/textures/Chainlink_Roughness.jpg",
+    "raw_relative": "tunnel tile 1/5/materials/textures/Chainlink_Roughness.jpg"
+  },
+  {
+    "path": "subt_tunnel_tile_1/materials/textures/Chainlink_Roughness.png",
+    "sha256": "a3b4b14b5b79f6aee3059b89a1e283d4edebd132b2e361847bdbcdedfae3c887",
+    "url": "https://fuel.gazebosim.org/1.0/OpenRobotics/models/Tunnel%20Tile%201/5/files/materials/textures/Chainlink_Roughness.png",
+    "raw_relative": "tunnel tile 1/5/materials/textures/Chainlink_Roughness.png"
+  },
+  {
+    "path": "subt_tunnel_tile_1/materials/textures/ConcreteRubble_Albedo.jpg",
+    "sha256": "b47ffd7bff74195b79f174c8251ce7f46a956ec97b4c37d20d686c0015261e57",
+    "url": "https://fuel.gazebosim.org/1.0/OpenRobotics/models/Tunnel%20Tile%201/5/files/materials/textures/ConcreteRubble_Albedo.jpg",
+    "raw_relative": "tunnel tile 1/5/materials/textures/ConcreteRubble_Albedo.jpg"
+  },
+  {
+    "path": "subt_tunnel_tile_1/materials/textures/ConcreteRubble_Albedo.png",
+    "sha256": "a6c0cbbe753c8c387897fea0aca9e560bba70c985a0048f601f1244aa6df3a24",
+    "url": "https://fuel.gazebosim.org/1.0/OpenRobotics/models/Tunnel%20Tile%201/5/files/materials/textures/ConcreteRubble_Albedo.png",
+    "raw_relative": "tunnel tile 1/5/materials/textures/ConcreteRubble_Albedo.png"
+  },
+  {
+    "path": "subt_tunnel_tile_1/materials/textures/ConcreteRubble_Metalness.jpg",
+    "sha256": "9bd22b8beaa019472a83247231c7665b5d07e74be2b0cd3d991c4bc7fb082c93",
+    "url": "https://fuel.gazebosim.org/1.0/OpenRobotics/models/Tunnel%20Tile%201/5/files/materials/textures/ConcreteRubble_Metalness.jpg",
+    "raw_relative": "tunnel tile 1/5/materials/textures/ConcreteRubble_Metalness.jpg"
+  },
+  {
+    "path": "subt_tunnel_tile_1/materials/textures/ConcreteRubble_Metalness.png",
+    "sha256": "41a8c2d58782abca9d4b79dc2b4d59fa460a731b081212ba4723c7b64017b780",
+    "url": "https://fuel.gazebosim.org/1.0/OpenRobotics/models/Tunnel%20Tile%201/5/files/materials/textures/ConcreteRubble_Metalness.png",
+    "raw_relative": "tunnel tile 1/5/materials/textures/ConcreteRubble_Metalness.png"
+  },
+  {
+    "path": "subt_tunnel_tile_1/materials/textures/ConcreteRubble_Normal.jpg",
+    "sha256": "dcc5e3fb4f54278d887ba1fa5e6a35533caaee8d11a2ba8b1e3888e2fc984177",
+    "url": "https://fuel.gazebosim.org/1.0/OpenRobotics/models/Tunnel%20Tile%201/5/files/materials/textures/ConcreteRubble_Normal.jpg",
+    "raw_relative": "tunnel tile 1/5/materials/textures/ConcreteRubble_Normal.jpg"
+  },
+  {
+    "path": "subt_tunnel_tile_1/materials/textures/ConcreteRubble_Normal.png",
+    "sha256": "d00d914d3f10b19eb9153db6642576daad090a4bfc95ed188a5ae2f639158b8b",
+    "url": "https://fuel.gazebosim.org/1.0/OpenRobotics/models/Tunnel%20Tile%201/5/files/materials/textures/ConcreteRubble_Normal.png",
+    "raw_relative": "tunnel tile 1/5/materials/textures/ConcreteRubble_Normal.png"
+  },
+  {
+    "path": "subt_tunnel_tile_1/materials/textures/ConcreteRubble_Roughness.jpg",
+    "sha256": "06e83dc2e560f5a8b88e910be2febbded36159b53c39d28669236f47f367391c",
+    "url": "https://fuel.gazebosim.org/1.0/OpenRobotics/models/Tunnel%20Tile%201/5/files/materials/textures/ConcreteRubble_Roughness.jpg",
+    "raw_relative": "tunnel tile 1/5/materials/textures/ConcreteRubble_Roughness.jpg"
+  },
+  {
+    "path": "subt_tunnel_tile_1/materials/textures/ConcreteRubble_Roughness.png",
+    "sha256": "4e5b197889e708b26b2ddf59f439e137c3b150c6220b9f40bd781e3b0a84fed3",
+    "url": "https://fuel.gazebosim.org/1.0/OpenRobotics/models/Tunnel%20Tile%201/5/files/materials/textures/ConcreteRubble_Roughness.png",
+    "raw_relative": "tunnel tile 1/5/materials/textures/ConcreteRubble_Roughness.png"
+  },
+  {
+    "path": "subt_tunnel_tile_1/materials/textures/ConstrainedWall_Albedo.jpg",
+    "sha256": "79d0af720cb0a51a687e2f914a6e391b921ac4750d3dc2bcf5f2b0862aec0744",
+    "url": "https://fuel.gazebosim.org/1.0/OpenRobotics/models/Tunnel%20Tile%201/5/files/materials/textures/ConstrainedWall_Albedo.jpg",
+    "raw_relative": "tunnel tile 1/5/materials/textures/ConstrainedWall_Albedo.jpg"
+  },
+  {
+    "path": "subt_tunnel_tile_1/materials/textures/ConstrainedWall_Normal.jpg",
+    "sha256": "6e4d1f86c66bb4f5e9f14208dfa0cec0b2d1e2a1e9e54d83bdeba0eef6a6f097",
+    "url": "https://fuel.gazebosim.org/1.0/OpenRobotics/models/Tunnel%20Tile%201/5/files/materials/textures/ConstrainedWall_Normal.jpg",
+    "raw_relative": "tunnel tile 1/5/materials/textures/ConstrainedWall_Normal.jpg"
+  },
+  {
+    "path": "subt_tunnel_tile_1/materials/textures/Entrance.jpg",
+    "sha256": "514e39b31e91f6f131b5697ef156ab9c088542dc964b95d6c5d049a596f3aae4",
+    "url": "https://fuel.gazebosim.org/1.0/OpenRobotics/models/Tunnel%20Tile%201/5/files/materials/textures/Entrance.jpg",
+    "raw_relative": "tunnel tile 1/5/materials/textures/Entrance.jpg"
+  },
+  {
+    "path": "subt_tunnel_tile_1/materials/textures/Ground_Albedo.jpg",
+    "sha256": "c5f9d5dcd7a128a266fb2d2dff2098ba0542c03fffcb9f29aedc530557afc2cb",
+    "url": "https://fuel.gazebosim.org/1.0/OpenRobotics/models/Tunnel%20Tile%201/5/files/materials/textures/Ground_Albedo.jpg",
+    "raw_relative": "tunnel tile 1/5/materials/textures/Ground_Albedo.jpg"
+  },
+  {
+    "path": "subt_tunnel_tile_1/materials/textures/Ground_Albedo.png",
+    "sha256": "dda2f649442d36fa981ec96eb7c279c5ef2b34a013005274fcac5f3a58d2030c",
+    "url": "https://fuel.gazebosim.org/1.0/OpenRobotics/models/Tunnel%20Tile%201/5/files/materials/textures/Ground_Albedo.png",
+    "raw_relative": "tunnel tile 1/5/materials/textures/Ground_Albedo.png"
+  },
+  {
+    "path": "subt_tunnel_tile_1/materials/textures/Ground_Normal.jpg",
+    "sha256": "95437ced1f102c12b08ee9869a905de4ed445c8bd3dcac8ce0eb017a49add55c",
+    "url": "https://fuel.gazebosim.org/1.0/OpenRobotics/models/Tunnel%20Tile%201/5/files/materials/textures/Ground_Normal.jpg",
+    "raw_relative": "tunnel tile 1/5/materials/textures/Ground_Normal.jpg"
+  },
+  {
+    "path": "subt_tunnel_tile_1/materials/textures/Ground_Normal.png",
+    "sha256": "f69be8d7bd24eb34ac7622f3a6255549d2e3efc2d8fce019a0484c45e5e740b2",
+    "url": "https://fuel.gazebosim.org/1.0/OpenRobotics/models/Tunnel%20Tile%201/5/files/materials/textures/Ground_Normal.png",
+    "raw_relative": "tunnel tile 1/5/materials/textures/Ground_Normal.png"
+  },
+  {
+    "path": "subt_tunnel_tile_1/materials/textures/Ground_Roughness.jpg",
+    "sha256": "d42c1ae4da4e38e6bd2c9f6706344eae0d693600e158d5ee20bfb9f09db762f6",
+    "url": "https://fuel.gazebosim.org/1.0/OpenRobotics/models/Tunnel%20Tile%201/5/files/materials/textures/Ground_Roughness.jpg",
+    "raw_relative": "tunnel tile 1/5/materials/textures/Ground_Roughness.jpg"
+  },
+  {
+    "path": "subt_tunnel_tile_1/materials/textures/Ground_Roughness.png",
+    "sha256": "e288d4991aa2b6c1945b46056bd1dcc7bc01e14d2c1069f21adc58b5b781a2c9",
+    "url": "https://fuel.gazebosim.org/1.0/OpenRobotics/models/Tunnel%20Tile%201/5/files/materials/textures/Ground_Roughness.png",
+    "raw_relative": "tunnel tile 1/5/materials/textures/Ground_Roughness.png"
+  },
+  {
+    "path": "subt_tunnel_tile_1/materials/textures/Light_Albedo.jpg",
+    "sha256": "0826ccb0e7b6932d0a00903ae202ccea5832dbd359d83b2c388de3f9bd92f05b",
+    "url": "https://fuel.gazebosim.org/1.0/OpenRobotics/models/Tunnel%20Tile%201/5/files/materials/textures/Light_Albedo.jpg",
+    "raw_relative": "tunnel tile 1/5/materials/textures/Light_Albedo.jpg"
+  },
+  {
+    "path": "subt_tunnel_tile_1/materials/textures/Light_Albedo.png",
+    "sha256": "16522c582b3f3e7cb30c6129cf7e6de20e47f1bb4fe80b465f6e39a5ccbf1736",
+    "url": "https://fuel.gazebosim.org/1.0/OpenRobotics/models/Tunnel%20Tile%201/5/files/materials/textures/Light_Albedo.png",
+    "raw_relative": "tunnel tile 1/5/materials/textures/Light_Albedo.png"
+  },
+  {
+    "path": "subt_tunnel_tile_1/materials/textures/Light_Emissive.jpg",
+    "sha256": "862c3510e4af75e207c6830d311cc6f0e6038ebbcf2d0ea0aec0b1b88075681b",
+    "url": "https://fuel.gazebosim.org/1.0/OpenRobotics/models/Tunnel%20Tile%201/5/files/materials/textures/Light_Emissive.jpg",
+    "raw_relative": "tunnel tile 1/5/materials/textures/Light_Emissive.jpg"
+  },
+  {
+    "path": "subt_tunnel_tile_1/materials/textures/Light_Emissive.png",
+    "sha256": "93d97f9940a26a07a6ba30fe904ade2d9d7b42c0e0ff1233b229e65baf8729d0",
+    "url": "https://fuel.gazebosim.org/1.0/OpenRobotics/models/Tunnel%20Tile%201/5/files/materials/textures/Light_Emissive.png",
+    "raw_relative": "tunnel tile 1/5/materials/textures/Light_Emissive.png"
+  },
+  {
+    "path": "subt_tunnel_tile_1/materials/textures/Light_Metalness.jpg",
+    "sha256": "eb04e25fe4e3b0ba8b1e8deff274bc13c591987806697ddb9582b66f281a14e8",
+    "url": "https://fuel.gazebosim.org/1.0/OpenRobotics/models/Tunnel%20Tile%201/5/files/materials/textures/Light_Metalness.jpg",
+    "raw_relative": "tunnel tile 1/5/materials/textures/Light_Metalness.jpg"
+  },
+  {
+    "path": "subt_tunnel_tile_1/materials/textures/Light_Metalness.png",
+    "sha256": "d8e828af4e948d6c6073c8dc5920d713eec1e710de3b0da05f362d4121ebc9f5",
+    "url": "https://fuel.gazebosim.org/1.0/OpenRobotics/models/Tunnel%20Tile%201/5/files/materials/textures/Light_Metalness.png",
+    "raw_relative": "tunnel tile 1/5/materials/textures/Light_Metalness.png"
+  },
+  {
+    "path": "subt_tunnel_tile_1/materials/textures/Light_Normal.jpg",
+    "sha256": "fd8ebc47bfdb1b106cd9e6bd50527dfc031fd21efcaef465a1bc38ad73986702",
+    "url": "https://fuel.gazebosim.org/1.0/OpenRobotics/models/Tunnel%20Tile%201/5/files/materials/textures/Light_Normal.jpg",
+    "raw_relative": "tunnel tile 1/5/materials/textures/Light_Normal.jpg"
+  },
+  {
+    "path": "subt_tunnel_tile_1/materials/textures/Light_Normal.png",
+    "sha256": "574b8375547eec0133fef23dad7f9a79320e058ed2db1c0e4b041f145c33eff6",
+    "url": "https://fuel.gazebosim.org/1.0/OpenRobotics/models/Tunnel%20Tile%201/5/files/materials/textures/Light_Normal.png",
+    "raw_relative": "tunnel tile 1/5/materials/textures/Light_Normal.png"
+  },
+  {
+    "path": "subt_tunnel_tile_1/materials/textures/Light_Roughness.jpg",
+    "sha256": "786a4f84ddb2d455515baaf1665409971aa805aef798fa2f9d8bdde0143fb8a2",
+    "url": "https://fuel.gazebosim.org/1.0/OpenRobotics/models/Tunnel%20Tile%201/5/files/materials/textures/Light_Roughness.jpg",
+    "raw_relative": "tunnel tile 1/5/materials/textures/Light_Roughness.jpg"
+  },
+  {
+    "path": "subt_tunnel_tile_1/materials/textures/Light_Roughness.png",
+    "sha256": "f4041fa64665cc67617fff554c76411dd896ea5b72ee80749ab284a9aefbbc23",
+    "url": "https://fuel.gazebosim.org/1.0/OpenRobotics/models/Tunnel%20Tile%201/5/files/materials/textures/Light_Roughness.png",
+    "raw_relative": "tunnel tile 1/5/materials/textures/Light_Roughness.png"
+  },
+  {
+    "path": "subt_tunnel_tile_1/materials/textures/RockPile_Albedo.jpg",
+    "sha256": "a7e47b3d7e652c3b5c292b4882d2d532979dbd9e9fadc60177868f5b57546ae4",
+    "url": "https://fuel.gazebosim.org/1.0/OpenRobotics/models/Tunnel%20Tile%201/5/files/materials/textures/RockPile_Albedo.jpg",
+    "raw_relative": "tunnel tile 1/5/materials/textures/RockPile_Albedo.jpg"
+  },
+  {
+    "path": "subt_tunnel_tile_1/materials/textures/RockPile_Albedo.png",
+    "sha256": "1dadf0d107c5d137aff796c11362f832267a8d4b03b42f1502fb9a41b1dee892",
+    "url": "https://fuel.gazebosim.org/1.0/OpenRobotics/models/Tunnel%20Tile%201/5/files/materials/textures/RockPile_Albedo.png",
+    "raw_relative": "tunnel tile 1/5/materials/textures/RockPile_Albedo.png"
+  },
+  {
+    "path": "subt_tunnel_tile_1/materials/textures/RockPile_Normal.jpg",
+    "sha256": "86995b565fdda2abebbea2303082cd1cbb6c8986e7200ebe12a3014d48b47368",
+    "url": "https://fuel.gazebosim.org/1.0/OpenRobotics/models/Tunnel%20Tile%201/5/files/materials/textures/RockPile_Normal.jpg",
+    "raw_relative": "tunnel tile 1/5/materials/textures/RockPile_Normal.jpg"
+  },
+  {
+    "path": "subt_tunnel_tile_1/materials/textures/RockPile_Normal.png",
+    "sha256": "ff2728ee9c7bfd1e9747dc566325a9edb14f00ea47531007b7df1b9738b6907a",
+    "url": "https://fuel.gazebosim.org/1.0/OpenRobotics/models/Tunnel%20Tile%201/5/files/materials/textures/RockPile_Normal.png",
+    "raw_relative": "tunnel tile 1/5/materials/textures/RockPile_Normal.png"
+  },
+  {
+    "path": "subt_tunnel_tile_1/materials/textures/RockPile_Roughness.jpg",
+    "sha256": "3633d77e6c8df05bcc684a74da4646af59e30e76d0c3ea4a0db965b34ab8e44f",
+    "url": "https://fuel.gazebosim.org/1.0/OpenRobotics/models/Tunnel%20Tile%201/5/files/materials/textures/RockPile_Roughness.jpg",
+    "raw_relative": "tunnel tile 1/5/materials/textures/RockPile_Roughness.jpg"
+  },
+  {
+    "path": "subt_tunnel_tile_1/materials/textures/RockPile_Roughness.png",
+    "sha256": "2751e42514780c345d34f619b840b91147de24f05b846c70e380f13522faeb62",
+    "url": "https://fuel.gazebosim.org/1.0/OpenRobotics/models/Tunnel%20Tile%201/5/files/materials/textures/RockPile_Roughness.png",
+    "raw_relative": "tunnel tile 1/5/materials/textures/RockPile_Roughness.png"
+  },
+  {
+    "path": "subt_tunnel_tile_1/materials/textures/Rocks_Albedo.jpg",
+    "sha256": "9d59429b8bcbe0fd2ea71cb1df1551f2b94870d79843ccb0f2186127564a1e29",
+    "url": "https://fuel.gazebosim.org/1.0/OpenRobotics/models/Tunnel%20Tile%201/5/files/materials/textures/Rocks_Albedo.jpg",
+    "raw_relative": "tunnel tile 1/5/materials/textures/Rocks_Albedo.jpg"
+  },
+  {
+    "path": "subt_tunnel_tile_1/materials/textures/Rocks_Albedo.png",
+    "sha256": "859de90fae0bf711f78e5ae4e050ea9b0f6e402bc8b3068e716ce1c4be844170",
+    "url": "https://fuel.gazebosim.org/1.0/OpenRobotics/models/Tunnel%20Tile%201/5/files/materials/textures/Rocks_Albedo.png",
+    "raw_relative": "tunnel tile 1/5/materials/textures/Rocks_Albedo.png"
+  },
+  {
+    "path": "subt_tunnel_tile_1/materials/textures/Rocks_Normal.jpg",
+    "sha256": "76b2f22ed0d28bcc4d9012cbb467b789b912d02302f87ce02c7c396f01b29073",
+    "url": "https://fuel.gazebosim.org/1.0/OpenRobotics/models/Tunnel%20Tile%201/5/files/materials/textures/Rocks_Normal.jpg",
+    "raw_relative": "tunnel tile 1/5/materials/textures/Rocks_Normal.jpg"
+  },
+  {
+    "path": "subt_tunnel_tile_1/materials/textures/Rocks_Normal.png",
+    "sha256": "5d61b1ea2a82bf0c86eeac8b13612cb058ca100aae13af12d12d46389f8ac5d0",
+    "url": "https://fuel.gazebosim.org/1.0/OpenRobotics/models/Tunnel%20Tile%201/5/files/materials/textures/Rocks_Normal.png",
+    "raw_relative": "tunnel tile 1/5/materials/textures/Rocks_Normal.png"
+  },
+  {
+    "path": "subt_tunnel_tile_1/materials/textures/Rocks_Roughness.jpg",
+    "sha256": "36938fbcd63deed898263f6b6dbe572cf163a0248aa7858d428840acc1a34b6f",
+    "url": "https://fuel.gazebosim.org/1.0/OpenRobotics/models/Tunnel%20Tile%201/5/files/materials/textures/Rocks_Roughness.jpg",
+    "raw_relative": "tunnel tile 1/5/materials/textures/Rocks_Roughness.jpg"
+  },
+  {
+    "path": "subt_tunnel_tile_1/materials/textures/Rocks_Roughness.png",
+    "sha256": "0ffc825d3b50ba2182a6eaa015bd3715ce6507544d5c7ee8338d453a1d25f31f",
+    "url": "https://fuel.gazebosim.org/1.0/OpenRobotics/models/Tunnel%20Tile%201/5/files/materials/textures/Rocks_Roughness.png",
+    "raw_relative": "tunnel tile 1/5/materials/textures/Rocks_Roughness.png"
+  },
+  {
+    "path": "subt_tunnel_tile_1/materials/textures/RoughWood_Albedo.jpg",
+    "sha256": "f2ba05a82e7062fc801d5691a50db325fc7ef6f12225511a75d1ab4db97e9f45",
+    "url": "https://fuel.gazebosim.org/1.0/OpenRobotics/models/Tunnel%20Tile%201/5/files/materials/textures/RoughWood_Albedo.jpg",
+    "raw_relative": "tunnel tile 1/5/materials/textures/RoughWood_Albedo.jpg"
+  },
+  {
+    "path": "subt_tunnel_tile_1/materials/textures/RoughWood_Albedo.png",
+    "sha256": "876b3fa882d2af41559f8c0f1ca549dd23ba6d837675de1c61d1db73a1a30c6f",
+    "url": "https://fuel.gazebosim.org/1.0/OpenRobotics/models/Tunnel%20Tile%201/5/files/materials/textures/RoughWood_Albedo.png",
+    "raw_relative": "tunnel tile 1/5/materials/textures/RoughWood_Albedo.png"
+  },
+  {
+    "path": "subt_tunnel_tile_1/materials/textures/RoughWood_Normal.jpg",
+    "sha256": "b5883b8a364087fc0bb6d9267047a3321b553ecc355ab91a933cb6a2b1084281",
+    "url": "https://fuel.gazebosim.org/1.0/OpenRobotics/models/Tunnel%20Tile%201/5/files/materials/textures/RoughWood_Normal.jpg",
+    "raw_relative": "tunnel tile 1/5/materials/textures/RoughWood_Normal.jpg"
+  },
+  {
+    "path": "subt_tunnel_tile_1/materials/textures/RoughWood_Normal.png",
+    "sha256": "89a5d1dce3e5e0dbc006287642a651aa887863df42d5884fe64249215e6daf00",
+    "url": "https://fuel.gazebosim.org/1.0/OpenRobotics/models/Tunnel%20Tile%201/5/files/materials/textures/RoughWood_Normal.png",
+    "raw_relative": "tunnel tile 1/5/materials/textures/RoughWood_Normal.png"
+  },
+  {
+    "path": "subt_tunnel_tile_1/materials/textures/RoughWood_Roughness.jpg",
+    "sha256": "5d97ce1ede53aed12dd064b2d3908580df046161f5ef22d5085c89ca43319a1e",
+    "url": "https://fuel.gazebosim.org/1.0/OpenRobotics/models/Tunnel%20Tile%201/5/files/materials/textures/RoughWood_Roughness.jpg",
+    "raw_relative": "tunnel tile 1/5/materials/textures/RoughWood_Roughness.jpg"
+  },
+  {
+    "path": "subt_tunnel_tile_1/materials/textures/RoughWood_Roughness.png",
+    "sha256": "2ce6168d20bec0f5c0c9024ea536632f0d525b7dca16360e1c8d0d417414f061",
+    "url": "https://fuel.gazebosim.org/1.0/OpenRobotics/models/Tunnel%20Tile%201/5/files/materials/textures/RoughWood_Roughness.png",
+    "raw_relative": "tunnel tile 1/5/materials/textures/RoughWood_Roughness.png"
+  },
+  {
+    "path": "subt_tunnel_tile_1/materials/textures/Shaft_Tunnel.jpg",
+    "sha256": "ab5d813959c411115193cef3edc8b4cad94e08d7509ca1b50041c07c641b27c8",
+    "url": "https://fuel.gazebosim.org/1.0/OpenRobotics/models/Tunnel%20Tile%201/5/files/materials/textures/Shaft_Tunnel.jpg",
+    "raw_relative": "tunnel tile 1/5/materials/textures/Shaft_Tunnel.jpg"
+  },
+  {
+    "path": "subt_tunnel_tile_1/materials/textures/Tunnel_Shaft.jpg",
+    "sha256": "ab5d813959c411115193cef3edc8b4cad94e08d7509ca1b50041c07c641b27c8",
+    "url": "https://fuel.gazebosim.org/1.0/OpenRobotics/models/Tunnel%20Tile%201/5/files/materials/textures/Shaft_Tunnel.jpg",
+    "raw_relative": "tunnel tile 1/5/materials/textures/Shaft_Tunnel.jpg"
+  },
+  {
+    "path": "subt_tunnel_tile_1/materials/textures/Walls_Albedo.jpg",
+    "sha256": "f5c3bac18a4f83b8a49f0d360d1af97e82bbd9e5e26ffd45d7cbea46ac8012a3",
+    "url": "https://fuel.gazebosim.org/1.0/OpenRobotics/models/Tunnel%20Tile%201/5/files/materials/textures/Walls_Albedo.jpg",
+    "raw_relative": "tunnel tile 1/5/materials/textures/Walls_Albedo.jpg"
+  },
+  {
+    "path": "subt_tunnel_tile_1/materials/textures/Walls_Albedo.png",
+    "sha256": "9d3e27879573cef2957decfb4e79338e04e7e8cf2dcaea21cf72bb050c3638cb",
+    "url": "https://fuel.gazebosim.org/1.0/OpenRobotics/models/Tunnel%20Tile%201/5/files/materials/textures/Walls_Albedo.png",
+    "raw_relative": "tunnel tile 1/5/materials/textures/Walls_Albedo.png"
+  },
+  {
+    "path": "subt_tunnel_tile_1/materials/textures/Walls_Metalness.jpg",
+    "sha256": "f1986721d61baf65d97b2c320de9f29ec5367ca7f10d60081eb3cc5991a2a33c",
+    "url": "https://fuel.gazebosim.org/1.0/OpenRobotics/models/Tunnel%20Tile%201/5/files/materials/textures/Walls_Metalness.jpg",
+    "raw_relative": "tunnel tile 1/5/materials/textures/Walls_Metalness.jpg"
+  },
+  {
+    "path": "subt_tunnel_tile_1/materials/textures/Walls_Metalness.png",
+    "sha256": "4cd51d10c432c67ab0ab7a2953798a762d7503e8e9ce6e6ab9601b9b07428e58",
+    "url": "https://fuel.gazebosim.org/1.0/OpenRobotics/models/Tunnel%20Tile%201/5/files/materials/textures/Walls_Metalness.png",
+    "raw_relative": "tunnel tile 1/5/materials/textures/Walls_Metalness.png"
+  },
+  {
+    "path": "subt_tunnel_tile_1/materials/textures/Walls_Normal.jpg",
+    "sha256": "1226153485c31a2472bf24523a6ed083e2d3fd52eb2bf7739dad61b32836fdd2",
+    "url": "https://fuel.gazebosim.org/1.0/OpenRobotics/models/Tunnel%20Tile%201/5/files/materials/textures/Walls_Normal.jpg",
+    "raw_relative": "tunnel tile 1/5/materials/textures/Walls_Normal.jpg"
+  },
+  {
+    "path": "subt_tunnel_tile_1/materials/textures/Walls_Normal.png",
+    "sha256": "ba4f80a80c72d703ee31426a3f7efb47d614b9dcb37bc92cfd6ebda69f03994f",
+    "url": "https://fuel.gazebosim.org/1.0/OpenRobotics/models/Tunnel%20Tile%201/5/files/materials/textures/Walls_Normal.png",
+    "raw_relative": "tunnel tile 1/5/materials/textures/Walls_Normal.png"
+  },
+  {
+    "path": "subt_tunnel_tile_1/materials/textures/Walls_Roughness.jpg",
+    "sha256": "b79d5b7ecb6014cd0193ff361f92b637bba0269a3f7c969396f5b2a543c338bd",
+    "url": "https://fuel.gazebosim.org/1.0/OpenRobotics/models/Tunnel%20Tile%201/5/files/materials/textures/Walls_Roughness.jpg",
+    "raw_relative": "tunnel tile 1/5/materials/textures/Walls_Roughness.jpg"
+  },
+  {
+    "path": "subt_tunnel_tile_1/materials/textures/Walls_Roughness.png",
+    "sha256": "5c05ed01aa34ec62bc058508a686388d96e480468410c4c0b91f4cfac7c1df9a",
+    "url": "https://fuel.gazebosim.org/1.0/OpenRobotics/models/Tunnel%20Tile%201/5/files/materials/textures/Walls_Roughness.png",
+    "raw_relative": "tunnel tile 1/5/materials/textures/Walls_Roughness.png"
+  },
+  {
+    "path": "subt_tunnel_tile_1/materials/textures/Wood_Albedo.jpg",
+    "sha256": "06e53075ab9de9fe0a3c632a080c956feca401cf7d620327783417ab23b6fbb7",
+    "url": "https://fuel.gazebosim.org/1.0/OpenRobotics/models/Tunnel%20Tile%201/5/files/materials/textures/Wood_Albedo.jpg",
+    "raw_relative": "tunnel tile 1/5/materials/textures/Wood_Albedo.jpg"
+  },
+  {
+    "path": "subt_tunnel_tile_1/materials/textures/Wood_Albedo.png",
+    "sha256": "b5da64aedb4d4c37a7beda10a61acfe5e46ce7f903e54f2303088ba298bdf460",
+    "url": "https://fuel.gazebosim.org/1.0/OpenRobotics/models/Tunnel%20Tile%201/5/files/materials/textures/Wood_Albedo.png",
+    "raw_relative": "tunnel tile 1/5/materials/textures/Wood_Albedo.png"
+  },
+  {
+    "path": "subt_tunnel_tile_1/materials/textures/Wood_Normal.jpg",
+    "sha256": "3d1c6f098b66d93e52071b41834dd14a424d8cd2f7c4130c62dc062acfa65011",
+    "url": "https://fuel.gazebosim.org/1.0/OpenRobotics/models/Tunnel%20Tile%201/5/files/materials/textures/Wood_Normal.jpg",
+    "raw_relative": "tunnel tile 1/5/materials/textures/Wood_Normal.jpg"
+  },
+  {
+    "path": "subt_tunnel_tile_1/materials/textures/rails.jpg",
+    "sha256": "95abeab03d753400c5a698adc2350c4477e0a302559bebdc794308da5c0b475d",
+    "url": "https://fuel.gazebosim.org/1.0/OpenRobotics/models/Tunnel%20Tile%201/5/files/materials/textures/rails.jpg",
+    "raw_relative": "tunnel tile 1/5/materials/textures/rails.jpg"
+  },
+  {
+    "path": "subt_tunnel_tile_1/meshes/tunnel_tile_1.dae",
+    "sha256": "cddc3cf51824a1fffa41affd267977637534f68591b1dcdfb5d07ee6e6a4da37",
+    "url": "https://fuel.gazebosim.org/1.0/OpenRobotics/models/Tunnel%20Tile%201/5/files/meshes/tunnel_tile_1.dae",
+    "raw_relative": "tunnel tile 1/5/meshes/tunnel_tile_1.dae",
+    "source_sha256": "ed15f13dd7b6af1cc8b4816a5eb45d43276664cee3f9a454aeaffc819ef9d689",
+    "replacements": [
+      [
+        "<init_from>https://fuel.gazebosim.org/1.0/OpenRobotics/models/Tunnel Tile 1/tip/files/materials/textures/Light_Albedo.jpg</init_from>",
+        "<init_from>../materials/textures/Light_Albedo.jpg</init_from>"
+      ],
+      [
+        "<init_from>https://fuel.gazebosim.org/1.0/OpenRobotics/models/Tunnel Tile 1/tip/files/materials/textures/Ground_Albedo.jpg</init_from>",
+        "<init_from>../materials/textures/Ground_Albedo.jpg</init_from>"
+      ],
+      [
+        "<init_from>https://fuel.gazebosim.org/1.0/OpenRobotics/models/Tunnel Tile 1/tip/files/materials/textures/Chainlink_Albedo.jpg</init_from>",
+        "<init_from>../materials/textures/Chainlink_Albedo.jpg</init_from>"
+      ],
+      [
+        "<init_from>https://fuel.gazebosim.org/1.0/OpenRobotics/models/Tunnel Tile 1/tip/files/materials/textures/Walls_Albedo.jpg</init_from>",
+        "<init_from>../materials/textures/Walls_Albedo.jpg</init_from>"
+      ],
+      [
+        "<init_from>https://fuel.gazebosim.org/1.0/OpenRobotics/models/Tunnel Tile 1/tip/files/materials/textures/Wood_Albedo.jpg</init_from>",
+        "<init_from>../materials/textures/Wood_Albedo.jpg</init_from>"
+      ]
+    ]
+  },
+  {
+    "path": "subt_tunnel_tile_1/thumbnails/1.jpg",
+    "sha256": "78c162b684a478b6f021da0dcba5bfabfdfcfea366e7cf07fa3f7978a3946c67",
+    "url": "https://fuel.gazebosim.org/1.0/OpenRobotics/models/Tunnel%20Tile%201/5/files/thumbnails/1.jpg",
+    "raw_relative": "tunnel tile 1/5/thumbnails/1.jpg"
+  },
+  {
+    "path": "subt_tunnel_tile_1/thumbnails/2.jpg",
+    "sha256": "f4be4d17c66091c4ed3c6a10b347199423259e1482a89a845292e29986755e38",
+    "url": "https://fuel.gazebosim.org/1.0/OpenRobotics/models/Tunnel%20Tile%201/5/files/thumbnails/2.jpg",
+    "raw_relative": "tunnel tile 1/5/thumbnails/2.jpg"
+  },
+  {
+    "path": "subt_tunnel_tile_1/thumbnails/3.jpg",
+    "sha256": "ff7b06a2691fddddde63284544cc831f246c0fe27cac9736eedfc013bf4ee174",
+    "url": "https://fuel.gazebosim.org/1.0/OpenRobotics/models/Tunnel%20Tile%201/5/files/thumbnails/3.jpg",
+    "raw_relative": "tunnel tile 1/5/thumbnails/3.jpg"
+  },
+  {
+    "path": "subt_tunnel_tile_1/thumbnails/4.jpg",
+    "sha256": "ea3eb02103f137e187b5c1265f01b3877d46bbfe42468aed7709bf5437445029",
+    "url": "https://fuel.gazebosim.org/1.0/OpenRobotics/models/Tunnel%20Tile%201/5/files/thumbnails/4.jpg",
+    "raw_relative": "tunnel tile 1/5/thumbnails/4.jpg"
+  },
+  {
+    "path": "subt_tunnel_tile_1/thumbnails/5.jpg",
+    "sha256": "7871abd9e904a47398cb249397733f566f0e5d09c4b1a13fb0b711a8b1a32f52",
+    "url": "https://fuel.gazebosim.org/1.0/OpenRobotics/models/Tunnel%20Tile%201/5/files/thumbnails/5.jpg",
+    "raw_relative": "tunnel tile 1/5/thumbnails/5.jpg"
+  },
+  {
+    "path": "subt_tunnel_tile_2/materials/textures/Chainlink_Albedo.jpg",
+    "sha256": "f1f7a21867389155a7ded632ce3cad196a60417ec582acaf2feb698ff9171155",
+    "url": "https://fuel.gazebosim.org/1.0/OpenRobotics/models/Tunnel%20Tile%201/5/files/materials/textures/Chainlink_Albedo.jpg",
+    "raw_relative": "tunnel tile 1/5/materials/textures/Chainlink_Albedo.jpg"
+  },
+  {
+    "path": "subt_tunnel_tile_2/materials/textures/Ground_Albedo.jpg",
+    "sha256": "c5f9d5dcd7a128a266fb2d2dff2098ba0542c03fffcb9f29aedc530557afc2cb",
+    "url": "https://fuel.gazebosim.org/1.0/OpenRobotics/models/Tunnel%20Tile%201/5/files/materials/textures/Ground_Albedo.jpg",
+    "raw_relative": "tunnel tile 1/5/materials/textures/Ground_Albedo.jpg"
+  },
+  {
+    "path": "subt_tunnel_tile_2/materials/textures/Light_Albedo.jpg",
+    "sha256": "0826ccb0e7b6932d0a00903ae202ccea5832dbd359d83b2c388de3f9bd92f05b",
+    "url": "https://fuel.gazebosim.org/1.0/OpenRobotics/models/Tunnel%20Tile%201/5/files/materials/textures/Light_Albedo.jpg",
+    "raw_relative": "tunnel tile 1/5/materials/textures/Light_Albedo.jpg"
+  },
+  {
+    "path": "subt_tunnel_tile_2/materials/textures/Walls_Albedo.jpg",
+    "sha256": "f5c3bac18a4f83b8a49f0d360d1af97e82bbd9e5e26ffd45d7cbea46ac8012a3",
+    "url": "https://fuel.gazebosim.org/1.0/OpenRobotics/models/Tunnel%20Tile%201/5/files/materials/textures/Walls_Albedo.jpg",
+    "raw_relative": "tunnel tile 1/5/materials/textures/Walls_Albedo.jpg"
+  },
+  {
+    "path": "subt_tunnel_tile_2/materials/textures/Wood_Albedo.jpg",
+    "sha256": "06e53075ab9de9fe0a3c632a080c956feca401cf7d620327783417ab23b6fbb7",
+    "url": "https://fuel.gazebosim.org/1.0/OpenRobotics/models/Tunnel%20Tile%201/5/files/materials/textures/Wood_Albedo.jpg",
+    "raw_relative": "tunnel tile 1/5/materials/textures/Wood_Albedo.jpg"
+  },
+  {
+    "path": "subt_tunnel_tile_2/meshes/tunnel_tile_2.dae",
+    "sha256": "031a9623a186c2213df42e64ebfe61b46f19386191c4b64ea1c113cc651f1a6e",
+    "url": "https://fuel.gazebosim.org/1.0/OpenRobotics/models/Tunnel%20Tile%202/16/files/meshes/tunnel_tile_2.dae",
+    "raw_relative": "tunnel tile 2/16/meshes/tunnel_tile_2.dae",
+    "source_sha256": "69214896e63f6723a5d5880f7fef6f7b5d6b2c4d025772a47fcc69bc8c93d363",
+    "replacements": [
+      [
+        "<init_from>https://fuel.ignitionrobotics.org/1.0/OpenRobotics/models/Tunnel Tile 1/tip/files/materials/textures/Light_Albedo.jpg</init_from>",
+        "<init_from>../materials/textures/Light_Albedo.jpg</init_from>"
+      ],
+      [
+        "<init_from>https://fuel.ignitionrobotics.org/1.0/OpenRobotics/models/Tunnel Tile 1/tip/files/materials/textures/Ground_Albedo.jpg</init_from>",
+        "<init_from>../materials/textures/Ground_Albedo.jpg</init_from>"
+      ],
+      [
+        "<init_from>https://fuel.ignitionrobotics.org/1.0/OpenRobotics/models/Tunnel Tile 1/tip/files/materials/textures/Chainlink_Albedo.jpg</init_from>",
+        "<init_from>../materials/textures/Chainlink_Albedo.jpg</init_from>"
+      ],
+      [
+        "<init_from>https://fuel.ignitionrobotics.org/1.0/OpenRobotics/models/Tunnel Tile 1/tip/files/materials/textures/Wood_Albedo.jpg</init_from>",
+        "<init_from>../materials/textures/Wood_Albedo.jpg</init_from>"
+      ],
+      [
+        "<init_from>https://fuel.ignitionrobotics.org/1.0/OpenRobotics/models/Tunnel Tile 1/tip/files/materials/textures/Ground_Albedo.jpg</init_from>",
+        "<init_from>../materials/textures/Ground_Albedo.jpg</init_from>"
+      ],
+      [
+        "<init_from>https://fuel.ignitionrobotics.org/1.0/OpenRobotics/models/Tunnel Tile 1/tip/files/materials/textures/Walls_Albedo.jpg</init_from>",
+        "<init_from>../materials/textures/Walls_Albedo.jpg</init_from>"
+      ]
+    ]
+  },
+  {
+    "path": "subt_tunnel_tile_2/thumbnails/1.jpg",
+    "sha256": "761e1c1978457df330e5685aacf8c41075afba0c033192628d4cfc02e0a79a95",
+    "url": "https://fuel.gazebosim.org/1.0/OpenRobotics/models/Tunnel%20Tile%202/16/files/thumbnails/1.jpg",
+    "raw_relative": "tunnel tile 2/16/thumbnails/1.jpg"
+  },
+  {
+    "path": "subt_tunnel_tile_2/thumbnails/2.jpg",
+    "sha256": "6b2ff2feedc68e705bd60a60e4ae3b75d888142a382920313a7f0aa32788d6d2",
+    "url": "https://fuel.gazebosim.org/1.0/OpenRobotics/models/Tunnel%20Tile%202/16/files/thumbnails/2.jpg",
+    "raw_relative": "tunnel tile 2/16/thumbnails/2.jpg"
+  },
+  {
+    "path": "subt_tunnel_tile_2/thumbnails/3.jpg",
+    "sha256": "33ec8662c1eebaff57449fb9c385aed19116c7d1824fc1444af65050bf4d9ab3",
+    "url": "https://fuel.gazebosim.org/1.0/OpenRobotics/models/Tunnel%20Tile%202/16/files/thumbnails/3.jpg",
+    "raw_relative": "tunnel tile 2/16/thumbnails/3.jpg"
+  },
+  {
+    "path": "subt_tunnel_tile_2/thumbnails/4.jpg",
+    "sha256": "06b67ebfe31b4bd5b05609e4057ae819c8d7ee0e4657405a5fa116c20407a2bb",
+    "url": "https://fuel.gazebosim.org/1.0/OpenRobotics/models/Tunnel%20Tile%202/16/files/thumbnails/4.jpg",
+    "raw_relative": "tunnel tile 2/16/thumbnails/4.jpg"
+  },
+  {
+    "path": "subt_tunnel_tile_2/thumbnails/5.jpg",
+    "sha256": "868f8d814a9ea34220547dc222bbcef7d4daa4ce5c9cdab1424a864b4f83abbb",
+    "url": "https://fuel.gazebosim.org/1.0/OpenRobotics/models/Tunnel%20Tile%202/16/files/thumbnails/5.jpg",
+    "raw_relative": "tunnel tile 2/16/thumbnails/5.jpg"
+  },
+  {
+    "path": "subt_tunnel_tile_5/materials/textures/Chainlink_Albedo.jpg",
+    "sha256": "f1f7a21867389155a7ded632ce3cad196a60417ec582acaf2feb698ff9171155",
+    "url": "https://fuel.gazebosim.org/1.0/OpenRobotics/models/Tunnel%20Tile%201/5/files/materials/textures/Chainlink_Albedo.jpg",
+    "raw_relative": "tunnel tile 1/5/materials/textures/Chainlink_Albedo.jpg"
+  },
+  {
+    "path": "subt_tunnel_tile_5/materials/textures/Ground_Albedo.jpg",
+    "sha256": "c5f9d5dcd7a128a266fb2d2dff2098ba0542c03fffcb9f29aedc530557afc2cb",
+    "url": "https://fuel.gazebosim.org/1.0/OpenRobotics/models/Tunnel%20Tile%201/5/files/materials/textures/Ground_Albedo.jpg",
+    "raw_relative": "tunnel tile 1/5/materials/textures/Ground_Albedo.jpg"
+  },
+  {
+    "path": "subt_tunnel_tile_5/materials/textures/Light_Albedo.jpg",
+    "sha256": "0826ccb0e7b6932d0a00903ae202ccea5832dbd359d83b2c388de3f9bd92f05b",
+    "url": "https://fuel.gazebosim.org/1.0/OpenRobotics/models/Tunnel%20Tile%201/5/files/materials/textures/Light_Albedo.jpg",
+    "raw_relative": "tunnel tile 1/5/materials/textures/Light_Albedo.jpg"
+  },
+  {
+    "path": "subt_tunnel_tile_5/materials/textures/Walls_Albedo.jpg",
+    "sha256": "f5c3bac18a4f83b8a49f0d360d1af97e82bbd9e5e26ffd45d7cbea46ac8012a3",
+    "url": "https://fuel.gazebosim.org/1.0/OpenRobotics/models/Tunnel%20Tile%201/5/files/materials/textures/Walls_Albedo.jpg",
+    "raw_relative": "tunnel tile 1/5/materials/textures/Walls_Albedo.jpg"
+  },
+  {
+    "path": "subt_tunnel_tile_5/materials/textures/Wood_Albedo.jpg",
+    "sha256": "06e53075ab9de9fe0a3c632a080c956feca401cf7d620327783417ab23b6fbb7",
+    "url": "https://fuel.gazebosim.org/1.0/OpenRobotics/models/Tunnel%20Tile%201/5/files/materials/textures/Wood_Albedo.jpg",
+    "raw_relative": "tunnel tile 1/5/materials/textures/Wood_Albedo.jpg"
+  },
+  {
+    "path": "subt_tunnel_tile_5/meshes/tunnel_tile_5.dae",
+    "sha256": "cceb7742c06596700e41231d600bbd9a53e13d0932a26e9997238132744ba3d5",
+    "url": "https://fuel.gazebosim.org/1.0/OpenRobotics/models/Tunnel%20Tile%205/14/files/meshes/tunnel_tile_5.dae",
+    "raw_relative": "tunnel tile 5/14/meshes/tunnel_tile_5.dae",
+    "source_sha256": "55309a1ba72daf3f08ece485fd0a6333ee89bf2f070359669ac552fe884811f8",
+    "replacements": [
+      [
+        "<init_from>https://fuel.ignitionrobotics.org/1.0/OpenRobotics/models/Tunnel Tile 1/tip/files/materials/textures/Ground_Albedo.jpg</init_from>",
+        "<init_from>../materials/textures/Ground_Albedo.jpg</init_from>"
+      ],
+      [
+        "<init_from>https://fuel.ignitionrobotics.org/1.0/OpenRobotics/models/Tunnel Tile 1/tip/files/materials/textures/Walls_Albedo.jpg</init_from>",
+        "<init_from>../materials/textures/Walls_Albedo.jpg</init_from>"
+      ],
+      [
+        "<init_from>https://fuel.ignitionrobotics.org/1.0/OpenRobotics/models/Tunnel Tile 1/tip/files/materials/textures/Wood_Albedo.jpg</init_from>",
+        "<init_from>../materials/textures/Wood_Albedo.jpg</init_from>"
+      ],
+      [
+        "<init_from>https://fuel.ignitionrobotics.org/1.0/OpenRobotics/models/Tunnel Tile 1/tip/files/materials/textures/Light_Albedo.jpg</init_from>",
+        "<init_from>../materials/textures/Light_Albedo.jpg</init_from>"
+      ],
+      [
+        "<init_from>https://fuel.ignitionrobotics.org/1.0/OpenRobotics/models/Tunnel Tile 1/tip/files/materials/textures/Chainlink_Albedo.jpg</init_from>",
+        "<init_from>../materials/textures/Chainlink_Albedo.jpg</init_from>"
+      ]
+    ]
+  },
+  {
+    "path": "subt_tunnel_tile_5/thumbnails/1.jpg",
+    "sha256": "e4e033fe58f768a200aa9b4576831a75f58425c076bbebc8892eb41c4e46e5f0",
+    "url": "https://fuel.gazebosim.org/1.0/OpenRobotics/models/Tunnel%20Tile%205/14/files/thumbnails/1.jpg",
+    "raw_relative": "tunnel tile 5/14/thumbnails/1.jpg"
+  },
+  {
+    "path": "subt_tunnel_tile_5/thumbnails/2.jpg",
+    "sha256": "3ed89bea70e8d75872cc82af89097804d7a60b4012645752ff230b84eba50710",
+    "url": "https://fuel.gazebosim.org/1.0/OpenRobotics/models/Tunnel%20Tile%205/14/files/thumbnails/2.jpg",
+    "raw_relative": "tunnel tile 5/14/thumbnails/2.jpg"
+  },
+  {
+    "path": "subt_tunnel_tile_5/thumbnails/3.jpg",
+    "sha256": "944d43a651691387a286466f502b35f8e5718ffd300efeb1989f84876a148d1e",
+    "url": "https://fuel.gazebosim.org/1.0/OpenRobotics/models/Tunnel%20Tile%205/14/files/thumbnails/3.jpg",
+    "raw_relative": "tunnel tile 5/14/thumbnails/3.jpg"
+  },
+  {
+    "path": "subt_tunnel_tile_5/thumbnails/4.jpg",
+    "sha256": "2ba56b25968e7092ff775e756119d30aea6fb287cf9562c5cd8edc0318eb8ae5",
+    "url": "https://fuel.gazebosim.org/1.0/OpenRobotics/models/Tunnel%20Tile%205/14/files/thumbnails/4.jpg",
+    "raw_relative": "tunnel tile 5/14/thumbnails/4.jpg"
+  },
+  {
+    "path": "subt_tunnel_tile_5/thumbnails/5.jpg",
+    "sha256": "a9e8b1a60ddfb714c242e386292712164b703dc75163bcda09d320fffd6d9d05",
+    "url": "https://fuel.gazebosim.org/1.0/OpenRobotics/models/Tunnel%20Tile%205/14/files/thumbnails/5.jpg",
+    "raw_relative": "tunnel tile 5/14/thumbnails/5.jpg"
+  },
+  {
+    "path": "subt_tunnel_tile_blocker/materials/textures/ConstrainedWall_Albedo.jpg",
+    "sha256": "79d0af720cb0a51a687e2f914a6e391b921ac4750d3dc2bcf5f2b0862aec0744",
+    "url": "https://fuel.gazebosim.org/1.0/OpenRobotics/models/Tunnel%20Tile%201/5/files/materials/textures/ConstrainedWall_Albedo.jpg",
+    "raw_relative": "tunnel tile 1/5/materials/textures/ConstrainedWall_Albedo.jpg"
+  },
+  {
+    "path": "subt_tunnel_tile_blocker/meshes/tunnel_tile_blocker.dae",
+    "sha256": "55e9dbba49c2049ac6a23bfbbad4474ebb320f100c9700a2d3ae2cc76f429a40",
+    "url": "https://fuel.gazebosim.org/1.0/OpenRobotics/models/Tunnel%20Tile%20Blocker/12/files/meshes/tunnel_tile_blocker.dae",
+    "raw_relative": "tunnel tile blocker/12/meshes/tunnel_tile_blocker.dae",
+    "source_sha256": "ce1d3e88e5e376a58daf9622a60ceacd4c17ead49529d5535b27c01c619a5d5d",
+    "replacements": [
+      [
+        "<init_from>https://fuel.ignitionrobotics.org/1.0/openrobotics/models/tunnel tile 1/tip/files/materials/textures/ConstrainedWall_Albedo.jpg</init_from>",
+        "<init_from>../materials/textures/ConstrainedWall_Albedo.jpg</init_from>"
+      ]
+    ]
+  },
+  {
+    "path": "subt_tunnel_tile_blocker/thumbnails/1.jpg",
+    "sha256": "d3f143c1026d76b247b3f12b2d467774b86c8fe32b08fc40870e2072f973d394",
+    "url": "https://fuel.gazebosim.org/1.0/OpenRobotics/models/Tunnel%20Tile%20Blocker/12/files/thumbnails/1.jpg",
+    "raw_relative": "tunnel tile blocker/12/thumbnails/1.jpg"
+  },
+  {
+    "path": "subt_tunnel_tile_blocker/thumbnails/2.jpg",
+    "sha256": "8fe4f7375796e6e49a226df66139dec9cd0be7b60b9d2f2e55ca1d184413cfde",
+    "url": "https://fuel.gazebosim.org/1.0/OpenRobotics/models/Tunnel%20Tile%20Blocker/12/files/thumbnails/2.jpg",
+    "raw_relative": "tunnel tile blocker/12/thumbnails/2.jpg"
+  },
+  {
+    "path": "subt_tunnel_tile_blocker/thumbnails/3.jpg",
+    "sha256": "b09d256ffb3c714a8267c5eee675b011cc0352acfb482b13bbf8bbf1814a3eff",
+    "url": "https://fuel.gazebosim.org/1.0/OpenRobotics/models/Tunnel%20Tile%20Blocker/12/files/thumbnails/3.jpg",
+    "raw_relative": "tunnel tile blocker/12/thumbnails/3.jpg"
+  },
+  {
+    "path": "subt_tunnel_tile_blocker/thumbnails/4.jpg",
+    "sha256": "0831e4710d31ca2d500c86f20389e9d142b830172650a5fb979ff69c1c9bce06",
+    "url": "https://fuel.gazebosim.org/1.0/OpenRobotics/models/Tunnel%20Tile%20Blocker/12/files/thumbnails/4.jpg",
+    "raw_relative": "tunnel tile blocker/12/thumbnails/4.jpg"
+  },
+  {
+    "path": "subt_tunnel_tile_blocker/thumbnails/5.jpg",
+    "sha256": "c3a82069494f3a70ae56a1acc319be1450b726833207c130b3c22f018a17acec",
+    "url": "https://fuel.gazebosim.org/1.0/OpenRobotics/models/Tunnel%20Tile%20Blocker/12/files/thumbnails/5.jpg",
+    "raw_relative": "tunnel tile blocker/12/thumbnails/5.jpg"
+  }
+]
