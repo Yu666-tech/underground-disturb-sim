@@ -1,0 +1,28 @@
+{
+  "passed": true,
+  "scene_id": "coal_face_base",
+  "scene_version": "0.2.0",
+  "schema_version": "0.1.1",
+  "truth_pairs": 751,
+  "scan_pairs": 150,
+  "truth_rate_hz": 50.0,
+  "scan_rate_hz": 9.998657898268688,
+  "state_messages": 751,
+  "simulation_duration_s": 15.0,
+  "old_new_payloads_equal": true,
+  "sampling_timestamps_preserved": true,
+  "scan_720": true,
+  "map_world_identity": true,
+  "observation_ids_unique": true,
+  "query_real_clear_and_support_passed": true,
+  "output_types_imported": true,
+  "package_prefixes": {
+    "coal_face_sim": "/home/ll/coal_lidar_delivery_check_20261105/install/coal_face_sim",
+    "coal_platform_interfaces": "/home/ll/coal_lidar_delivery_check_20261105/install/coal_platform_interfaces",
+    "coal_platform_bridge": "/home/ll/coal_lidar_delivery_check_20261105/install/coal_platform_bridge",
+    "coal_scene_query": "/home/ll/coal_lidar_delivery_check_20261105/install/coal_scene_query"
+  },
+  "limitations": "Fresh local installation test; remote recipient GUI/performance and C disturbance implementation still require recipient acceptance",
+  "shell_registration_tested_with_isolated_home": true,
+  "repeat_install_passed": true
+}

@@ -1,0 +1,56 @@
+{
+  "date": "2026-11-05",
+  "scope": "Historical source-level acceptance, separate from fresh delivery installation test",
+  "scene_id": "coal_face_base",
+  "current_scene_version": "0.2.0",
+  "schema_version": "0.1.1",
+  "truth_scan": {
+    "passed": true,
+    "tested_scene_version": "0.1.0",
+    "truth_pairs": 1507,
+    "scan_pairs": 301,
+    "rates_hz": {
+      "truth": 50.0,
+      "scan": 9.999333377774814
+    },
+    "payloads_equal": true,
+    "timestamps_preserved": true,
+    "map_world_identity": true,
+    "exact_tf_error": 0.0,
+    "note": "Historical scan adaptation test preceded addition of v0.2.0 anchors/zones; no claim of a v0.2.0 full-cycle test"
+  },
+  "bc_inputs": {
+    "passed": true,
+    "tested_scene_version": "0.2.0",
+    "state_messages": 906,
+    "laser_frames": 181,
+    "uwb_messages": 1638,
+    "ideal_distance_max_error_m": 2.842170943040401e-14,
+    "work_modes": [
+      "CUTTING",
+      "TRAVELLING"
+    ],
+    "note": "Tested before the real query node was added; its canonical_real_service_absent field is historical only"
+  },
+  "real_query": {
+    "passed": true,
+    "objects": 209,
+    "triangles": 222116,
+    "error_requests": {
+      "scene": "SCENE_MISMATCH",
+      "version": "VERSION_MISMATCH",
+      "frame": "INVALID_REQUEST",
+      "time": "TIME_UNAVAILABLE",
+      "radius": "INVALID_REQUEST",
+      "schema": "UNSUPPORTED",
+      "nan": "INVALID_REQUEST"
+    },
+    "example_passed": true,
+    "geometry_hash": "52e9af7cea6d4a48fea38c5a56e63822f84933be2c56c888c227d35c9603527f"
+  },
+  "limitations": [
+    "C output messages are defined; LiDAR disturbance producer is not implemented",
+    "Remote recipient installation and GPU/GUI behavior require their acceptance",
+    "No complete disturbed localization error loop validated"
+  ]
+}

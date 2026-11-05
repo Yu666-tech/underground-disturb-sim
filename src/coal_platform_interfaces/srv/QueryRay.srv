@@ -1,0 +1,16 @@
+coal_platform_interfaces/RunContext context # frame_id必须map；stamp=请求观测时间，不是服务调用时间
+string request_id # 每次请求唯一；重试换ID
+string observation_id # 对应raw ID
+geometry_msgs/Point origin_m # 有限线段起点，map
+geometry_msgs/Point target_m # 有限线段终点，map，不能与起点重合
+float64 reflector_search_radius_m # 搜索半径m，有限且>=0
+---
+coal_platform_interfaces/RunContext context # 原样回显请求上下文
+string request_id # 回显
+string observation_id # 回显
+string status # OK/INVALID_REQUEST/SCENE_MISMATCH/VERSION_MISMATCH/TIME_UNAVAILABLE/UNSUPPORTED/INTERNAL_ERROR
+string served_scene_version # 服务实际场景版本
+coal_platform_interfaces/Intersection[] direct_intersections # 按距origin升序，同geometry多次穿越可多项
+coal_platform_interfaces/ReflectorCandidate[] reflector_candidates # 按距离、geometry_id稳定排序
+float64 processing_time_ms # 服务内部单调墙钟耗时ms，不参与观测对齐
+string error_message # 非OK错误说明；OK时可空

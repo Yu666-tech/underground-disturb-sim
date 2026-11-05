@@ -1,0 +1,103 @@
+{
+  "passed": true,
+  "rays": 6,
+  "max_difference_m": 7.400121304623752e-08,
+  "comparison": [
+    {
+      "a": [
+        0.6,
+        5,
+        1.2105
+      ],
+      "b": [
+        0.6,
+        25,
+        1.2105
+      ],
+      "distance": 1000,
+      "entity": "",
+      "engine_nearest_m": null,
+      "absolute_difference_m": 0.0
+    },
+    {
+      "a": [
+        0.6,
+        0.75,
+        1.2
+      ],
+      "b": [
+        -2,
+        0.75,
+        1.2
+      ],
+      "distance": 1.0499999999999998,
+      "entity": "support_000::link::collision",
+      "engine_nearest_m": 1.05,
+      "absolute_difference_m": 2.220446049250313e-16
+    },
+    {
+      "a": [
+        0.6,
+        1.5,
+        1.2
+      ],
+      "b": [
+        -2,
+        1.5,
+        1.2
+      ],
+      "distance": 1000,
+      "entity": "",
+      "engine_nearest_m": null,
+      "absolute_difference_m": 0.0
+    },
+    {
+      "a": [
+        -2,
+        10,
+        1.2
+      ],
+      "b": [
+        -6,
+        10,
+        1.2
+      ],
+      "distance": 0.6156516671180725,
+      "entity": "face_00::link::collision",
+      "engine_nearest_m": 0.6156517411192856,
+      "absolute_difference_m": 7.400121304623752e-08
+    },
+    {
+      "a": [
+        1.5,
+        5,
+        1.2
+      ],
+      "b": [
+        1.5,
+        5,
+        -1
+      ],
+      "distance": 1.1995,
+      "entity": "face_00::link::collision_ground",
+      "engine_nearest_m": 1.1995,
+      "absolute_difference_m": 0.0
+    },
+    {
+      "a": [
+        0.6,
+        100,
+        1.2105
+      ],
+      "b": [
+        6,
+        100,
+        1.2105
+      ],
+      "distance": 1.2499999999999998,
+      "entity": "coal_boundary_10::link::collision",
+      "engine_nearest_m": 1.25,
+      "absolute_difference_m": 2.220446049250313e-16
+    }
+  ]
+}

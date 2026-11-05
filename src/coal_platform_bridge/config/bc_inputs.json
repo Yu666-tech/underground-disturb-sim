@@ -1,0 +1,162 @@
+{
+  "config_version": "0.1.0",
+  "purpose": "DEVELOPMENT_LAYOUT_NOT_FINAL_MINE_DEPLOYMENT",
+  "uwb_rate_hz": 10.0,
+  "sensor_max_range_m": 120.0,
+  "tag_id": "tag_01",
+  "tag_offset_body_m": [
+    0.0,
+    0.0,
+    0.55
+  ],
+  "anchors": [
+    {
+      "anchor_id": "A00",
+      "position_m": [
+        -0.2,
+        3,
+        1.7005
+      ]
+    },
+    {
+      "anchor_id": "A01",
+      "position_m": [
+        1.65,
+        24,
+        1.8005
+      ]
+    },
+    {
+      "anchor_id": "A02",
+      "position_m": [
+        1.7,
+        52,
+        2.2005
+      ]
+    },
+    {
+      "anchor_id": "A03",
+      "position_m": [
+        1.55,
+        76,
+        2.0005
+      ]
+    },
+    {
+      "anchor_id": "A04",
+      "position_m": [
+        1.75,
+        103,
+        2.1005
+      ]
+    },
+    {
+      "anchor_id": "A05",
+      "position_m": [
+        1.6,
+        128,
+        1.9005
+      ]
+    },
+    {
+      "anchor_id": "A06",
+      "position_m": [
+        1.7,
+        154,
+        2.2005
+      ]
+    },
+    {
+      "anchor_id": "A07",
+      "position_m": [
+        1.55,
+        178,
+        1.8005
+      ]
+    },
+    {
+      "anchor_id": "A08",
+      "position_m": [
+        -0.2,
+        197,
+        2.3005
+      ]
+    }
+  ],
+  "work_schedule_epoch_sim_s": 0.0,
+  "work_schedule": [
+    {
+      "time_s": 0.0,
+      "work_mode": "TRAVELLING"
+    },
+    {
+      "time_s": 5.0,
+      "work_mode": "CUTTING"
+    },
+    {
+      "time_s": 15.0,
+      "work_mode": "TRAVELLING"
+    }
+  ],
+  "zones": [
+    {
+      "zone_id": "zone_workface_reference",
+      "priority": 0,
+      "polygon_xy_m": [
+        [
+          -2.0,
+          0.0
+        ],
+        [
+          2.0,
+          0.0
+        ],
+        [
+          2.0,
+          200.0
+        ],
+        [
+          -2.0,
+          200.0
+        ]
+      ],
+      "z_min_m": 0.0,
+      "z_max_m": 3.0
+    },
+    {
+      "zone_id": "zone_cutting_demo",
+      "priority": 10,
+      "polygon_xy_m": [
+        [
+          -2.0,
+          0.0
+        ],
+        [
+          2.0,
+          0.0
+        ],
+        [
+          2.0,
+          30.0
+        ],
+        [
+          -2.0,
+          30.0
+        ]
+      ],
+      "z_min_m": 0.0,
+      "z_max_m": 3.0
+    }
+  ],
+  "mock_query_cases": {
+    "A00": "EMPTY",
+    "A01": "INTERSECTION",
+    "A02": "REFLECTOR",
+    "A03": "BOTH",
+    "A04": "ERROR",
+    "A05": "EMPTY",
+    "A06": "EMPTY",
+    "A07": "EMPTY",
+    "A08": "EMPTY"
+  }
+}

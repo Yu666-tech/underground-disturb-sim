@@ -1,0 +1,9 @@
+# Scene identity chosen by platform A on 2026-11-04.
+# Read by coal_platform_bridge; legacy standard topics do not carry this metadata.
+scene_id: coal_face_base
+scene_version: "0.2.0"
+schema_version: "0.1.1"
+robot_id: shearer_01
+sensor_id: lidar_01
+source_frame: world
+adapter_status: truth_scan_state_uwb_real_and_mock_query_active
