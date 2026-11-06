@@ -16,3 +16,5 @@ uint32 false_return_count # 状态3数量
 uint32 no_return_count # 状态4数量
 uint32 invalid_count # 状态5数量；六项总和等于N
 bool valid # 判定是否可用
+string sensor_id
+uint32 total_beams

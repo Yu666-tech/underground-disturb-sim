@@ -1,0 +1,79 @@
+schema_version: 0.1.0
+scene_id: S01_straight
+scene_version: 0.1.0
+geometry:
+- geometry_id: wall_left
+  geometry_type: BOX
+  model_name: wall_left
+  center_m:
+  - -2.1
+  - 10
+  - 1.5
+  size_m:
+  - 0.2
+  - 20
+  - 3
+  material: CONCRETE
+  thickness_m: 0.2
+  reflection_level: MEDIUM
+  is_dynamic: false
+- geometry_id: wall_right
+  geometry_type: BOX
+  model_name: wall_right
+  center_m:
+  - 2.1
+  - 10
+  - 1.5
+  size_m:
+  - 0.2
+  - 20
+  - 3
+  material: CONCRETE
+  thickness_m: 0.2
+  reflection_level: MEDIUM
+  is_dynamic: false
+- geometry_id: floor
+  geometry_type: BOX
+  model_name: floor
+  center_m:
+  - 0
+  - 10
+  - -0.1
+  size_m:
+  - 4.4
+  - 20
+  - 0.2
+  material: CONCRETE
+  thickness_m: 0.2
+  reflection_level: MEDIUM
+  is_dynamic: false
+- geometry_id: ceiling
+  geometry_type: BOX
+  model_name: ceiling
+  center_m:
+  - 0
+  - 10
+  - 3.1
+  size_m:
+  - 4.4
+  - 20
+  - 0.2
+  material: CONCRETE
+  thickness_m: 0.2
+  reflection_level: MEDIUM
+  is_dynamic: false
+zones:
+- zone_id: zone_reference
+  priority: 0
+  polygon_xy_m:
+  - - -2
+    - 0
+  - - 2
+    - 0
+  - - 2
+    - 20
+  - - -2
+    - 20
+  z_min_m: 0
+  z_max_m: 3
+  zone_type: REFERENCE

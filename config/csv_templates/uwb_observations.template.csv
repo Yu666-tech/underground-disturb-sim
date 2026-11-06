@@ -1,0 +1,1 @@
+stamp,frame_id,experiment_id,run_id,scene_id,scene_version,observation_id,decision_id,robot_id,anchor_id,truth_range_m,raw_range_m,observed_range_m,error_m,propagation_state,cause,raw_valid

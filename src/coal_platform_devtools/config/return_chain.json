@@ -1,0 +1,164 @@
+{
+  "UwbDecision": {
+    "topic": "/disturbance_decision/uwb",
+    "message": {
+      "context": {
+        "header": {
+          "stamp": {
+            "sec": 1,
+            "nanosec": 0
+          },
+          "frame_id": "map",
+          "experiment_id": "MOCK_ONLY",
+          "run_id": "mock-static-run",
+          "scene_id": "mock_bc_fixture",
+          "scene_version": "0.1.0"
+        },
+        "schema_version": "0.2.0",
+        "robot_id": "shearer_01",
+        "sequence": 0
+      },
+      "observation_id": "mock-uwb-0",
+      "decision_id": "mock-uwb-decision-0",
+      "anchor_id": "A00",
+      "propagation_state": "LOS",
+      "valid": true
+    }
+  },
+  "UwbRangeObserved": {
+    "topic": "/uwb_ranges",
+    "message": {
+      "context": {
+        "header": {
+          "stamp": {
+            "sec": 1,
+            "nanosec": 0
+          },
+          "frame_id": "map",
+          "experiment_id": "MOCK_ONLY",
+          "run_id": "mock-static-run",
+          "scene_id": "mock_bc_fixture",
+          "scene_version": "0.1.0"
+        },
+        "schema_version": "0.2.0",
+        "robot_id": "shearer_01",
+        "sequence": 0
+      },
+      "observation_id": "mock-uwb-0",
+      "decision_id": "mock-uwb-decision-0",
+      "anchor_id": "A00",
+      "truth_range_m": 5.0,
+      "raw_range_m": 5.0,
+      "observed_range_m": 5.0,
+      "error_m": 0.0,
+      "state": "LOS",
+      "valid": true
+    }
+  },
+  "LidarDecision": {
+    "topic": "/disturbance_decision/lidar",
+    "message": {
+      "context": {
+        "header": {
+          "stamp": {
+            "sec": 1,
+            "nanosec": 0
+          },
+          "frame_id": "laser_link",
+          "experiment_id": "MOCK_ONLY",
+          "run_id": "mock-static-run",
+          "scene_id": "mock_bc_fixture",
+          "scene_version": "0.1.0"
+        },
+        "schema_version": "0.2.0",
+        "robot_id": "shearer_01",
+        "sequence": 0
+      },
+      "observation_id": "mock-lidar-0",
+      "decision_id": "mock-lidar-decision-0",
+      "sensor_id": "lidar_01",
+      "total_beams": 3,
+      "normal_count": 3,
+      "valid": true
+    }
+  },
+  "LidarFrameObserved": {
+    "topic": "/scan",
+    "message": {
+      "context": {
+        "header": {
+          "stamp": {
+            "sec": 1,
+            "nanosec": 0
+          },
+          "frame_id": "laser_link",
+          "experiment_id": "MOCK_ONLY",
+          "run_id": "mock-static-run",
+          "scene_id": "mock_bc_fixture",
+          "scene_version": "0.1.0"
+        },
+        "schema_version": "0.2.0",
+        "robot_id": "shearer_01",
+        "sequence": 0
+      },
+      "observation_id": "mock-lidar-0",
+      "decision_id": "mock-lidar-decision-0",
+      "sensor_id": "lidar_01",
+      "beam_count": 3,
+      "truth_ranges_m": [
+        5.0,
+        5.0,
+        5.0
+      ],
+      "observed_ranges_m": [
+        5.0,
+        5.0,
+        5.0
+      ],
+      "intensities": []
+    }
+  },
+  "LidarBeamState": {
+    "topic": "/lidar_beam_state",
+    "message": {
+      "context": {
+        "header": {
+          "stamp": {
+            "sec": 1,
+            "nanosec": 0
+          },
+          "frame_id": "laser_link",
+          "experiment_id": "MOCK_ONLY",
+          "run_id": "mock-static-run",
+          "scene_id": "mock_bc_fixture",
+          "scene_version": "0.1.0"
+        },
+        "schema_version": "0.2.0",
+        "robot_id": "shearer_01",
+        "sequence": 0
+      },
+      "observation_id": "mock-lidar-0",
+      "decision_id": "mock-lidar-decision-0",
+      "beam_index": [
+        0,
+        1,
+        2
+      ],
+      "beam_states": [
+        0,
+        0,
+        0
+      ],
+      "delta_range_m": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "observed_valid": [
+        true,
+        true,
+        true
+      ]
+    }
+  }
+}

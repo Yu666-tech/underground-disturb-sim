@@ -1,0 +1,1 @@
+stamp,frame_id,experiment_id,run_id,scene_id,scene_version,observation_id,decision_id,beam_index,truth_range_m,raw_range_m,observed_range_m,delta_range_m,beam_state,observed_valid

@@ -1,0 +1,7 @@
+cmake_minimum_required(VERSION 3.8)
+project(coal_platform_devtools)
+find_package(ament_cmake REQUIRED)
+install(PROGRAMS scripts/fixture_inputs.py scripts/check_fixtures.py DESTINATION lib/${PROJECT_NAME})
+install(DIRECTORY launch config DESTINATION share/${PROJECT_NAME})
+install(FILES README.md DESTINATION share/${PROJECT_NAME})
+ament_package()

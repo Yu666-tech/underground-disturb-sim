@@ -1,0 +1,194 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": "0.1.0"
+    },
+    "scene_id": {
+      "type": "string",
+      "pattern": "^(?:[a-z][a-z0-9_]*|S[0-9]{2}_[a-z][a-z0-9_]*)$"
+    },
+    "scene_version": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+    },
+    "geometry": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "geometry_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "geometry_type": {
+            "enum": [
+              "BOX",
+              "MESH"
+            ]
+          },
+          "model_name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "center_m": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            },
+            "minItems": 3,
+            "maxItems": 3
+          },
+          "size_m": {
+            "type": "array",
+            "items": {
+              "type": "number",
+              "exclusiveMinimum": 0
+            },
+            "minItems": 3,
+            "maxItems": 3
+          },
+          "rpy_rad": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            },
+            "minItems": 3,
+            "maxItems": 3
+          },
+          "mesh_uri": {
+            "type": "string",
+            "minLength": 1
+          },
+          "scale": {
+            "type": "array",
+            "items": {
+              "type": "number",
+              "exclusiveMinimum": 0
+            },
+            "minItems": 3,
+            "maxItems": 3
+          },
+          "material": {
+            "type": "string",
+            "minLength": 1
+          },
+          "thickness_m": {
+            "type": "number",
+            "minimum": 0
+          },
+          "reflection_level": {
+            "enum": [
+              "LOW",
+              "MEDIUM",
+              "HIGH",
+              "UNKNOWN"
+            ]
+          },
+          "is_dynamic": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "geometry_id",
+          "geometry_type",
+          "model_name",
+          "center_m",
+          "material",
+          "thickness_m",
+          "reflection_level",
+          "is_dynamic"
+        ],
+        "additionalProperties": false,
+        "allOf": [
+          {
+            "if": {
+              "properties": {
+                "geometry_type": {
+                  "const": "BOX"
+                }
+              }
+            },
+            "then": {
+              "required": [
+                "size_m"
+              ]
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "geometry_type": {
+                  "const": "MESH"
+                }
+              }
+            },
+            "then": {
+              "required": [
+                "mesh_uri"
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "zones": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "zone_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "priority": {
+            "type": "integer"
+          },
+          "polygon_xy_m": {
+            "type": "array",
+            "items": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              },
+              "minItems": 2,
+              "maxItems": 2
+            },
+            "minItems": 3
+          },
+          "z_min_m": {
+            "type": "number"
+          },
+          "z_max_m": {
+            "type": "number"
+          },
+          "zone_type": {
+            "enum": [
+              "REFERENCE",
+              "DUST_REGION",
+              "OTHER"
+            ]
+          }
+        },
+        "required": [
+          "zone_id",
+          "priority",
+          "polygon_xy_m",
+          "z_min_m",
+          "z_max_m",
+          "zone_type"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": [
+    "schema_version",
+    "scene_id",
+    "scene_version",
+    "geometry",
+    "zones"
+  ],
+  "additionalProperties": false
+}

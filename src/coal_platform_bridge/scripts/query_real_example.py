@@ -47,8 +47,8 @@ def main():
         assert result.context == req.context and result.request_id == req.request_id
         assert result.observation_id == req.observation_id
         print(json.dumps(dict(query_mode='ACTUAL_SCENE_COLLISION_GEOMETRY',
-                              scene_id=raw.context.scene_id, scene_version=raw.context.scene_version,
-                              run_id=raw.context.run_id, observation_id=raw.observation_id,
+                              scene_id=raw.context.header.scene_id, scene_version=raw.context.header.scene_version,
+                              run_id=raw.context.header.run_id, observation_id=raw.observation_id,
                               anchor_id=anchor, status=result.status,
                               intersections=len(result.direct_intersections),
                               hit_geometry_ids=[h.geometry_id for h in result.direct_intersections],

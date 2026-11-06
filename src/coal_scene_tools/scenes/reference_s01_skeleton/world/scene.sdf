@@ -1,0 +1,108 @@
+<sdf version="1.6">
+  <world name="S01_straight">
+    <physics name="default" type="ode">
+      <max_step_size>.001</max_step_size>
+      <real_time_update_rate>1000</real_time_update_rate>
+    </physics>
+    <model name="wall_left">
+      <static>true</static>
+      <pose>-2.1 10 1.5 0 0 0</pose>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>0.2 20 3</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>0.2 20 3</size>
+            </box>
+          </geometry>
+        </visual>
+      </link>
+    </model>
+    <model name="wall_right">
+      <static>true</static>
+      <pose>2.1 10 1.5 0 0 0</pose>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>0.2 20 3</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>0.2 20 3</size>
+            </box>
+          </geometry>
+        </visual>
+      </link>
+    </model>
+    <model name="floor">
+      <static>true</static>
+      <pose>0 10 -0.1 0 0 0</pose>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>4.4 20 0.2</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>4.4 20 0.2</size>
+            </box>
+          </geometry>
+        </visual>
+      </link>
+    </model>
+    <model name="ceiling">
+      <static>true</static>
+      <pose>0 10 3.1 0 0 0</pose>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>4.4 20 0.2</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>4.4 20 0.2</size>
+            </box>
+          </geometry>
+        </visual>
+      </link>
+    </model>
+    <model name="robot_01">
+      <static>true</static>
+      <pose>0 2 .5 0 0 0</pose>
+      <link name="base_link">
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>.8 1 1</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>.8 1 1</size>
+            </box>
+          </geometry>
+        </visual>
+      </link>
+    </model>
+  </world>
+</sdf>

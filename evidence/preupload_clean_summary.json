@@ -1,0 +1,8 @@
+{
+  "passed": true,
+  "packages": 3,
+  "validator_tests": 16,
+  "mock_and_return_chain": true,
+  "evidence": "preupload_clean_check.log",
+  "note": "Clean directory under /tmp was removed after WSL stopped; complete command output retained"
+}

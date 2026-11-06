@@ -1,0 +1,21 @@
+schema_version: 0.1.0
+scene_id: reference_s01_skeleton
+scene_version: 0.1.0
+robot_id: robot_01
+interpolation: linear
+loop: false
+waypoints:
+- time_s: 0
+  xyz_m:
+  - 0
+  - 2
+  - 0.5
+  yaw_rad: 0
+  work_mode: TRAVELLING
+- time_s: 40
+  xyz_m:
+  - 0
+  - 18
+  - 0.5
+  yaw_rad: 0
+  work_mode: IDLE

@@ -1,0 +1,315 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": "0.1.0"
+    },
+    "scene_id": {
+      "type": "string",
+      "pattern": "^(?:[a-z][a-z0-9_]*|S[0-9]{2}_[a-z][a-z0-9_]*)$"
+    },
+    "scene_version": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "status": {
+      "enum": [
+        "skeleton",
+        "candidate"
+      ]
+    },
+    "global_frame": {
+      "const": "map"
+    },
+    "world_frame": {
+      "const": "world"
+    },
+    "map_to_world": {
+      "type": "object",
+      "properties": {
+        "xyz_m": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "minItems": 3,
+          "maxItems": 3
+        },
+        "rpy_rad": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "minItems": 3,
+          "maxItems": 3
+        }
+      },
+      "required": [
+        "xyz_m",
+        "rpy_rad"
+      ],
+      "additionalProperties": false
+    },
+    "world": {
+      "type": "string",
+      "minLength": 1
+    },
+    "semantics": {
+      "type": "string",
+      "minLength": 1
+    },
+    "route": {
+      "type": "string",
+      "minLength": 1
+    },
+    "expected_events": {
+      "type": "string",
+      "minLength": 1
+    },
+    "preview": {
+      "type": "string",
+      "minLength": 1
+    },
+    "robot": {
+      "type": "object",
+      "properties": {
+        "robot_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "body_frame": {
+          "const": "base_link"
+        },
+        "initial_pose": {
+          "type": "object",
+          "properties": {
+            "xyz_m": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              },
+              "minItems": 3,
+              "maxItems": 3
+            },
+            "rpy_rad": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              },
+              "minItems": 3,
+              "maxItems": 3
+            }
+          },
+          "required": [
+            "xyz_m",
+            "rpy_rad"
+          ],
+          "additionalProperties": false
+        },
+        "footprint_size_m": {
+          "type": "array",
+          "items": {
+            "type": "number",
+            "exclusiveMinimum": 0
+          },
+          "minItems": 3,
+          "maxItems": 3
+        }
+      },
+      "required": [
+        "robot_id",
+        "body_frame",
+        "initial_pose",
+        "footprint_size_m"
+      ],
+      "additionalProperties": false
+    },
+    "sensors": {
+      "type": "object",
+      "properties": {
+        "lidar": {
+          "type": "object",
+          "properties": {
+            "sensor_id": {
+              "type": "string",
+              "minLength": 1
+            },
+            "frame": {
+              "type": "string",
+              "minLength": 1
+            },
+            "parent_frame": {
+              "type": "string",
+              "minLength": 1
+            },
+            "xyz_m": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              },
+              "minItems": 3,
+              "maxItems": 3
+            },
+            "rpy_rad": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              },
+              "minItems": 3,
+              "maxItems": 3
+            },
+            "rate_hz": {
+              "type": "number",
+              "exclusiveMinimum": 0
+            },
+            "beam_count": {
+              "type": "integer",
+              "minimum": 2
+            },
+            "angle_min_rad": {
+              "type": "number"
+            },
+            "angle_max_rad": {
+              "type": "number"
+            },
+            "range_min_m": {
+              "type": "number",
+              "minimum": 0
+            },
+            "range_max_m": {
+              "type": "number",
+              "exclusiveMinimum": 0
+            }
+          },
+          "required": [
+            "sensor_id",
+            "frame",
+            "parent_frame",
+            "xyz_m",
+            "rpy_rad",
+            "rate_hz",
+            "beam_count",
+            "angle_min_rad",
+            "angle_max_rad",
+            "range_min_m",
+            "range_max_m"
+          ],
+          "additionalProperties": false
+        },
+        "uwb": {
+          "type": "object",
+          "properties": {
+            "tag_id": {
+              "type": "string",
+              "minLength": 1
+            },
+            "frame": {
+              "type": "string",
+              "minLength": 1
+            },
+            "parent_frame": {
+              "type": "string",
+              "minLength": 1
+            },
+            "xyz_m": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              },
+              "minItems": 3,
+              "maxItems": 3
+            },
+            "rpy_rad": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              },
+              "minItems": 3,
+              "maxItems": 3
+            },
+            "rate_hz": {
+              "type": "number",
+              "exclusiveMinimum": 0
+            },
+            "max_range_m": {
+              "type": "number",
+              "exclusiveMinimum": 0
+            }
+          },
+          "required": [
+            "tag_id",
+            "frame",
+            "parent_frame",
+            "xyz_m",
+            "rpy_rad",
+            "rate_hz",
+            "max_range_m"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "lidar",
+        "uwb"
+      ],
+      "additionalProperties": false
+    },
+    "anchors": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "anchor_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "position_m": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            },
+            "minItems": 3,
+            "maxItems": 3
+          }
+        },
+        "required": [
+          "anchor_id",
+          "position_m"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "assets": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    }
+  },
+  "required": [
+    "schema_version",
+    "scene_id",
+    "scene_version",
+    "title",
+    "status",
+    "global_frame",
+    "world_frame",
+    "map_to_world",
+    "world",
+    "semantics",
+    "route",
+    "expected_events",
+    "preview",
+    "robot",
+    "sensors",
+    "anchors",
+    "assets"
+  ],
+  "additionalProperties": false
+}

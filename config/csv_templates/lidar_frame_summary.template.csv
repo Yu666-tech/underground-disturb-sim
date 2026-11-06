@@ -1,0 +1,1 @@
+stamp,frame_id,experiment_id,run_id,scene_id,scene_version,observation_id,decision_id,robot_id,sensor_id,zone_id,work_mode,target_dust_concentration,actual_dust_concentration,dust_active,total_beams,drop_count,false_point_count,disturbed_count

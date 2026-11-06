@@ -14,3 +14,8 @@ __pycache__/
 src/coal_face_sim/scenarios/coal_face_v1/models/**/*.dae
 src/coal_face_sim/scenarios/coal_face_v1/models/**/*.png
 src/coal_face_sim/scenarios/coal_face_v1/models/**/*.jpg
+
+# Local development outputs
+backups/
+data/
+*.log

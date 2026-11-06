@@ -1,0 +1,9 @@
+{
+  "passed": true,
+  "scene_id": "reference_s01_skeleton",
+  "scene_version": "0.1.0",
+  "status": "skeleton",
+  "warnings": [
+    "仅结构/部分原语几何检查；不证明TF已发布、传感器已挂载、路线已执行或query已实现"
+  ]
+}

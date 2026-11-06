@@ -1,3 +1,5 @@
+> 当前接口为 0.2.0，以 [SIMHEADER_HANDOFF.md](SIMHEADER_HANDOFF.md) 为准。本页保留原始交付背景。
+
 # LiDAR 开发交付基线（2026-11-05）
 
 场景 `coal_face_base/0.2.0`，消息协议 `0.1.1`。面向已有 Ubuntu22.04、ROS2 Humble、Gazebo Classic11 的 C 同学，提供场景、理想扫描、真值和工况输入。二维720束，约10Hz；不包含C的粉尘退化实现。
