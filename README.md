@@ -15,23 +15,29 @@
 
 ## 快速开始
 
-首次克隆、依赖安装和模型恢复见 [基础场景说明](docs/BASE_SCENE.md)。以下路径按自己的克隆目录调整；原有场景和资源恢复方式保留。
+在自己的 Ubuntu 22.04（原生或 WSL）终端执行。已有 ROS2 Humble 时，可以先使用 Mock 开发，无需 Gazebo 或场景模型。
 
 ```bash
-# 已安装依赖的环境：WSL Ubuntu 22.04 + ROS2 Humble + Gazebo 11
-cd ~/coal_sim_ws
+# 下载源码到自己的电脑
+sudo apt update
+sudo apt install -y git python3-colcon-common-extensions \
+  ros-humble-tf2-ros ros-humble-rosidl-default-generators \
+  ros-humble-rosidl-default-runtime
+git clone https://github.com/wen37/underground-disturb-sim.git
+cd underground-disturb-sim
+
+# 仅构建公共接口与 Mock 工具
 source /opt/ros/humble/setup.bash
-colcon build --symlink-install
+colcon build --symlink-install --packages-up-to coal_platform_devtools
 source install/setup.bash
 
-# 完整本地验收（包含真实 Gazebo 仿真）
-bash scripts/accept_simheader.sh
-
-# Mock 联调（不开 Gazebo，读取本地 fixtures）
+# 启动 Mock（保留此终端运行）
 ROS_DOMAIN_ID=108 ros2 launch coal_platform_devtools fixtures.launch.py
 ```
 
-Mock 联调时，B/C 节点也使用 `ROS_DOMAIN_ID=108`；不要在同一 domain 同时启动真实仿真与 mock。
+每个新终端都需要进入克隆目录并重新 `source` ROS 和工作区环境。自己的算法节点也使用 `ROS_DOMAIN_ID=108`、`use_sim_time=true`，不要与真实仿真在同一 domain 同时启动。
+
+LiDAR 从下载到开发的详细步骤见 [LiDAR 上手说明](docs/LIDAR_QUICKSTART.md)。需要 Gazebo、模型恢复及完整验收时，按 [基础场景说明](docs/BASE_SCENE.md) 准备，再运行 `bash scripts/accept_simheader.sh`。
 
 ---
 
@@ -39,31 +45,31 @@ Mock 联调时，B/C 节点也使用 `ROS_DOMAIN_ID=108`；不要在同一 domai
 
 ### 🟦 B — UWB 误差模块
 
-**你要做的：** 提交 `config/B/uwb.yaml` + UWB 误差算法代码 + 专项 fixtures。
+**还需交付：** 提交 `config/algorithms/uwb.yaml` + UWB 误差算法代码 + 专项 fixtures。
 
 **重点看：**
 
 - 话题：`/platform/v1/uwb_ranges_raw`（输入）→ `/disturbance_decision/uwb`、`/uwb_ranges`（输出）
 - 接口：`UwbDecision.msg`（含 `anchor_id`）、`UwbRangeObserved.msg`
-- 校验工具：`python3 scripts/validate_bc_params.py B config/B/uwb.yaml`（检查结构与版本）
+- 校验工具：`python3 scripts/validate_bc_params.py B config/algorithms/uwb.yaml`（检查结构与版本）
 - 详情文档：[docs/SIMHEADER_HANDOFF.md](docs/SIMHEADER_HANDOFF.md)
 
 ### 🟥 C — LiDAR 粉尘扰动模块
 
-**你要做的：** 提交 `config/C/lidar_dust.yaml` + 粉尘时序与激光扰动算法 + 专项 fixtures。
+**还需交付：** 提交 `config/algorithms/lidar_dust.yaml` + 粉尘时序与激光扰动算法 + 专项 fixtures。
 
 **重点看：**
 
 - 话题：`/platform/v1/scan_raw`、`/platform/v1/robot_state`（输入）→ `/disturbance_decision/lidar`、`/lidar_beam_state`、`/scan`（输出）
 - 接口：`LidarDecision.msg`（含 `sensor_id`、`total_beams`）、`LidarBeamState.msg`（逐束数组）、`LidarFrameObserved.msg`（含 `truth_ranges_m`）
 - 约束：`total_beams` 必须等于六种光束状态计数之和
-- 校验工具：`python3 scripts/validate_bc_params.py C config/C/lidar_dust.yaml`（检查结构与版本）
+- 校验工具：`python3 scripts/validate_bc_params.py C config/algorithms/lidar_dust.yaml`（检查结构与版本）
 - 可视化：MarkerArray / PointCloud2 保留标准消息结构与 Header，业务身份从对应 decision 的 `context.header` 关联
 - 详情文档：[docs/SIMHEADER_HANDOFF.md](docs/SIMHEADER_HANDOFF.md)
 
 ### 🟩 D — 场景制作
 
-**你要做的：** 先交付空场景包（D0），再交付 S01/S02/S03 正式场景资产。
+**还需交付：** 先交付空场景包（D0），再交付 S01/S02/S03 正式场景资产。
 
 **重点看：**
 
@@ -86,8 +92,7 @@ src/
 ├── coal_scene_query/           # 射线查询 /scene/query_ray
 └── coal_face_sim/              # Gazebo 仿真底座
 config/
-├── B/                         # B 提交 uwb.yaml
-├── C/                         # C 提交 lidar_dust.yaml
+├── algorithms/                # UWB / LiDAR 算法参数（后续提交）
 └── csv_templates/             # 9 张标准 CSV 表头模板
 docs/                          # 接口与交接说明、验收记录
 ```
