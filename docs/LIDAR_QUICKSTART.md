@@ -1,5 +1,7 @@
 # LiDAR 模块上手说明
 
+2026-11-06 已完成最小 Ubuntu 22.04 + ROS2 Humble 隔离环境的首次上手验收，见 [验收方法与结果](ONBOARDING_VALIDATION.md)。
+
 本文发给负责 LiDAR 粉尘扰动模块的同学，作为下载、联调与交付入口。
 
 已有 Ubuntu 22.04 和 ROS2 Humble 时，可先用公共 Mock 开发 LiDAR 粉尘扰动，不需要 Gazebo、模型下载或 A 的电脑目录。
@@ -10,7 +12,8 @@
 
 ```bash
 sudo apt update
-sudo apt install -y git python3-colcon-common-extensions \
+sudo apt install -y git build-essential cmake python3-dev \
+  python3-colcon-common-extensions \
   ros-humble-tf2-ros ros-humble-rosidl-default-generators \
   ros-humble-rosidl-default-runtime
 cd ~
