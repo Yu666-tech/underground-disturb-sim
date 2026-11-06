@@ -25,6 +25,8 @@
 | LiDAR | [LiDAR 模块上手说明](docs/LIDAR_QUICKSTART.md) |
 | 场景 | [场景模块上手与交付](docs/SCENE_QUICKSTART.md) |
 
+首次上手命令已进行独立环境验证：[验收方法与结果](docs/ONBOARDING_VALIDATION.md)。
+
 ## 快速开始
 
 以下命令供首次接收仓库的 UWB / LiDAR 开发者，在各自的 Ubuntu 22.04（原生或 WSL）终端执行。已有工作区的维护者无需重复克隆；场景负责人按上方场景模块文档操作。
@@ -34,9 +36,11 @@
 ```bash
 # 下载源码到自己的电脑
 sudo apt update
-sudo apt install -y git python3-colcon-common-extensions \
+sudo apt install -y git build-essential cmake python3-dev \
+  python3-colcon-common-extensions \
   ros-humble-tf2-ros ros-humble-rosidl-default-generators \
   ros-humble-rosidl-default-runtime
+cd ~
 git clone https://github.com/wen37/underground-disturb-sim.git
 cd underground-disturb-sim
 

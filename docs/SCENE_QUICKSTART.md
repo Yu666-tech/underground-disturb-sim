@@ -1,5 +1,7 @@
 # 场景模块上手与交付说明
 
+2026-11-06 已完成最小 Ubuntu 22.04 + ROS2 Humble 隔离环境的首次上手验收，见 [验收方法与结果](ONBOARDING_VALIDATION.md)。
+
 本文发给负责场景制作的同学。先完成自己创建的空场景包及校验，再交付 S01/S02/S03 正式场景。结构预检只需要 Ubuntu 22.04、ROS2 Humble 和 Python 依赖，不需要 Gazebo；几何预览及正式仿真另行准备。
 
 ## 下载与构建工具
@@ -8,7 +10,8 @@
 
 ```bash
 sudo apt update
-sudo apt install -y git python3-colcon-common-extensions \
+sudo apt install -y git build-essential cmake \
+  python3-colcon-common-extensions ros-humble-ament-cmake \
   python3-yaml python3-jsonschema
 cd ~
 git clone https://github.com/wen37/underground-disturb-sim.git

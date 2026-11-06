@@ -1,0 +1,136 @@
+{
+  "passed": true,
+  "date": "2026-11-06",
+  "baseline": "Ubuntu 22.04 amd64 minimal root filesystem + apt-installed ROS2 Humble ros-base",
+  "isolation": "independent overlay root for algorithms and scene; normal receiver user; clean environment variables",
+  "baseline_gcc_gpp_colcon_absent": true,
+  "no_existing_workspaces_or_installs": true,
+  "package_archive_cache_reused": true,
+  "installed_host_files_reused": false,
+  "github_clone_verified": true,
+  "code_commit": "147c323c178a251abda849af9cf1c2eda4c94a95",
+  "algorithms": {
+    "mode": "algorithms",
+    "source_commit": "147c323c178a251abda849af9cf1c2eda4c94a95",
+    "uwb_query": {
+      "query_mode": "MOCK_FIXTURES_ONLY",
+      "scene_id": "mock_bc_fixture",
+      "scene_version": "0.1.0",
+      "run_id": "161f6c4f-8458-4790-a7a5-3985c3dc3cc9",
+      "observation_id": "161f6c4f-8458-4790-a7a5-3985c3dc3cc9/shearer_01/tag_01/A01/0",
+      "anchor_id": "A01",
+      "truth_range_m": 9.635004423974076,
+      "raw_range_m": 9.635004423974076,
+      "status": "OK",
+      "intersections": 1,
+      "reflectors": 0,
+      "message": "MOCK_ONLY: synthetic fixture facts, not scene geometry; case=INTERSECTION"
+    },
+    "lidar_cli_inputs": true,
+    "shared_fixture_acceptance": {
+      "passed": true,
+      "source": "MOCK_FIXTURES_ONLY",
+      "truth_rate_hz": 50.0,
+      "scan_rate_hz": 10.0,
+      "scan_special_inputs_verified": true,
+      "uwb_anchors": [
+        "A00",
+        "A01",
+        "A02",
+        "A03",
+        "A04",
+        "A05",
+        "A06",
+        "A07",
+        "A08"
+      ],
+      "query_cases": {
+        "A00": [
+          "OK",
+          0,
+          0
+        ],
+        "A01": [
+          "OK",
+          1,
+          0
+        ],
+        "A02": [
+          "OK",
+          0,
+          1
+        ],
+        "A03": [
+          "OK",
+          1,
+          1
+        ],
+        "A04": [
+          "UNSUPPORTED",
+          0,
+          0
+        ],
+        "A05": [
+          "UNSUPPORTED",
+          0,
+          0
+        ],
+        "A06": [
+          "UNSUPPORTED",
+          0,
+          0
+        ],
+        "A07": [
+          "UNSUPPORTED",
+          0,
+          0
+        ],
+        "A08": [
+          "OK",
+          0,
+          0
+        ]
+      },
+      "invalid_request_cases": 5,
+      "work_modes": [
+        "CUTTING",
+        "IDLE",
+        "TRAVELLING"
+      ],
+      "zones": [
+        "NONE",
+        "fixture_dust_zone"
+      ],
+      "observation_ids_unique": true,
+      "real_query_not_advertised": true,
+      "limitations": "Tests A input fixtures only, not B/C algorithms, Gazebo geometry or recipient installation"
+    },
+    "built_packages": [
+      "coal_platform_interfaces",
+      "coal_platform_devtools"
+    ],
+    "passed": true
+  },
+  "scene": {
+    "mode": "scene",
+    "source_commit": "147c323c178a251abda849af9cf1c2eda4c94a95",
+    "new_scene_validation": {
+      "passed": true,
+      "scene_id": "scene_empty_demo",
+      "scene_version": "0.1.0",
+      "status": "skeleton",
+      "warnings": [
+        "仅结构/部分原语几何检查；不证明TF已发布、传感器已挂载、路线已执行或query已实现"
+      ]
+    },
+    "loader": {
+      "passed": true,
+      "mode": "plan_only"
+    },
+    "built_packages": [
+      "coal_scene_tools"
+    ],
+    "passed": true
+  },
+  "scope": "First clone, required dependencies, selected builds, mock inputs/query and scene preflight. Excludes Gazebo, new algorithms, future parameters and contributor commit/push permissions."
+}

@@ -41,7 +41,7 @@ source /opt/ros/humble/setup.bash
 sudo apt update
 sudo apt install ros-humble-gazebo-ros-pkgs ros-humble-gazebo-dev ros-humble-rviz2 \
   ros-humble-tf2-ros ros-humble-rosidl-default-generators ros-humble-rosidl-default-runtime \
-  build-essential cmake python3-colcon-common-extensions python3-numpy python3-yaml
+  build-essential cmake python3-dev python3-colcon-common-extensions python3-numpy python3-yaml python3-jsonschema
 python3 scripts/restore_assets.py
 colcon build --symlink-install --cmake-args -DBUILD_TESTING=OFF
 source install/setup.bash

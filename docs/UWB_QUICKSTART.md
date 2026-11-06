@@ -1,5 +1,7 @@
 # UWB 模块上手与交付说明
 
+2026-11-06 已完成最小 Ubuntu 22.04 + ROS2 Humble 隔离环境的首次上手验收，见 [验收方法与结果](ONBOARDING_VALIDATION.md)。
+
 本文发给负责 UWB 误差模块的同学。已有 Ubuntu 22.04 和 ROS2 Humble 时，可以在自己的电脑使用公共 Mock 开发，无需 Gazebo 或场景模型。平台不包含已完成的 UWB 扰动算法，本文说明输入、接口和还需交付的内容。
 
 ## 下载与构建
@@ -8,7 +10,8 @@
 
 ```bash
 sudo apt update
-sudo apt install -y git python3-colcon-common-extensions \
+sudo apt install -y git build-essential cmake python3-dev \
+  python3-colcon-common-extensions \
   ros-humble-tf2-ros ros-humble-rosidl-default-generators \
   ros-humble-rosidl-default-runtime
 cd ~
