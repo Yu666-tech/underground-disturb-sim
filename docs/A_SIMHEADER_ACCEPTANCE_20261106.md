@@ -20,9 +20,9 @@
 
 ## B C D 后续提交
 
-B：`config/B/uwb.yaml`、UWB 算法、专项 fixtures、状态切换与误差分项回归、回传及可视化。
+B：`config/algorithms/uwb.yaml`、UWB 算法、专项 fixtures、状态切换与误差分项回归、回传及可视化。
 
-C：`config/C/lidar_dust.yaml`、粉尘与激光扰动算法、专项 fixtures、逐束计数与时序回归、回传及彩色点云。
+C：`config/algorithms/lidar_dust.yaml`、粉尘与激光扰动算法、专项 fixtures、逐束计数与时序回归、回传及彩色点云。
 
 D：亲自提交可被 validator 识别的空场景包才能完成 D0；后续提交实际 S01/S02/S03 资产、语义、路线、真实预览、来源许可与说明。A 的参考骨架通过不代表 D0 已完成。
 

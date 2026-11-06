@@ -16,9 +16,9 @@ MarkerArray 内各 Marker.header 与 PointCloud2.header 保持标准 Header，�
 
 CSV 九表位于 config/csv_templates。stamp 导出为 sec.nanosec（纳秒补齐九位），六项公共字段均取 context.header；数组列表列编码为 JSON；无效测距用 NaN，布尔值统一 true/false。run_manifest 的提交号不得编造；提交号未知时记录 UNKNOWN，上传现有仓库后按实际提交号填写。旧 csv_baseline 仅作历史资料。
 
-B 后续提交：config/B/uwb.yaml 初版（schema_version 0.2.0、params_version）、算法实现、专项 fixtures、状态转换与多径/NLOS/随机误差回归、两类回传消息与 UWB 可视化。保持 raw 身份、同戳、decision_id 与 observation_id 关联。
+B 后续提交：config/algorithms/uwb.yaml 初版（schema_version 0.2.0、params_version）、算法实现、专项 fixtures、状态转换与多径/NLOS/随机误差回归、两类回传消息与 UWB 可视化。保持 raw 身份、同戳、decision_id 与 observation_id 关联。
 
-C 后续提交：config/C/lidar_dust.yaml 初版（同上）、粉尘时序与扰动算法、专项 fixtures、逐束状态计数一致性与回归、三类回传消息与彩色点云。A 不代写 B/C 算法参数。提交后运行 python3 scripts/validate_bc_params.py B config/B/uwb.yaml 或 python3 scripts/validate_bc_params.py C config/C/lidar_dust.yaml；该检查只保证 YAML 结构和接口版本，算法参数语义由 B/C 负责，尚不能声称已验证未提交文件。
+C 后续提交：config/algorithms/lidar_dust.yaml 初版（同上）、粉尘时序与扰动算法、专项 fixtures、逐束状态计数一致性与回归、三类回传消息与彩色点云。A 不代写 B/C 算法参数。提交后运行 python3 scripts/validate_bc_params.py B config/algorithms/uwb.yaml 或 python3 scripts/validate_bc_params.py C config/algorithms/lidar_dust.yaml；该检查只保证 YAML 结构和接口版本，算法参数语义由 B/C 负责，尚不能声称已验证未提交文件。
 
 D 后续提交：由 D 创建的空场景包并通过 scene_validator.py 才算 D0；A 的 reference_s01_skeleton 通过不代表 D0。之后交付 S01/S02/S03 的真实资产、语义、路线、真实 preview.png、README 资源来源与许可、已知问题及人工事件建议。参考骨架不是完整可仿真 S01；详情见 coal_scene_tools/docs/loader_constraints.md。场景 loader 解析 scenario、semantics、route；事件建议内容不被程序解析。现有 loader 的 Gazebo 模式仅几何预览，后续真实场景的路线与挂载联调须单独验收。
 
