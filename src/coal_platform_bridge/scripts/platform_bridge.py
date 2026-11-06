@@ -74,13 +74,14 @@ class PlatformBridge(Node):
             return None
         self.last_stamp[stream] = ns
         context = RunContext()
-        context.header = deepcopy(header)
+        context.header.stamp = deepcopy(header.stamp)
+        context.header.frame_id = header.frame_id
         context.header.frame_id = frame
-        context.schema_version = '0.1.1'
-        context.experiment_id = self.cfg['experiment_id']
-        context.run_id = self.run_id
-        context.scene_id = self.cfg['scene_id']
-        context.scene_version = self.cfg['scene_version']
+        context.schema_version = '0.2.0'
+        context.header.experiment_id = self.cfg['experiment_id']
+        context.header.run_id = self.run_id
+        context.header.scene_id = self.cfg['scene_id']
+        context.header.scene_version = self.cfg['scene_version']
         context.robot_id = self.cfg['robot_id']
         context.sequence = self.sequence[stream]
         self.sequence[stream] += 1

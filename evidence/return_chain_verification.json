@@ -1,0 +1,7 @@
+{
+  "passed": true,
+  "source": "MOCK_ONLY",
+  "transport_messages": 5,
+  "association_pairs": 3,
+  "limitation": "Static A transport fixtures only; B/C algorithm acceptance pending"
+}

@@ -1,4 +1,4 @@
-schema_version: '0.1.1'
+schema_version: '0.2.0'
 scene_id: coal_face_base
 scene_version: '0.2.0'
 units: {distance: m, angle: rad, time: s, concentration: mg/m3}
@@ -8,9 +8,9 @@ topics:
   - {name: /platform/v1/ground_truth, type: coal_platform_interfaces/msg/GroundTruth, producer: A, rate_hz: 50, qos: {reliability: reliable, durability: volatile, history: keep_last, depth: 100}}
   - {name: /platform/v1/robot_state, type: coal_platform_interfaces/msg/RobotState, producer: A, rate_hz: 50, qos: {reliability: reliable, durability: volatile, history: keep_last, depth: 100}}
   - {name: /platform/v1/run_context, type: coal_platform_interfaces/msg/RunContext, producer: A, qos: {reliability: reliable, durability: transient_local, history: keep_last, depth: 1}}
-  - {name: /platform/v1/disturbance_decision/lidar, type: coal_platform_interfaces/msg/LidarDecision, producer: C, implemented: false, rate: one_per_raw_frame, qos: {reliability: reliable, durability: volatile, history: keep_last, depth: 100}}
-  - {name: /platform/v1/lidar_beam_state, type: coal_platform_interfaces/msg/LidarBeamState, producer: C, implemented: false, rate: one_per_raw_frame, qos: {reliability: reliable, durability: volatile, history: keep_last, depth: 20}}
-  - {name: /platform/v1/scan, type: coal_platform_interfaces/msg/LidarFrameObserved, producer: C, implemented: false, rate: one_per_raw_frame, qos: {reliability: best_effort, durability: volatile, history: keep_last, depth: 20}}
+  - {name: /disturbance_decision/lidar, type: coal_platform_interfaces/msg/LidarDecision, producer: C, implemented: false, rate: one_per_raw_frame, qos: {reliability: reliable, durability: volatile, history: keep_last, depth: 100}}
+  - {name: /lidar_beam_state, type: coal_platform_interfaces/msg/LidarBeamState, producer: C, implemented: false, rate: one_per_raw_frame, qos: {reliability: reliable, durability: volatile, history: keep_last, depth: 20}}
+  - {name: /scan, type: coal_platform_interfaces/msg/LidarFrameObserved, producer: C, implemented: false, rate: one_per_raw_frame, qos: {reliability: best_effort, durability: volatile, history: keep_last, depth: 20}}
 correlation: preserve_raw_context_and_observation_id_and_share_decision_id
 raw_policy: never_overwrite_raw
 scan_dimensions: 2D_720_beams

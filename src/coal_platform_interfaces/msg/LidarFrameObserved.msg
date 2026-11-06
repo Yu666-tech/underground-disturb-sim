@@ -12,3 +12,4 @@ float32 range_max_m # 原值m
 uint32 beam_count # 原值N
 float32[] observed_ranges_m # N项；无返回或丢点+Inf，输入损坏NaN
 float32[] intensities # 空或N项
+float32[] truth_ranges_m

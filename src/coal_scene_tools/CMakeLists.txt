@@ -1,0 +1,7 @@
+cmake_minimum_required(VERSION 3.8)
+project(coal_scene_tools)
+find_package(ament_cmake REQUIRED)
+install(DIRECTORY tools schemas scenes docs DESTINATION share/${PROJECT_NAME})
+install(FILES README.md DESTINATION share/${PROJECT_NAME})
+install(PROGRAMS scripts/validate_scene scripts/scene_validator.py scripts/scene_loader DESTINATION lib/${PROJECT_NAME})
+ament_package()

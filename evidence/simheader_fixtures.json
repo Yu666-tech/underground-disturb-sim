@@ -1,0 +1,78 @@
+{
+  "passed": true,
+  "source": "MOCK_FIXTURES_ONLY",
+  "truth_rate_hz": 50.0,
+  "scan_rate_hz": 10.0,
+  "scan_special_inputs_verified": true,
+  "uwb_anchors": [
+    "A00",
+    "A01",
+    "A02",
+    "A03",
+    "A04",
+    "A05",
+    "A06",
+    "A07",
+    "A08"
+  ],
+  "query_cases": {
+    "A00": [
+      "OK",
+      0,
+      0
+    ],
+    "A01": [
+      "OK",
+      1,
+      0
+    ],
+    "A02": [
+      "OK",
+      0,
+      1
+    ],
+    "A03": [
+      "OK",
+      1,
+      1
+    ],
+    "A04": [
+      "UNSUPPORTED",
+      0,
+      0
+    ],
+    "A05": [
+      "UNSUPPORTED",
+      0,
+      0
+    ],
+    "A06": [
+      "UNSUPPORTED",
+      0,
+      0
+    ],
+    "A07": [
+      "UNSUPPORTED",
+      0,
+      0
+    ],
+    "A08": [
+      "OK",
+      0,
+      0
+    ]
+  },
+  "invalid_request_cases": 5,
+  "work_modes": [
+    "CUTTING",
+    "IDLE",
+    "TRAVELLING"
+  ],
+  "zones": [
+    "NONE",
+    "fixture_dust_zone"
+  ],
+  "observation_ids_unique": true,
+  "real_query_not_advertised": true,
+  "limitations": "Tests A input fixtures only, not B/C algorithms, Gazebo geometry or recipient installation"
+}

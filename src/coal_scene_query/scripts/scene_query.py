@@ -31,7 +31,7 @@ class SceneQuery(Node):
         self.create_service(QueryRay,'/scene/query_ray',self.query,callback_group=self.query_group)
         self.get_logger().info('REAL collision QueryRay active: '+str(len(self.engine.objects))+' objects, world SHA256='+self.engine.files[self.engine.world]['sha256'])
     def on_truth(self,msg):
-        if self.latest is None or msg.context.run_id!=self.latest.context.run_id:self.run_start=ns(msg.context.header.stamp)
+        if self.latest is None or msg.context.header.run_id!=self.latest.context.header.run_id:self.run_start=ns(msg.context.header.stamp)
         self.latest=msg
     def query(self,req,res):
         start=time.perf_counter();res.context=deepcopy(req.context);res.request_id=req.request_id;res.observation_id=req.observation_id;res.served_scene_version=self.expected['scene_version']
@@ -41,13 +41,13 @@ class SceneQuery(Node):
                 res.status='INVALID_REQUEST';res.error_message='Finite map coordinates, IDs, and radius in [0,5]m required';return res
             length=math.dist(xyz[:3],xyz[3:])
             if not 1e-6<length<=500:res.status='INVALID_REQUEST';res.error_message='Segment length must be in (1e-6,500]m';return res
-            if req.context.scene_id!=self.expected['scene_id']:res.status='SCENE_MISMATCH';return res
-            if req.context.scene_version!=self.expected['scene_version'] or not self.engine.unchanged():res.status='VERSION_MISMATCH';res.error_message='Scene version or source files changed; reload geometry';return res
-            if req.context.schema_version!='0.1.1':res.status='UNSUPPORTED';return res
+            if req.context.header.scene_id!=self.expected['scene_id']:res.status='SCENE_MISMATCH';return res
+            if req.context.header.scene_version!=self.expected['scene_version'] or not self.engine.unchanged():res.status='VERSION_MISMATCH';res.error_message='Scene version or source files changed; reload geometry';return res
+            if req.context.schema_version!='0.2.0':res.status='UNSUPPORTED';return res
             if self.latest is None:res.status='TIME_UNAVAILABLE';return res
             c=self.latest.context;t=ns(req.context.header.stamp)
-            if c.scene_id!=self.expected['scene_id'] or c.scene_version!=self.expected['scene_version']:res.status='VERSION_MISMATCH';return res
-            if req.context.run_id!=c.run_id or req.context.robot_id!=c.robot_id or req.context.experiment_id!=c.experiment_id or not self.run_start<=t<=ns(c.header.stamp) or ns(c.header.stamp)-t>2000000000:
+            if c.header.scene_id!=self.expected['scene_id'] or c.header.scene_version!=self.expected['scene_version']:res.status='VERSION_MISMATCH';return res
+            if req.context.header.run_id!=c.header.run_id or req.context.robot_id!=c.robot_id or req.context.header.experiment_id!=c.header.experiment_id or not self.run_start<=t<=ns(c.header.stamp) or ns(c.header.stamp)-t>2000000000:
                 res.status='TIME_UNAVAILABLE';return res
             hits,candidates,flags=self.engine.query(xyz[:3],xyz[3:],radius)
             if len(hits)>4096 or len(candidates)>256:res.status='UNSUPPORTED';res.error_message='Result bound exceeded; no partial results returned';return res

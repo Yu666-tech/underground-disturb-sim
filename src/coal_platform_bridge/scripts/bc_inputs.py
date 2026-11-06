@@ -68,7 +68,7 @@ class BCInputs(Node):
         t=ns(msg.context.header.stamp)
         if msg.context.header.frame_id!='map':return
         if self.latest is not None:
-            if msg.context.run_id!=self.latest.context.run_id:
+            if msg.context.header.run_id!=self.latest.context.header.run_id:
                 self.last_uwb=None;self.batch=0
                 self.references={k:v for k,v in self.references.items() if k<=t}
             elif t<=ns(self.latest.context.header.stamp):return
@@ -96,7 +96,7 @@ class BCInputs(Node):
         for anchor in self.cfg['anchors']:
             out=UwbRangeRaw();out.context=deepcopy(msg.context);out.context.sequence=self.batch
             out.tag_id=self.cfg['tag_id'];out.anchor_id=anchor['anchor_id']
-            out.observation_id='/'.join([out.context.run_id,out.context.robot_id,out.tag_id,out.anchor_id,str(self.batch)])
+            out.observation_id='/'.join([out.context.header.run_id,out.context.robot_id,out.tag_id,out.anchor_id,str(self.batch)])
             out.tag_position_m=Point(x=tag[0],y=tag[1],z=tag[2]);a=anchor['position_m'];out.anchor_position_m=Point(x=float(a[0]),y=float(a[1]),z=float(a[2]))
             out.truth_range_m=math.dist(tag,a);out.sensor_max_range_m=self.cfg['sensor_max_range_m'];out.raw_valid=out.truth_range_m<=out.sensor_max_range_m
             out.raw_range_m=out.truth_range_m if out.raw_valid else math.nan;out.raw_status='OK' if out.raw_valid else 'OUT_OF_RANGE'
@@ -105,19 +105,19 @@ class BCInputs(Node):
 
     def query(self,req,res):
         begin=time.perf_counter();res.context=deepcopy(req.context);res.request_id=req.request_id;res.observation_id=req.observation_id
-        res.served_scene_version=self.latest.context.scene_version if self.latest else ''
+        res.served_scene_version=self.latest.context.header.scene_version if self.latest else ''
         res.error_message='MOCK_ONLY: synthetic fixtures, not scene geometry'
         try:
             values=[req.origin_m.x,req.origin_m.y,req.origin_m.z,req.target_m.x,req.target_m.y,req.target_m.z,req.reflector_search_radius_m]
             if not req.request_id or not req.observation_id or req.context.header.frame_id!='map' or not all(math.isfinite(v) for v in values) or req.reflector_search_radius_m<0:res.status='INVALID_REQUEST';return res
             if self.latest is None:res.status='TIME_UNAVAILABLE';return res
             current=self.latest.context
-            if req.context.scene_id!=current.scene_id:res.status='SCENE_MISMATCH';return res
-            if req.context.scene_version!=current.scene_version:res.status='VERSION_MISMATCH';return res
+            if req.context.header.scene_id!=current.header.scene_id:res.status='SCENE_MISMATCH';return res
+            if req.context.header.scene_version!=current.header.scene_version:res.status='VERSION_MISMATCH';return res
             if req.context.schema_version!=current.schema_version:res.status='UNSUPPORTED';return res
-            if req.context.run_id!=current.run_id or req.context.robot_id!=current.robot_id or not 0<=ns(current.header.stamp)-ns(req.context.header.stamp)<=2000000000:res.status='TIME_UNAVAILABLE';return res
+            if req.context.header.run_id!=current.header.run_id or req.context.robot_id!=current.robot_id or not 0<=ns(current.header.stamp)-ns(req.context.header.stamp)<=2000000000:res.status='TIME_UNAVAILABLE';return res
             parts=req.observation_id.split('/')
-            if len(parts)!=5 or parts[0]!=current.run_id or parts[1]!=current.robot_id or parts[2]!=self.cfg['tag_id'] or parts[-1]!=str(req.context.sequence):res.status='INVALID_REQUEST';return res
+            if len(parts)!=5 or parts[0]!=current.header.run_id or parts[1]!=current.robot_id or parts[2]!=self.cfg['tag_id'] or parts[-1]!=str(req.context.sequence):res.status='INVALID_REQUEST';return res
             anchor=parts[-2];case=self.cfg['mock_query_cases'].get(anchor)
             if case is None:res.status='INVALID_REQUEST';return res
             a=values[:3];b=values[3:6];distance=math.dist(a,b)

@@ -1,0 +1,76 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": "0.1.0"
+    },
+    "scene_id": {
+      "type": "string",
+      "pattern": "^(?:[a-z][a-z0-9_]*|S[0-9]{2}_[a-z][a-z0-9_]*)$"
+    },
+    "scene_version": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+    },
+    "robot_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "interpolation": {
+      "const": "linear"
+    },
+    "loop": {
+      "type": "boolean"
+    },
+    "waypoints": {
+      "type": "array",
+      "minItems": 2,
+      "items": {
+        "type": "object",
+        "properties": {
+          "time_s": {
+            "type": "number",
+            "minimum": 0
+          },
+          "xyz_m": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            },
+            "minItems": 3,
+            "maxItems": 3
+          },
+          "yaw_rad": {
+            "type": "number"
+          },
+          "work_mode": {
+            "enum": [
+              "IDLE",
+              "TRAVELLING",
+              "CUTTING",
+              "UNKNOWN"
+            ]
+          }
+        },
+        "required": [
+          "time_s",
+          "xyz_m",
+          "yaw_rad",
+          "work_mode"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": [
+    "schema_version",
+    "scene_id",
+    "scene_version",
+    "robot_id",
+    "interpolation",
+    "loop",
+    "waypoints"
+  ],
+  "additionalProperties": false
+}

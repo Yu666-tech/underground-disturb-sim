@@ -19,7 +19,7 @@ def main():
         future=client.call_async(req);rclpy.spin_until_future_complete(node,future,timeout_sec=3.)
         if not future.done():raise RuntimeError('mock查询超时')
         result=future.result();assert result.request_id==req.request_id and result.observation_id==req.observation_id
-        print(json.dumps(dict(query_mode='MOCK_FIXTURES_ONLY',scene_id=raw.context.scene_id,scene_version=raw.context.scene_version,run_id=raw.context.run_id,observation_id=raw.observation_id,anchor_id=raw.anchor_id,truth_range_m=raw.truth_range_m,raw_range_m=raw.raw_range_m,status=result.status,intersections=len(result.direct_intersections),reflectors=len(result.reflector_candidates),message=result.error_message),ensure_ascii=False,indent=2))
+        print(json.dumps(dict(query_mode='MOCK_FIXTURES_ONLY',scene_id=raw.context.header.scene_id,scene_version=raw.context.header.scene_version,run_id=raw.context.header.run_id,observation_id=raw.observation_id,anchor_id=raw.anchor_id,truth_range_m=raw.truth_range_m,raw_range_m=raw.raw_range_m,status=result.status,intersections=len(result.direct_intersections),reflectors=len(result.reflector_candidates),message=result.error_message),ensure_ascii=False,indent=2))
     finally:
         node.destroy_node();rclpy.shutdown()
 if __name__=='__main__':main()
