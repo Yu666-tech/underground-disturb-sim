@@ -1,0 +1,42 @@
+# UWB 扰动参数（B 维护）
+# schema_version 必须与平台接口版本一致；params_version 由 B 自己递增。
+schema_version: '0.2.0'
+params_version: 'v0.1'
+seed: 42
+
+# 几何查询
+query_service: /mock/scene/query_ray   # 真实场景改为 /scene/query_ray
+thin_wall_max_m: 0.25
+reflector_search_radius_m: 2.0
+max_range_m: 120.0
+
+# 状态映射：内部四级 -> 平台枚举
+state_mapping:
+  LOS:
+    propagation_state: LOS
+    cause: DIRECT_CLEAR
+  SOFT:
+    propagation_state: NLOS
+    cause: THIN_WALL
+    nlos_type: SOFT
+  HARD:
+    propagation_state: NLOS
+    cause: SINGLE_REFLECTION
+    nlos_type: HARD
+  OUTAGE:
+    propagation_state: OUTAGE
+    cause: BLOCKED_NO_REFLECTOR
+
+# 噪声与偏置
+gaussian_std_m: 0.03
+bias_dist: exponential
+bias_mean_m: 0.8
+bias_mode: iid          # iid | episode
+soft_bias_ratio: 0.2
+
+# 多径（AR(1)）
+ar1_rho: 0.9
+multipath_sigma_m: 0.02
+
+# 时钟
+clock_drift_ppm: 0.0
