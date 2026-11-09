@@ -2,6 +2,8 @@
 
 本地 PR #5 测试分支的接口扩展，尚未合入主分支。`schema_version` 保留 0.2.0；新增字段改变 ROS 消息结构，生产者和消费者必须使用本分支重新构建的同一套接口，不能混用旧 install。原来的开发工作区不自动更新。
 
+时序容差、可靠传输和负载评估见 [UWB_TIMING.md](UWB_TIMING.md)。
+
 ## 分类语义
 
 `UwbDecision.nlos_type`、`UwbRangeObserved.nlos_type`、`UwbQueryTrace.nlos_type` 使用小写 `none/soft/hard`。
