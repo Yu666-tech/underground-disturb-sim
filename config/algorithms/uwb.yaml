@@ -18,11 +18,11 @@ state_mapping:
   SOFT:
     propagation_state: NLOS
     cause: THIN_WALL
-    nlos_type: SOFT
+    nlos_type: soft
   HARD:
     propagation_state: NLOS
     cause: SINGLE_REFLECTION
-    nlos_type: HARD
+    nlos_type: hard
   OUTAGE:
     propagation_state: OUTAGE
     cause: BLOCKED_NO_REFLECTOR

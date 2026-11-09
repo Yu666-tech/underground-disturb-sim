@@ -42,5 +42,6 @@ ros2 run coal_uwb_disturbance uwb_node --ros-args \
 ## 已知限制
 
 - HARD 目前只按“有反射候选”判定，未做反射路径长度与可达性校验；
-- `nlos_type` 尚不能写入消息（平台 schema 无此字段），只在内部与后续 CSV 适配中保留；
+- `nlos_type` 已通过 decision、observed 和查询追踪消息回传，取值为 `none/soft/hard`；
+- 五张 CSV 的录制方式与字段语义见 [UWB_CSV.md](../../docs/UWB_CSV.md)；
 - 查询失败时 `valid=false`、`propagation_state=UNKNOWN`，不默认成 LOS。

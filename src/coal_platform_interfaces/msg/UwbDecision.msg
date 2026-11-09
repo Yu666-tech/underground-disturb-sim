@@ -17,3 +17,4 @@ float64 nlos_error_m # 本次叠加NLOS误差m；未启用为0
 float64 random_noise_m # 本次随机噪声m；未启用为0
 bool valid # 本次判定是否可用；查询失败不默认为LOS
 string anchor_id
+string nlos_type "none" # none/soft/hard; use valid/state to distinguish unknown from LOS

@@ -23,7 +23,7 @@ import yaml
 from rclpy.node import Node
 from rclpy.qos import QoSProfile, ReliabilityPolicy
 
-from coal_platform_interfaces.msg import UwbDecision, UwbRangeObserved, UwbRangeRaw
+from coal_platform_interfaces.msg import UwbDecision, UwbQueryTrace, UwbRangeObserved, UwbRangeRaw
 from coal_platform_interfaces.srv import QueryRay
 
 # 内部状态
@@ -45,7 +45,8 @@ CAUSE_TEXT = {
     INPUT_INVALID: "INPUT_INVALID",
     QUERY_FAILED: "QUERY_FAILED",
 }
-NLOS_TYPE = {LOS: "NONE", SOFT: "SOFT", HARD: "HARD", OUTAGE: "NONE"}
+NLOS_TYPE = {LOS: "none", SOFT: "soft", HARD: "hard", OUTAGE: "none",
+             INPUT_INVALID: "none", QUERY_FAILED: "none"}
 
 
 class UwbDisturbance(Node):
@@ -103,6 +104,10 @@ class UwbDisturbance(Node):
         self.observed_pub = self.create_publisher(
             UwbRangeObserved, "/uwb_ranges",
             QoSProfile(depth=200, reliability=ReliabilityPolicy.BEST_EFFORT),
+        )
+        self.query_trace_pub = self.create_publisher(
+            UwbQueryTrace, "/disturbance_query/uwb",
+            QoSProfile(depth=200, reliability=ReliabilityPolicy.RELIABLE),
         )
         self.client = self.create_client(
             QueryRay, self.get_parameter("query_service").value
@@ -164,25 +169,28 @@ class UwbDisturbance(Node):
             future = self.client.call_async(req)
         except Exception as exc:  # noqa: BLE001
             self.get_logger().warning(f"query call failed: {exc}")
-            self._publish(raw, QUERY_FAILED, None, valid=False, query_status="INTERNAL_ERROR")
+            self._publish(raw, QUERY_FAILED, None, valid=False, query_status="INTERNAL_ERROR",
+                          request=req, query_error=str(exc))
             return
-        future.add_done_callback(lambda fut, r=raw: self.on_query(fut, r))
+        future.add_done_callback(lambda fut, r=raw, q=req: self.on_query(fut, r, q))
 
-    def on_query(self, future, raw: UwbRangeRaw):
+    def on_query(self, future, raw: UwbRangeRaw, request=None):
         try:
             res = future.result()
         except Exception as exc:  # noqa: BLE001
             self.get_logger().warning(f"query failed: {exc}")
-            self._publish(raw, QUERY_FAILED, None, valid=False, query_status="INTERNAL_ERROR")
+            self._publish(raw, QUERY_FAILED, None, valid=False, query_status="INTERNAL_ERROR",
+                          request=request, query_error=str(exc))
             return
         if res is None or res.status != "OK":
             self._publish(raw, QUERY_FAILED, res, valid=False,
-                          query_status="INTERNAL_ERROR" if res is None else res.status)
+                          query_status="INTERNAL_ERROR" if res is None else res.status,
+                          request=request, query_error="Empty RPC response" if res is None else "")
             return
         state = self._classify(raw, res)
         # Outage 表示没有可用观测，不能当作有效测距。
         valid = state in (LOS, SOFT, HARD)
-        self._publish(raw, state, res, valid=valid)
+        self._publish(raw, state, res, valid=valid, request=request)
 
     def _classify(self, raw: UwbRangeRaw, res: QueryRay.Response) -> int:
         hits = list(res.direct_intersections)
@@ -197,7 +205,8 @@ class UwbDisturbance(Node):
         return OUTAGE
 
     # ---------- 输出 ----------
-    def _publish(self, raw: UwbRangeRaw, state: int, res, valid: bool, query_status=None):
+    def _publish(self, raw: UwbRangeRaw, state: int, res, valid: bool, query_status=None,
+                 request=None, query_error=""):
         key = self._link_key(raw)
         rng = self._rng_for(key)
         decision = UwbDecision()
@@ -208,6 +217,7 @@ class UwbDisturbance(Node):
         decision.seed = self.seed
         decision.anchor_id = raw.anchor_id
         decision.propagation_state = STATE_TEXT[state]
+        decision.nlos_type = NLOS_TYPE[state]
         decision.cause = CAUSE_TEXT[state]
         decision.query_status = query_status or (res.status if res is not None else "NOT_CALLED")
         decision.valid = valid
@@ -239,6 +249,7 @@ class UwbDisturbance(Node):
         observed.truth_range_m = raw.truth_range_m
         observed.raw_range_m = raw.raw_range_m
         observed.state = decision.propagation_state
+        observed.nlos_type = decision.nlos_type
         observed.valid = valid
 
         if valid:
@@ -259,6 +270,26 @@ class UwbDisturbance(Node):
 
         self.decision_pub.publish(decision)
         self.observed_pub.publish(observed)
+        if request is not None:
+            trace = UwbQueryTrace()
+            trace.context = raw.context
+            trace.observation_id = raw.observation_id
+            trace.decision_id = decision.decision_id
+            trace.request_id = request.request_id
+            trace.tag_id = raw.tag_id
+            trace.anchor_id = raw.anchor_id
+            trace.nlos_type = decision.nlos_type
+            trace.valid = decision.valid
+            trace.status = decision.query_status
+            if res is not None:
+                trace.direct_intersections = res.direct_intersections
+                trace.reflector_candidates = res.reflector_candidates
+                trace.processing_time_ms = res.processing_time_ms
+                trace.error_message = res.error_message
+            else:
+                trace.processing_time_ms = float("nan")
+                trace.error_message = query_error
+            self.query_trace_pub.publish(trace)
         self._count += 1
         self._stats[STATE_TEXT[state]] = self._stats.get(STATE_TEXT[state], 0) + 1
         if self.log_every > 0 and self._count % self.log_every == 0:
