@@ -160,7 +160,12 @@ class UwbDisturbance(Node):
         req.origin_m = raw.tag_position_m
         req.target_m = raw.anchor_position_m
         req.reflector_search_radius_m = self.reflector_radius
-        future = self.client.call_async(req)
+        try:
+            future = self.client.call_async(req)
+        except Exception as exc:  # noqa: BLE001
+            self.get_logger().warning(f"query call failed: {exc}")
+            self._publish(raw, QUERY_FAILED, None, valid=False, query_status="INTERNAL_ERROR")
+            return
         future.add_done_callback(lambda fut, r=raw: self.on_query(fut, r))
 
     def on_query(self, future, raw: UwbRangeRaw):
@@ -168,10 +173,11 @@ class UwbDisturbance(Node):
             res = future.result()
         except Exception as exc:  # noqa: BLE001
             self.get_logger().warning(f"query failed: {exc}")
-            self._publish(raw, QUERY_FAILED, None, valid=False)
+            self._publish(raw, QUERY_FAILED, None, valid=False, query_status="INTERNAL_ERROR")
             return
         if res is None or res.status != "OK":
-            self._publish(raw, QUERY_FAILED, res, valid=False)
+            self._publish(raw, QUERY_FAILED, res, valid=False,
+                          query_status="INTERNAL_ERROR" if res is None else res.status)
             return
         state = self._classify(raw, res)
         # Outage 表示没有可用观测，不能当作有效测距。
@@ -191,7 +197,7 @@ class UwbDisturbance(Node):
         return OUTAGE
 
     # ---------- 输出 ----------
-    def _publish(self, raw: UwbRangeRaw, state: int, res, valid: bool):
+    def _publish(self, raw: UwbRangeRaw, state: int, res, valid: bool, query_status=None):
         key = self._link_key(raw)
         rng = self._rng_for(key)
         decision = UwbDecision()
@@ -203,7 +209,7 @@ class UwbDisturbance(Node):
         decision.anchor_id = raw.anchor_id
         decision.propagation_state = STATE_TEXT[state]
         decision.cause = CAUSE_TEXT[state]
-        decision.query_status = res.status if res is not None else "NOT_CALLED"
+        decision.query_status = query_status or (res.status if res is not None else "NOT_CALLED")
         decision.valid = valid
         decision.nlos_active = state in (SOFT, HARD)
         decision.outage_active = state in (OUTAGE, INPUT_INVALID, QUERY_FAILED)
