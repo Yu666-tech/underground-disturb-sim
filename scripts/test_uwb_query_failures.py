@@ -5,6 +5,7 @@ import unittest
 from concurrent.futures import Future
 from pathlib import Path
 import sys
+import time
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] /
                        'src/coal_uwb_disturbance'))
@@ -96,6 +97,39 @@ class QueryFailures(unittest.TestCase):
         self.raw.raw_valid = False
         self.node.on_raw(self.raw)
         self.check_failed('NOT_CALLED')
+
+    def test_timeout_emits_exactly_one_invalid_result(self):
+        class Client:
+            def remove_pending_request(self, future):
+                pass
+        self.node.client = Client()
+        future = Future()
+        self.node._pending_queries[self.request.request_id] = (
+            future, self.raw, self.request, time.monotonic() - 6.)
+        self.node._check_pending()
+        self.check_failed('INTERNAL_ERROR')
+        self.assertEqual(self.node.query_trace_pub.messages[-1].error_message, 'RPC_TIMEOUT')
+        self.assertEqual(self.node._transport_stats['timed_out'], 1)
+        self.assertEqual(self.node._pending_queries, {})
+        self.node._on_managed_query(future, self.raw, self.request)
+        self.assertEqual(len(self.node.decision_pub.messages), 1)
+
+    def test_inflight_request_keeps_waiting_before_deadline(self):
+        future = Future()
+        self.node._pending_queries[self.request.request_id] = (
+            future, self.raw, self.request, time.monotonic())
+        self.node._check_pending()
+        self.assertEqual(len(self.node._pending_queries), 1)
+        self.assertEqual(self.node.decision_pub.messages, [])
+
+    def test_timeout_removes_actual_ros_client_future(self):
+        future = self.node.client.call_async(self.request)
+        self.node._pending_queries[self.request.request_id] = (
+            future, self.raw, self.request, time.monotonic() - 6.)
+        self.node._check_pending()
+        self.check_failed('INTERNAL_ERROR')
+        self.assertTrue(future.cancelled())
+        self.assertEqual(self.node._pending_queries, {})
 
 
 if __name__ == '__main__':

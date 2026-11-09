@@ -46,7 +46,7 @@ class FixtureInputs(Node):
         self.state_pub = self.create_publisher(RobotState, '/platform/v1/robot_state', reliable)
         self.scan_pub = self.create_publisher(LidarFrameRaw, '/platform/v1/scan_raw', sensor)
         self.uwb_pub = self.create_publisher(UwbRangeRaw, '/platform/v1/uwb_ranges_raw',
-                                          QoSProfile(depth=100, reliability=ReliabilityPolicy.BEST_EFFORT))
+                                          QoSProfile(depth=1000, reliability=ReliabilityPolicy.RELIABLE))
         self.context_pub = self.create_publisher(RunContext, '/platform/v1/run_context', latched)
         self.info_pub = self.create_publisher(String, '/platform/v1/fixture_info', latched)
         self.clock_pub = self.create_publisher(Clock, '/clock', sensor)

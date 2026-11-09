@@ -55,7 +55,7 @@ def run(output):
 
     service = harness.create_service(QueryRay, '/mock/scene/query_ray', query)
     pub = harness.create_publisher(UwbRangeRaw, '/platform/v1/uwb_ranges_raw',
-        QoSProfile(depth=100, reliability=ReliabilityPolicy.BEST_EFFORT))
+        QoSProfile(depth=100, reliability=ReliabilityPolicy.RELIABLE))
     executor = SingleThreadedExecutor()
     for node in (harness, algorithm, recorder):
         executor.add_node(node)

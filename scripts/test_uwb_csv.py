@@ -7,6 +7,7 @@ from pathlib import Path
 import sys
 import tempfile
 import unittest
+import sqlite3
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'src/coal_platform_bridge/scripts'))
@@ -125,6 +126,19 @@ class CsvContract(unittest.TestCase):
     def test_existing_output_is_protected(self):
         with self.assertRaises(FileExistsError):
             UwbCsvWriter(self.output, ROOT / 'config/csv_templates')
+
+    def test_periodic_refresh_commits_completed_and_late_queries(self):
+        sample = facts(0)
+        for kind in ('raw', 'decision', 'observed'):
+            self.writer.ingest(kind, sample[kind])
+        self.writer.refresh_transitions()
+        with sqlite3.connect(self.output / 'uwb_join.sqlite3') as reader:
+            self.assertEqual(reader.execute('SELECT COUNT(*) FROM completed').fetchone()[0], 1)
+        self.writer.ingest('query', sample['query'])
+        self.assertFalse(self.writer.transitions_dirty)
+        self.writer.refresh_transitions()
+        with sqlite3.connect(self.output / 'uwb_join.sqlite3') as reader:
+            self.assertEqual(reader.execute('SELECT COUNT(*) FROM queries WHERE written=1').fetchone()[0], 1)
 
 
 if __name__ == '__main__':

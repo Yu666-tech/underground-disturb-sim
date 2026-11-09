@@ -86,6 +86,7 @@ class UwbCsvWriter:
         self.counts = {name: 0 for name in TABLES}
         self.transitions_dirty = True
         self.closed = False
+        self._uncommitted = 0
         self.refresh_transitions()
 
     def _write(self, table, row):
@@ -116,7 +117,14 @@ class UwbCsvWriter:
                 raise ValueError(f'Conflicting duplicate {kind}')
             self.db.execute('INSERT OR IGNORE INTO facts VALUES (?, ?, ?)', (key, kind, data))
         self._flush(key)
-        self.db.commit()
+        self._uncommitted += 1
+        if self._uncommitted >= 64:
+            self.commit_index()
+
+    def commit_index(self):
+        if self._uncommitted:
+            self.db.commit()
+            self._uncommitted = 0
 
     def _flush(self, key):
         facts = {kind: json.loads(data) for kind, data in self.db.execute(
@@ -187,6 +195,8 @@ class UwbCsvWriter:
                             (key, request_id))
 
     def refresh_transitions(self):
+        # Also make late query joins visible to the independent drain checker.
+        self.commit_index()
         if not self.transitions_dirty:
             return
         path = self.output_dir / 'state_transitions.csv'

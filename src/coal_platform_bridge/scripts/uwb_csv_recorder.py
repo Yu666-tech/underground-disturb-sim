@@ -21,7 +21,7 @@ class UwbCsvRecorder(Node):
             raise ValueError('Set output_dir to a NEW experiment directory')
         templates = Path(get_package_share_directory('coal_platform_bridge')) / 'csv_templates'
         self.writer = UwbCsvWriter(output_dir, templates)
-        sensor = QoSProfile(depth=1000, reliability=ReliabilityPolicy.BEST_EFFORT)
+        sensor = QoSProfile(depth=1000, reliability=ReliabilityPolicy.RELIABLE)
         reliable = QoSProfile(depth=1000, reliability=ReliabilityPolicy.RELIABLE)
         self.subscriptions_ = []
         for kind, cls, topic, qos in (

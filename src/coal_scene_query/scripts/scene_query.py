@@ -28,7 +28,8 @@ class SceneQuery(Node):
         info=dict(query_source='ACTUAL_SDF_COLLISION_GEOMETRY',is_mock=False,world_file=str(self.engine.world),geometry_sha256=self.engine.geometry_hash,source_files=self.engine.manifest,collision_objects=len(self.engine.objects),triangle_count=sum(len(o['tri']) for o in self.engine.objects),self_models_excluded=self.engine.excluded,material_policy='UNKNOWN unless supplied; visual texture is not a propagation material',mesh_policy='surface intersections only; thickness/path length NaN',reflector_policy='nearest surface within radius, not a validated reflection path',max_radius_m=5.,max_segment_length_m=500.)
         self.info_pub.publish(String(data=json.dumps(info)))
         self.query_group=ReentrantCallbackGroup()
-        self.create_service(QueryRay,'/scene/query_ray',self.query,callback_group=self.query_group)
+        self.create_service(QueryRay,'/scene/query_ray',self.query,callback_group=self.query_group,
+            qos_profile=QoSProfile(depth=512,reliability=ReliabilityPolicy.RELIABLE))
         self.get_logger().info('REAL collision QueryRay active: '+str(len(self.engine.objects))+' objects, world SHA256='+self.engine.files[self.engine.world]['sha256'])
     def on_truth(self,msg):
         if self.latest is None or msg.context.header.run_id!=self.latest.context.header.run_id:self.run_start=ns(msg.context.header.stamp)

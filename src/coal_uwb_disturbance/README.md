@@ -4,13 +4,13 @@ B 侧 UWB 扰动节点（初版）。
 
 ## 输入
 
-- `/platform/v1/uwb_ranges_raw`（`UwbRangeRaw`，best effort）
+- `/platform/v1/uwb_ranges_raw`（`UwbRangeRaw`，reliable；与本分支 A 侧发布者配套）
 - `/scene/query_ray` 或 `/mock/scene/query_ray`（`QueryRay` service）
 
 ## 输出
 
 - `/disturbance_decision/uwb`（`UwbDecision`，reliable）
-- `/uwb_ranges`（`UwbRangeObserved`，best effort）
+- `/uwb_ranges`（`UwbRangeObserved`，reliable）
 
 ## 内部状态与上报映射
 

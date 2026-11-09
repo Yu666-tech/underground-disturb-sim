@@ -17,11 +17,15 @@ import hashlib
 import math
 import random
 import uuid
+import time
+import json
 
 import rclpy
 import yaml
 from rclpy.node import Node
+from rclpy.clock import Clock, ClockType
 from rclpy.qos import QoSProfile, ReliabilityPolicy
+from std_msgs.msg import String
 
 from coal_platform_interfaces.msg import UwbDecision, UwbQueryTrace, UwbRangeObserved, UwbRangeRaw
 from coal_platform_interfaces.srv import QueryRay
@@ -67,6 +71,8 @@ class UwbDisturbance(Node):
         self.declare_parameter("max_range_m", 120.0)
         self.declare_parameter("params_version", "v0.1")
         self.declare_parameter("log_every", 200)
+        self.declare_parameter("query_timeout_s", 5.0)
+        self.declare_parameter("publish_processing_diagnostics", False)
 
         cfg = {}
         path = self.get_parameter("config_file").value
@@ -92,8 +98,17 @@ class UwbDisturbance(Node):
         self._episode_bias = {}
         self._count = 0
         self._stats = {}
+        self._pending_queries = {}
+        self._transport_stats = dict(received=0, sent=0, completed=0, timed_out=0, call_errors=0)
+        self.query_timeout_s = float(self.get_parameter('query_timeout_s').value)
+        if not math.isfinite(self.query_timeout_s) or self.query_timeout_s <= 0:
+            raise ValueError('query_timeout_s must be positive and finite')
+        self.processing_pub = self.create_publisher(String, '/platform/v1/uwb_processing', 10) if self.get_parameter('publish_processing_diagnostics').value else None
+        self._last_processing_report = 0.
+        self._pending_timer = self.create_timer(.1, self._check_pending,
+            clock=Clock(clock_type=ClockType.STEADY_TIME))
 
-        raw_qos = QoSProfile(depth=200, reliability=ReliabilityPolicy.BEST_EFFORT)
+        raw_qos = QoSProfile(depth=1000, reliability=ReliabilityPolicy.RELIABLE)
         self.raw_sub = self.create_subscription(
             UwbRangeRaw, "/platform/v1/uwb_ranges_raw", self.on_raw, raw_qos
         )
@@ -103,14 +118,15 @@ class UwbDisturbance(Node):
         )
         self.observed_pub = self.create_publisher(
             UwbRangeObserved, "/uwb_ranges",
-            QoSProfile(depth=200, reliability=ReliabilityPolicy.BEST_EFFORT),
+            QoSProfile(depth=1000, reliability=ReliabilityPolicy.RELIABLE),
         )
         self.query_trace_pub = self.create_publisher(
             UwbQueryTrace, "/disturbance_query/uwb",
             QoSProfile(depth=200, reliability=ReliabilityPolicy.RELIABLE),
         )
         self.client = self.create_client(
-            QueryRay, self.get_parameter("query_service").value
+            QueryRay, self.get_parameter("query_service").value,
+            qos_profile=QoSProfile(depth=512, reliability=ReliabilityPolicy.RELIABLE)
         )
         self.get_logger().info(
             f"UWB disturbance ready: query={self.get_parameter('query_service').value}, "
@@ -150,6 +166,7 @@ class UwbDisturbance(Node):
 
     # ---------- 输入 ----------
     def on_raw(self, raw: UwbRangeRaw):
+        self._transport_stats['received'] += 1
         if not raw.raw_valid:
             state = OUTAGE if raw.raw_status == "OUT_OF_RANGE" else INPUT_INVALID
             self._publish(raw, state, None, valid=False)
@@ -168,11 +185,36 @@ class UwbDisturbance(Node):
         try:
             future = self.client.call_async(req)
         except Exception as exc:  # noqa: BLE001
+            self._transport_stats['call_errors'] += 1
             self.get_logger().warning(f"query call failed: {exc}")
             self._publish(raw, QUERY_FAILED, None, valid=False, query_status="INTERNAL_ERROR",
                           request=req, query_error=str(exc))
             return
-        future.add_done_callback(lambda fut, r=raw, q=req: self.on_query(fut, r, q))
+        self._transport_stats['sent'] += 1
+        self._pending_queries[req.request_id] = (future, raw, req, time.monotonic())
+        future.add_done_callback(lambda fut, r=raw, q=req: self._on_managed_query(fut, r, q))
+
+    def _on_managed_query(self, future, raw, request):
+        if self._pending_queries.pop(request.request_id, None) is None:
+            return  # A timed-out request has already emitted its one result.
+        self._transport_stats['completed'] += 1
+        self.on_query(future, raw, request)
+
+    def _check_pending(self):
+        now = time.monotonic()
+        for request_id, (future, raw, request, start) in list(self._pending_queries.items()):
+            if now - start < self.query_timeout_s:
+                continue
+            self._pending_queries.pop(request_id)
+            self.client.remove_pending_request(future)
+            self._transport_stats['timed_out'] += 1
+            self._publish(raw, QUERY_FAILED, None, valid=False, query_status='INTERNAL_ERROR',
+                          request=request, query_error='RPC_TIMEOUT')
+            future.cancel()
+        if self.processing_pub is not None and now - self._last_processing_report >= 1.:
+            self.processing_pub.publish(String(data=json.dumps(dict(self._transport_stats,
+                pending=len(self._pending_queries), published=self._count))))
+            self._last_processing_report = now
 
     def on_query(self, future, raw: UwbRangeRaw, request=None):
         try:

@@ -38,7 +38,7 @@ class BCInputs(Node):
         self.max_command_age_ns=50000000
         self.reliable=QoSProfile(depth=100,reliability=ReliabilityPolicy.RELIABLE)
         self.state_pub=self.create_publisher(RobotState,'/platform/v1/robot_state',self.reliable)
-        self.uwb_pub=self.create_publisher(UwbRangeRaw,'/platform/v1/uwb_ranges_raw',QoSProfile(depth=100,reliability=ReliabilityPolicy.BEST_EFFORT))
+        self.uwb_pub=self.create_publisher(UwbRangeRaw,'/platform/v1/uwb_ranges_raw',QoSProfile(depth=1000,reliability=ReliabilityPolicy.RELIABLE))
         self.info_pub=self.create_publisher(String,'/platform/v1/bc_input_info',QoSProfile(depth=1,reliability=ReliabilityPolicy.RELIABLE,durability=DurabilityPolicy.TRANSIENT_LOCAL))
         self.create_subscription(GroundTruth,'/platform/v1/ground_truth',self.on_truth,self.reliable)
         self.create_subscription(Odometry,'/shearer/reference',self.on_reference,self.reliable)
