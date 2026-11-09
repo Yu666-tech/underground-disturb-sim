@@ -23,6 +23,7 @@ try:
  for decision,observed in [('UwbDecision','UwbRangeObserved'),('LidarDecision','LidarFrameObserved'),('LidarDecision','LidarBeamState')]:
   a,b=received[decision],received[observed]
   assert a.observation_id==b.observation_id and a.decision_id==b.decision_id and a.context==b.context
+ assert received['UwbDecision'].nlos_type==received['UwbRangeObserved'].nlos_type=='none'
  assert received['UwbRangeObserved'].observed_range_m-received['UwbRangeObserved'].truth_range_m==received['UwbRangeObserved'].error_m
  scan=received['LidarFrameObserved']; beams=received['LidarBeamState']
  assert len(scan.truth_ranges_m)==len(scan.observed_ranges_m)==len(beams.beam_index)==len(beams.beam_states)==3

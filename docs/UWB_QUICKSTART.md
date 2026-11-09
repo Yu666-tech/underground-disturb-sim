@@ -48,7 +48,7 @@ python3 src/coal_platform_bridge/scripts/query_mock_example.py
 
 这里直接执行仓库内的 Python 查询示例，不需要构建依赖 Gazebo 的 bridge 包。示例接收一条有效 raw，复制上下文和 observation_id，向 `/mock/scene/query_ray` 发起请求，输出带 `MOCK_ONLY` 标记的事实。
 
-- 原始测距：`/platform/v1/uwb_ranges_raw`，每个 tag-anchor 观测一条消息，订阅端使用兼容 BEST_EFFORT 的 QoS。
+- 原始测距：`/platform/v1/uwb_ranges_raw`，每个 tag-anchor 观测一条消息。本分支发布端与 UWB/CSV 订阅端统一使用 RELIABLE，避免把传输缺失混作仿真测距失效；旧 BEST_EFFORT 订阅端仍兼容新发布端，旧 BEST_EFFORT 发布端不能与新的 RELIABLE 订阅端混用。
 - 真值参考：`/platform/v1/ground_truth`。
 - Mock 查询：`/mock/scene/query_ray`；真实场景查询：`/scene/query_ray`。Mock 不冒充真实查询服务。
 - 自己的算法节点使用相同 domain，并设置 `use_sim_time=true`；Mock 发布 `/clock`。

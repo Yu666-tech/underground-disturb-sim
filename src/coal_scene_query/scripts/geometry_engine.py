@@ -1,5 +1,5 @@
 """Real SDF collision queries, no cached handoff geometry or propagation model."""
-import hashlib,math,ctypes,os
+import hashlib,math,ctypes,os,weakref
 from pathlib import Path
 import xml.etree.ElementTree as ET
 import numpy as np
@@ -58,13 +58,18 @@ def box_tri(size):
     return np.array(result)
 
 class Engine:
-    def __init__(self,world,models,self_model='shearer'):
+    def __init__(self,world,models,self_model='shearer',use_bvh=True):
         library=os.environ.get('COAL_QUERY_MATH_LIBRARY',str(Path(__file__).parent/'libcoal_query_math.so'))
         if not Path(library).is_file():
             from ament_index_python.packages import get_package_prefix
             library=str(Path(get_package_prefix('coal_scene_query'))/'lib/coal_scene_query/libcoal_query_math.so')
-        self.native=ctypes.CDLL(library).nearest_surface;ptr=ctypes.POINTER(ctypes.c_double)
+        self.library=ctypes.CDLL(library);self.native=self.library.nearest_surface;ptr=ctypes.POINTER(ctypes.c_double)
         self.native.argtypes=[ptr,ctypes.c_int,ptr,ptr,ptr];self.native.restype=ctypes.c_double
+        self.use_bvh=use_bvh
+        self.library.build_surface_bvh.argtypes=[ptr,ctypes.c_int];self.library.build_surface_bvh.restype=ctypes.c_void_p
+        self.library.destroy_surface_bvh.argtypes=[ctypes.c_void_p]
+        self.library.query_surface_bvh.argtypes=[ctypes.c_void_p,ptr,ptr,ctypes.c_double,ptr];self.library.query_surface_bvh.restype=ctypes.c_double
+        self.library.ray_surface_bvh_candidates.argtypes=[ctypes.c_void_p,ptr,ptr,ctypes.POINTER(ctypes.c_int),ctypes.c_int];self.library.ray_surface_bvh_candidates.restype=ctypes.c_int
         self.world=Path(world).resolve();self.models=Path(models).resolve();self.files={};self.objects=[];self.dynamic=[];self.cache={};self.excluded=[];self.asset_roots=[]
         tree=ET.parse(self.record(self.world));root=tree.find('world')
         if root is None:raise ValueError('SDF world missing')
@@ -82,6 +87,15 @@ class Engine:
         if self.dynamic:raise ValueError('Unsupported other dynamic geometry: '+str(self.dynamic))
         for o in self.objects:
             o['low']=o['tri'].min(axis=(0,1));o['high']=o['tri'].max(axis=(0,1));o['tri_low']=o['tri'].min(axis=1);o['tri_high']=o['tri'].max(axis=1)
+            if use_bvh and o['kind']=='MESH':
+                tri=np.ascontiguousarray(o['tri'],dtype=np.float64)
+                o['bvh']=self.library.build_surface_bvh(tri.ctypes.data_as(ptr),len(tri))
+                if not o['bvh']:raise MemoryError('Cannot build static mesh query index')
+                weakref.finalize(self,self.library.destroy_surface_bvh,o['bvh'])
+        self.object_low=np.array([o['low'] for o in self.objects]).reshape(-1,3);self.object_high=np.array([o['high'] for o in self.objects]).reshape(-1,3)
+        self.box_indices=np.array([i for i,o in enumerate(self.objects) if o['kind']=='BOX'],dtype=int)
+        self.box_inverse=np.array([self.objects[i]['inverse'] for i in self.box_indices])
+        self.box_half=np.array([self.objects[i]['size']/2 for i in self.box_indices])
         self.manifest={str(p):dict(sha256=d['sha256'],size=d['size']) for p,d in self.files.items()}
         self.geometry_hash=hashlib.sha256(''.join(sorted(d['sha256'] for d in self.files.values())).encode()).hexdigest()
 
@@ -129,27 +143,40 @@ class Engine:
 
     def query(self,a,b,radius):
         a=np.asarray(a,dtype=float);b=np.asarray(b,dtype=float);length=float(np.linalg.norm(b-a));hits=[];candidates=[];flags=set()
-        for o in self.objects:
-            broad=np.all(o['high']>=np.minimum(a,b)-radius)&np.all(o['low']<=np.maximum(a,b)+radius)
-            if not broad:continue
-            if o['kind']=='BOX':
-                local=transform(np.array([a,b]),o['inverse']);start,end=local;direction=end-start;h=o['size']/2;enter=0.;exit=1.;axis=None;sign=0.;possible=True;boundary=False
-                for k in range(3):
-                    if abs(direction[k])<1e-12:
-                        if start[k]<-h[k]-1e-10 or start[k]>h[k]+1e-10:possible=False;break
-                        if abs(abs(start[k])-h[k])<=1e-10:boundary=True
-                    else:
-                        t1=(-h[k]-start[k])/direction[k];t2=(h[k]-start[k])/direction[k];near=min(t1,t2);far=max(t1,t2)
-                        if near>enter:enter=near;axis=k;sign=-1. if direction[k]>0 else 1.
-                        exit=min(exit,far)
-                if possible and exit>enter and (exit-enter)*length>EPS and exit*length>EPS and enter*length<length-EPS:
-                    if boundary:flags.add('BOX_FACE_COPLANAR_CONTACT_CLOSED_SOLID_CONVENTION')
-                    n=np.zeros(3)
-                    if axis is not None:n[axis]=sign;thickness=float(o['size'][axis])
-                    else:thickness=math.nan;flags.add('ORIGIN_INSIDE_BOX_NORMAL_UNDEFINED')
-                    hits.append(dict(object=o,distance=enter*length,entry=a+enter*(b-a),exit=a+exit*(b-a),normal=o['matrix'][:3,:3]@n,thickness=thickness,path_length=(exit-enter)*length))
-            tri=o['tri'];mask=np.all(o['tri_high']>=np.minimum(a,b)-radius,axis=1)&np.all(o['tri_low']<=np.maximum(a,b)+radius,axis=1);tri=tri[mask]
-            if not len(tri):continue
+        low=np.minimum(a,b)-radius;high=np.maximum(a,b)+radius
+        selected=np.all(self.object_high>=low,axis=1)&np.all(self.object_low<=high,axis=1)
+        # Evaluate the unchanged slab equations for selected boxes in one NumPy batch.
+        box_rows=np.flatnonzero(selected[self.box_indices])
+        if len(box_rows):
+            inv=self.box_inverse[box_rows];half=self.box_half[box_rows]
+            start=np.einsum('nij,j->ni',inv[:,:3,:3],a)+inv[:,:3,3]
+            end=np.einsum('nij,j->ni',inv[:,:3,:3],b)+inv[:,:3,3];direction=end-start
+            parallel=np.abs(direction)<1e-12;divisor=np.where(parallel,1.,direction)
+            t1=(-half-start)/divisor;t2=(half-start)/divisor
+            near=np.where(parallel,-np.inf,np.minimum(t1,t2));far=np.where(parallel,np.inf,np.maximum(t1,t2))
+            enter=np.maximum(0.,near.max(axis=1));exit=np.minimum(1.,far.min(axis=1))
+            possible=~np.any(parallel&((start < -half-1e-10)|(start > half+1e-10)),axis=1)
+            contact=np.any(parallel&(np.abs(np.abs(start)-half)<=1e-10),axis=1)
+            valid=possible&(exit>enter)&((exit-enter)*length>EPS)&(exit*length>EPS)&(enter*length<length-EPS)
+            for row in np.flatnonzero(valid):
+                o=self.objects[self.box_indices[box_rows[row]]];en=float(enter[row]);ex=float(exit[row]);n=np.zeros(3)
+                if contact[row]:flags.add('BOX_FACE_COPLANAR_CONTACT_CLOSED_SOLID_CONVENTION')
+                if near[row].max()>0:
+                    axis=int(near[row].argmax());n[axis]=-1. if direction[row,axis]>0 else 1.;thickness=float(o['size'][axis])
+                else:thickness=math.nan;flags.add('ORIGIN_INSIDE_BOX_NORMAL_UNDEFINED')
+                hits.append(dict(object=o,distance=en*length,entry=a+en*(b-a),exit=a+ex*(b-a),normal=o['matrix'][:3,:3]@n,thickness=thickness,path_length=(ex-en)*length))
+        for index in np.flatnonzero(selected):
+            o=self.objects[index]
+            tri=o['tri']
+            if self.use_bvh and o['kind']=='MESH':
+                indices=np.empty(len(tri),dtype=np.int32);ptr=ctypes.POINTER(ctypes.c_double)
+                count=self.library.ray_surface_bvh_candidates(o['bvh'],a.ctypes.data_as(ptr),b.ctypes.data_as(ptr),indices.ctypes.data_as(ctypes.POINTER(ctypes.c_int)),len(indices))
+                if count<0:raise RuntimeError('Mesh candidate buffer exceeded; no partial result')
+                indices=indices[:count]
+                mask=np.all(o['tri_high'][indices]>=low,axis=1)&np.all(o['tri_low'][indices]<=high,axis=1)
+                tri=tri[indices[mask]]
+            else:
+                mask=np.all(o['tri_high']>=low,axis=1)&np.all(o['tri_low']<=high,axis=1);tri=tri[mask]
             if o['kind']=='MESH':
                 ts,valid=ray_tri(a,b,tri);valid&=(ts*length>EPS)&((1-ts)*length>EPS)
                 order=np.where(valid)[0][np.argsort(ts[valid])];last=-math.inf
@@ -158,8 +185,12 @@ class Engine:
                     if distance-last<=EPS:continue
                     last=distance;point=a+ts[idx]*(b-a);normal=np.cross(tri[idx,1]-tri[idx,0],tri[idx,2]-tri[idx,0]);normal/=np.linalg.norm(normal)
                     hits.append(dict(object=o,distance=distance,entry=point,exit=point,normal=normal,thickness=math.nan,path_length=math.nan));flags.add('MESH_SURFACE_HITS_VOLUME_THICKNESS_UNKNOWN')
-            if radius>0:
-                distance,point,normal=self.nearest(a,b,tri)
+            if radius>0 and (len(tri) or self.use_bvh and o['kind']=='MESH'):
+                if self.use_bvh and o['kind']=='MESH':
+                    out=np.zeros(6,dtype=np.float64);ptr=ctypes.POINTER(ctypes.c_double)
+                    distance=self.library.query_surface_bvh(o['bvh'],a.ctypes.data_as(ptr),b.ctypes.data_as(ptr),radius,out.ctypes.data_as(ptr))
+                    point,normal=out[:3],out[3:]
+                else:distance,point,normal=self.nearest(a,b,tri)
                 if distance<=radius+1e-10:candidates.append(dict(object=o,distance=distance,point=point,normal=normal))
         hits.sort(key=lambda h:(h['distance'],h['object']['id']));candidates.sort(key=lambda c:(c['distance'],c['object']['id']))
         return hits,candidates,sorted(flags)

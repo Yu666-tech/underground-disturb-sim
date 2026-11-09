@@ -1,0 +1,47 @@
+# coal_uwb_disturbance
+
+B 侧 UWB 扰动节点（初版）。
+
+## 输入
+
+- `/platform/v1/uwb_ranges_raw`（`UwbRangeRaw`，reliable；与本分支 A 侧发布者配套）
+- `/scene/query_ray` 或 `/mock/scene/query_ray`（`QueryRay` service）
+
+## 输出
+
+- `/disturbance_decision/uwb`（`UwbDecision`，reliable）
+- `/uwb_ranges`（`UwbRangeObserved`，reliable）
+
+## 内部状态与上报映射
+
+| 内部 | propagation_state | cause |
+|---|---|---|
+| LOS | LOS | DIRECT_CLEAR |
+| SOFT | NLOS | THIN_WALL |
+| HARD | NLOS | SINGLE_REFLECTION |
+| OUTAGE | OUTAGE | BLOCKED_NO_REFLECTOR |
+| INPUT_INVALID | INPUT_INVALID | INPUT_INVALID |
+| QUERY_FAILED | UNKNOWN | QUERY_FAILED |
+
+`UwbRangeObserved.state` 与 `UwbDecision.propagation_state` 保持一致。
+
+## 运行
+
+```bash
+ros2 run coal_uwb_disturbance uwb_node --ros-args \
+  -p use_sim_time:=true \
+  -p config_file:=$HOME/underground-disturb-sim/config/algorithms/uwb.yaml
+```
+
+真实场景把查询服务换成：
+
+```bash
+-p query_service:=/scene/query_ray
+```
+
+## 已知限制
+
+- HARD 目前只按“有反射候选”判定，未做反射路径长度与可达性校验；
+- `nlos_type` 已通过 decision、observed 和查询追踪消息回传，取值为 `none/soft/hard`；
+- 五张 CSV 的录制方式与字段语义见 [UWB_CSV.md](../../docs/UWB_CSV.md)；
+- 查询失败时 `valid=false`、`propagation_state=UNKNOWN`，不默认成 LOS。

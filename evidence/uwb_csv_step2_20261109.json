@@ -1,0 +1,199 @@
+{
+  "stage": 2,
+  "date": "2026-11-09",
+  "base_pr_sha": "44d4f8fbb0df94097e731a6899c04885a8131fd5",
+  "main_sha": "c1af979e7f8f0b6e64f8972e28bf7829fd1b723a",
+  "schema_version": "0.2.0",
+  "tests": {
+    "build_packages": 7,
+    "csv_contract_unit_tests": 8,
+    "query_exception_regression_tests": 5,
+    "ros_csv_contract": {
+      "passed": true,
+      "source": "MOCK_ONLY_CSV_CONTRACT",
+      "classifications": [
+        [
+          "LOS",
+          "none",
+          true
+        ],
+        [
+          "NLOS",
+          "soft",
+          true
+        ],
+        [
+          "NLOS",
+          "hard",
+          true
+        ],
+        [
+          "UNKNOWN",
+          "none",
+          false
+        ],
+        [
+          "INPUT_INVALID",
+          "none",
+          false
+        ]
+      ],
+      "rows": {
+        "uwb_observations": 5,
+        "state_transitions": 4,
+        "query_trace": 4,
+        "multipath_error_detail": 5,
+        "uwb_query_arrays": 3
+      },
+      "incomplete_observations": 0,
+      "unmatched_query_traces": 0,
+      "ordering": "Transitions ordered by sample stamp/sequence per run/tag/anchor; other CSV rows retain arrival order and original sample stamps."
+    },
+    "public_fixtures": {
+      "passed": true,
+      "source": "MOCK_FIXTURES_ONLY",
+      "truth_rate_hz": 50.0,
+      "scan_rate_hz": 10.0,
+      "scan_special_inputs_verified": true,
+      "uwb_anchors": [
+        "A00",
+        "A01",
+        "A02",
+        "A03",
+        "A04",
+        "A05",
+        "A06",
+        "A07",
+        "A08"
+      ],
+      "query_cases": {
+        "A00": [
+          "OK",
+          0,
+          0
+        ],
+        "A01": [
+          "OK",
+          1,
+          0
+        ],
+        "A02": [
+          "OK",
+          0,
+          1
+        ],
+        "A03": [
+          "OK",
+          1,
+          1
+        ],
+        "A04": [
+          "UNSUPPORTED",
+          0,
+          0
+        ],
+        "A05": [
+          "UNSUPPORTED",
+          0,
+          0
+        ],
+        "A06": [
+          "UNSUPPORTED",
+          0,
+          0
+        ],
+        "A07": [
+          "UNSUPPORTED",
+          0,
+          0
+        ],
+        "A08": [
+          "OK",
+          0,
+          0
+        ]
+      },
+      "invalid_request_cases": 5,
+      "work_modes": [
+        "CUTTING",
+        "IDLE",
+        "TRAVELLING"
+      ],
+      "zones": [
+        "NONE",
+        "fixture_dust_zone"
+      ],
+      "observation_ids_unique": true,
+      "real_query_not_advertised": true,
+      "limitations": "Tests A input fixtures only, not B/C algorithms, Gazebo geometry or recipient installation"
+    },
+    "return_chain": {
+      "passed": true,
+      "source": "MOCK_ONLY",
+      "transport_messages": 5,
+      "association_pairs": 3,
+      "limitation": "Static A transport fixtures only; B/C algorithm acceptance pending"
+    },
+    "real_collision_csv": {
+      "passed": true,
+      "source": "GAZEBO_TRUTH_TEST_ANCHOR_REAL_COLLISION_QUERY",
+      "scope": "CSV transport/output smoke only; unchanged query timing policy, no tolerance assessment",
+      "rows": {
+        "uwb_observations": 35,
+        "state_transitions": 0,
+        "query_trace": 35,
+        "multipath_error_detail": 35,
+        "uwb_query_arrays": 280
+      },
+      "query_status_counts": {
+        "OK": 35
+      },
+      "classification_counts": {
+        "none": 0,
+        "soft": 0,
+        "hard": 35
+      },
+      "incomplete_observations": 0,
+      "unmatched_query_traces": 0
+    },
+    "default_scene_short_sample": {
+      "observations": 207,
+      "classification_coverage": [
+        "none"
+      ],
+      "query_status_counts": {
+        "OK": 110,
+        "TIME_UNAVAILABLE": 5
+      },
+      "limitation": "Default short scene sample contained no NLOS; controlled real-geometry test added."
+    }
+  },
+  "boundaries": {
+    "time_tolerance_changed": false,
+    "algorithm_parameters_changed": false,
+    "wire_interface_requires_rebuild": true,
+    "final_acceptance_complete": false,
+    "pushed": false,
+    "merged": false
+  },
+  "remaining": [
+    "UWB visualization",
+    "Algorithm-owner specialist fixtures",
+    "Episode bias reset",
+    "Physically validated reflection path",
+    "50/100ms timing experiments and factor-graph alignment assessment",
+    "Final acceptance and explicit merge approval"
+  ],
+  "csv_sha256": {
+    "contract_csv/query_trace.csv": "a59c29c9741d7eeadbb9e885a757c81384adabce511e377792b670aa91ba7011",
+    "contract_csv/multipath_error_detail.csv": "2bebbc91548573ef3095ac3228ce5dbf93ab648d71a29b40876591b14e44ea17",
+    "contract_csv/uwb_query_arrays.csv": "13af2567e934a2a6ce750e56da8ae3d1ad63b57cd57a58fefe86f8ba9f86c490",
+    "contract_csv/state_transitions.csv": "980d6c93672c625a1555938c18cc866640c2e5b1b544a82e49a44deefeac020c",
+    "contract_csv/uwb_observations.csv": "34b6fda166e476fdc8b9b1c43501d13f889097ca4205a34d0b1570e95bed1378",
+    "gazebo_support_csv/query_trace.csv": "fd099c28c00749484590d6fed6a78d8a51afb21de4e7c4c385a189949d660c28",
+    "gazebo_support_csv/multipath_error_detail.csv": "d07578dabc80630afba32561575a3378e072d9446ae2bfae503c3bc74101b283",
+    "gazebo_support_csv/uwb_query_arrays.csv": "ea42a6c774654d901c40420e4c55491ace595a632534fd009b2eccb8a9956742",
+    "gazebo_support_csv/state_transitions.csv": "12f37372264d30c8fbf94d591f087e4a7a6b9d9f14345354d0ac775cbb58c260",
+    "gazebo_support_csv/uwb_observations.csv": "4b7f2003c6b2f1811b9dfa053fe06a50e832aad6fb1475f3e5f0bf9f9311ed1d"
+  }
+}

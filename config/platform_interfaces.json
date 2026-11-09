@@ -10,7 +10,8 @@
     "/uwb_ranges": "UwbRangeObserved",
     "/disturbance_decision/lidar": "LidarDecision",
     "/lidar_beam_state": "LidarBeamState",
-    "/scan": "LidarFrameObserved"
+    "/scan": "LidarFrameObserved",
+    "/disturbance_query/uwb": "UwbQueryTrace"
   },
   "services": {
     "/scene/query_ray": "QueryRay",
@@ -103,7 +104,8 @@
       "float64 nlos_error_m",
       "float64 random_noise_m",
       "bool valid",
-      "string anchor_id"
+      "string anchor_id",
+      "string nlos_type \"none\""
     ],
     "RobotState": [
       "coal_platform_interfaces/RunContext context",
@@ -151,7 +153,8 @@
       "float64 observed_range_m",
       "float64 error_m",
       "string state",
-      "bool valid"
+      "bool valid",
+      "string nlos_type \"none\""
     ],
     "LidarDecision": [
       "coal_platform_interfaces/RunContext context",
@@ -187,6 +190,21 @@
       "float64 path_length_m",
       "string reflection_level",
       "bool is_dynamic"
+    ],
+    "UwbQueryTrace": [
+      "coal_platform_interfaces/RunContext context",
+      "string observation_id",
+      "string decision_id",
+      "string request_id",
+      "string tag_id",
+      "string anchor_id",
+      "string nlos_type",
+      "bool valid",
+      "string status",
+      "coal_platform_interfaces/Intersection[] direct_intersections",
+      "coal_platform_interfaces/ReflectorCandidate[] reflector_candidates",
+      "float64 processing_time_ms",
+      "string error_message"
     ]
   }
 }

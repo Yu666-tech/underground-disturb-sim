@@ -22,7 +22,8 @@
       "decision_id": "mock-uwb-decision-0",
       "anchor_id": "A00",
       "propagation_state": "LOS",
-      "valid": true
+      "valid": true,
+      "nlos_type": "none"
     }
   },
   "UwbRangeObserved": {
@@ -52,7 +53,8 @@
       "observed_range_m": 5.0,
       "error_m": 0.0,
       "state": "LOS",
-      "valid": true
+      "valid": true,
+      "nlos_type": "none"
     }
   },
   "LidarDecision": {

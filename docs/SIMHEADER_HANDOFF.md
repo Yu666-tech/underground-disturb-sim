@@ -95,6 +95,8 @@ Mock 不启动真实查询服务。
 
 ## CSV 约定
 
+UWB 的 `nlos_type` 扩展、查询追踪与五张 CSV 运行时录制说明见 [UWB_CSV.md](UWB_CSV.md)。该扩展须统一重建生产者和消费者接口，不与旧 install 混用。
+
 九张表头位于 `config/csv_templates`，旧 `csv_baseline` 仅作历史资料。
 
 - 六项公共字段均取 `context.header`。

@@ -1,1 +1,1 @@
-stamp,frame_id,experiment_id,run_id,scene_id,scene_version,observation_id,request_id,robot_id,anchor_id,status,intersect_geometry_id_list,reflector_geometry_id_list
+stamp,frame_id,experiment_id,run_id,scene_id,scene_version,observation_id,request_id,robot_id,anchor_id,status,intersect_geometry_id_list,reflector_geometry_id_list,nlos_type,valid,decision_id,tag_id,processing_time_ms,error_message

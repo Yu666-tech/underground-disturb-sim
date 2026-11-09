@@ -11,3 +11,4 @@ float64 observed_range_m # 注入后m；无效NaN
 float64 error_m # observed-truth；无效NaN
 string state # 与对应decision propagation_state一致
 bool valid # 有效观测才true
+string nlos_type "none" # none/soft/hard; use valid/state to distinguish unknown from LOS

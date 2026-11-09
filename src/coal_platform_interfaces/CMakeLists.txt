@@ -15,6 +15,7 @@ rosidl_generate_interfaces(${PROJECT_NAME}
   "msg/Intersection.msg"
   "msg/ReflectorCandidate.msg"
   "msg/UwbDecision.msg"
+  "msg/UwbQueryTrace.msg"
   "msg/UwbRangeObserved.msg"
   "msg/LidarDecision.msg"
   "msg/LidarBeamState.msg"

@@ -1,1 +1,1 @@
-stamp,frame_id,experiment_id,run_id,scene_id,scene_version,request_id,observation_id,geometry_id,geometry_type,material,reflection_level,distance_m
+stamp,frame_id,experiment_id,run_id,scene_id,scene_version,request_id,observation_id,geometry_id,geometry_type,material,reflection_level,distance_m,nlos_type,valid,decision_id,anchor_id,tag_id,query_array_kind
