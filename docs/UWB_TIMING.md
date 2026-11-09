@@ -1,10 +1,10 @@
 # UWB 查询时序容差与负载评估
 
-本说明对应本地 PR #5 测试分支。参数最终值须经用户审核；这里的 50ms 是评估起点，不是论文或 ROS 对本服务的统一规定。ROS 官方近似同步示例使用 0.05 秒消息匹配窗口，概念与本服务的查询准入容差不同，不能当作物理精度保证。
+本说明对应本地 PR #5 测试分支。用户于 2026-11-09 确认采用 100ms，现已设为真实查询服务和启动入口的默认值；50ms 保留为对照评估起点，不是论文或 ROS 对本服务的统一规定。ROS 官方近似同步示例使用 0.05 秒消息匹配窗口，概念与本服务的查询准入容差不同，不能当作物理精度保证。
 
 ## 时序规则
 
-真实 `/scene/query_ray` 提供 `future_tolerance_ms`（当前测试默认 50.0）。静态场景允许：
+真实 `/scene/query_ray` 提供 `future_tolerance_ms`（已审批默认 100.0）。静态场景允许：
 
 ```text
 run 起点 <= request.stamp <= latest_truth.stamp + future_tolerance_ms
@@ -18,7 +18,7 @@ latest_truth.stamp - request.stamp <= 2 秒
 ```bash
 # 与原有场景启动参数兼容，gui/rviz 按本机环境调整。
 ros2 launch coal_platform_bridge coal_face_interfaces.launch.py \
-  future_tolerance_ms:=50.0 publish_timing_diagnostics:=true \
+  future_tolerance_ms:=100.0 publish_timing_diagnostics:=true \
   gui:=false rviz:=false
 ```
 

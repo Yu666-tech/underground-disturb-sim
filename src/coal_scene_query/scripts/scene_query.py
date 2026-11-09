@@ -23,7 +23,7 @@ class SceneQuery(Node):
         for k,v in [('world_file',''),('models_root',''),('self_model','shearer'),('scene_id','coal_face_base'),('scene_version','0.2.0')]:self.declare_parameter(k,v)
         self.expected={k:self.get_parameter(k).value for k in ['scene_id','scene_version']}
         self.engine=Engine(self.get_parameter('world_file').value,self.get_parameter('models_root').value,self.get_parameter('self_model').value)
-        self.declare_parameter('future_tolerance_ms',50.0)
+        self.declare_parameter('future_tolerance_ms',100.0)
         self.future_tolerance_ms=float(self.get_parameter('future_tolerance_ms').value)
         self.future_tolerance_ns=tolerance_ns(self.future_tolerance_ms)
         self.declare_parameter('publish_timing_diagnostics',False)

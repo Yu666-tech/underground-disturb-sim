@@ -13,7 +13,7 @@ def generate_launch_description():
     if metadata.get('source_frame') != 'world':
         raise ValueError('This adapter supports identity map/world only')
     return LaunchDescription([
-        DeclareLaunchArgument('future_tolerance_ms', default_value='50.0'),
+        DeclareLaunchArgument('future_tolerance_ms', default_value='100.0'),
         DeclareLaunchArgument('publish_timing_diagnostics', default_value='false'),
         DeclareLaunchArgument('bc_inputs_config_file', default_value=str(Path(get_package_share_directory('coal_platform_bridge'))/'config/bc_inputs.json')),
         DeclareLaunchArgument('scene_id', default_value=metadata['scene_id']),

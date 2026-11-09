@@ -2,7 +2,7 @@
 """Runtime acceptance for the recipient's freshly compiled platform."""
 import argparse,copy,json,math,os,signal,subprocess,time,uuid
 from pathlib import Path
-parser=argparse.ArgumentParser();parser.add_argument('--launch',action='store_true');parser.add_argument('--workspace',type=Path);parser.add_argument('--output',type=Path,default=Path('install_verification.json'));args=parser.parse_args()
+parser=argparse.ArgumentParser();parser.add_argument('--launch',action='store_true');parser.add_argument('--expected-future-tolerance-ms',type=float,default=100.0);parser.add_argument('--workspace',type=Path);parser.add_argument('--output',type=Path,default=Path('install_verification.json'));args=parser.parse_args()
 if args.launch:
     os.environ.update(ROS_DOMAIN_ID=os.environ.get('COAL_VERIFY_DOMAIN_ID','103'),GAZEBO_MASTER_URI='http://127.0.0.1:12003',GAZEBO_MODEL_DATABASE_URI='',LIBGL_ALWAYS_SOFTWARE='1')
 import rclpy
@@ -103,6 +103,7 @@ try:
     assert stamps and stamps[-1]-stamps[0]>=15,'No 15-second simulation stream'
     assert len(truth_pairs)>=100 and len(scan_pairs)>=30 and state_count>=100 and identity
     assert source and source[-1]['is_mock'] is False and source[-1]['collision_objects']==209
+    assert source[-1].get('future_tolerance_ms')==args.expected_future_tolerance_ms,'Launch/query default tolerance mismatch'
     clear=query([.6,5,1.2105],[.6,25,1.2105]);assert not clear.direct_intersections
     solid=query([.6,.75,1.2],[-2,.75,1.2]);hit=next(h for h in solid.direct_intersections if h.geometry_id=='support_000/link/collision')
     assert abs(hit.distance_from_origin_m-1.05)<1e-8 and abs(hit.path_length_m-1.2)<1e-8
@@ -115,7 +116,7 @@ try:
     uwb_rates={anchor:(len(times)-1)/(times[-1]-times[0]) for anchor,times in uwb_samples.items()}
     assert all(9.8<=rate<=10.2 for rate in uwb_rates.values())
     report=dict(passed=True,scene_id='coal_face_base',scene_version='0.2.0',schema_version='0.2.0',truth_pairs=len(truth_pairs),scan_pairs=len(scan_pairs),truth_rate_hz=truth_rate,scan_rate_hz=scan_rate,state_messages=state_count,simulation_duration_s=delta,old_new_payloads_equal=True,sampling_timestamps_preserved=True,scan_720=True,map_world_identity=True,observation_ids_unique=True,query_real_clear_and_support_passed=True,output_types_imported=True,package_prefixes={p:get_package_prefix(p) for p in ['coal_face_sim','coal_platform_interfaces','coal_platform_bridge','coal_scene_query']},limitations='Fresh local installation test; remote recipient GUI/performance and C disturbance implementation still require recipient acceptance')
-    report.update(uwb_messages=sum(map(len,uwb_samples.values())),uwb_anchor_rates_hz=uwb_rates,
+    report.update(future_tolerance_ms=source[-1]['future_tolerance_ms'],uwb_messages=sum(map(len,uwb_samples.values())),uwb_anchor_rates_hz=uwb_rates,
                   uwb_ideal_distance_and_validity_checked=True,uwb_out_of_range_samples=uwb_invalid_count)
     args.output.write_text(json.dumps(report,ensure_ascii=False,indent=2));print(json.dumps(report,ensure_ascii=False,indent=2))
 except BaseException as exc:
