@@ -69,6 +69,7 @@ class Engine:
         self.library.build_surface_bvh.argtypes=[ptr,ctypes.c_int];self.library.build_surface_bvh.restype=ctypes.c_void_p
         self.library.destroy_surface_bvh.argtypes=[ctypes.c_void_p]
         self.library.query_surface_bvh.argtypes=[ctypes.c_void_p,ptr,ptr,ctypes.c_double,ptr];self.library.query_surface_bvh.restype=ctypes.c_double
+        self.library.ray_surface_bvh_candidates.argtypes=[ctypes.c_void_p,ptr,ptr,ctypes.POINTER(ctypes.c_int),ctypes.c_int];self.library.ray_surface_bvh_candidates.restype=ctypes.c_int
         self.world=Path(world).resolve();self.models=Path(models).resolve();self.files={};self.objects=[];self.dynamic=[];self.cache={};self.excluded=[];self.asset_roots=[]
         tree=ET.parse(self.record(self.world));root=tree.find('world')
         if root is None:raise ValueError('SDF world missing')
@@ -166,8 +167,16 @@ class Engine:
                 hits.append(dict(object=o,distance=en*length,entry=a+en*(b-a),exit=a+ex*(b-a),normal=o['matrix'][:3,:3]@n,thickness=thickness,path_length=(ex-en)*length))
         for index in np.flatnonzero(selected):
             o=self.objects[index]
-            tri=o['tri'];mask=np.all(o['tri_high']>=low,axis=1)&np.all(o['tri_low']<=high,axis=1);tri=tri[mask]
-            if not len(tri):continue
+            tri=o['tri']
+            if self.use_bvh and o['kind']=='MESH':
+                indices=np.empty(len(tri),dtype=np.int32);ptr=ctypes.POINTER(ctypes.c_double)
+                count=self.library.ray_surface_bvh_candidates(o['bvh'],a.ctypes.data_as(ptr),b.ctypes.data_as(ptr),indices.ctypes.data_as(ctypes.POINTER(ctypes.c_int)),len(indices))
+                if count<0:raise RuntimeError('Mesh candidate buffer exceeded; no partial result')
+                indices=indices[:count]
+                mask=np.all(o['tri_high'][indices]>=low,axis=1)&np.all(o['tri_low'][indices]<=high,axis=1)
+                tri=tri[indices[mask]]
+            else:
+                mask=np.all(o['tri_high']>=low,axis=1)&np.all(o['tri_low']<=high,axis=1);tri=tri[mask]
             if o['kind']=='MESH':
                 ts,valid=ray_tri(a,b,tri);valid&=(ts*length>EPS)&((1-ts)*length>EPS)
                 order=np.where(valid)[0][np.argsort(ts[valid])];last=-math.inf
@@ -176,7 +185,7 @@ class Engine:
                     if distance-last<=EPS:continue
                     last=distance;point=a+ts[idx]*(b-a);normal=np.cross(tri[idx,1]-tri[idx,0],tri[idx,2]-tri[idx,0]);normal/=np.linalg.norm(normal)
                     hits.append(dict(object=o,distance=distance,entry=point,exit=point,normal=normal,thickness=math.nan,path_length=math.nan));flags.add('MESH_SURFACE_HITS_VOLUME_THICKNESS_UNKNOWN')
-            if radius>0:
+            if radius>0 and (len(tri) or self.use_bvh and o['kind']=='MESH'):
                 if self.use_bvh and o['kind']=='MESH':
                     out=np.zeros(6,dtype=np.float64);ptr=ctypes.POINTER(ctypes.c_double)
                     distance=self.library.query_surface_bvh(o['bvh'],a.ctypes.data_as(ptr),b.ctypes.data_as(ptr),radius,out.ctypes.data_as(ptr))

@@ -31,7 +31,7 @@ class SceneQuery(Node):
         self.latest=None;self.run_start=None;self.timeline=None
         self.create_subscription(GroundTruth,'/platform/v1/ground_truth',self.on_truth,QoSProfile(depth=100,reliability=ReliabilityPolicy.RELIABLE))
         self.info_pub=self.create_publisher(String,'/platform/v1/query_info',QoSProfile(depth=1,reliability=ReliabilityPolicy.RELIABLE,durability=DurabilityPolicy.TRANSIENT_LOCAL))
-        info=dict(future_tolerance_ms=self.future_tolerance_ms,time_policy='STATIC_GEOMETRY_REQUEST_ENDPOINTS_NO_POSE_EXTRAPOLATION',query_source='ACTUAL_SDF_COLLISION_GEOMETRY',is_mock=False,world_file=str(self.engine.world),geometry_sha256=self.engine.geometry_hash,source_files=self.engine.manifest,collision_objects=len(self.engine.objects),triangle_count=sum(len(o['tri']) for o in self.engine.objects),self_models_excluded=self.engine.excluded,material_policy='UNKNOWN unless supplied; visual texture is not a propagation material',mesh_policy='surface intersections only; thickness/path length NaN',reflector_policy='nearest surface within radius, not a validated reflection path',max_radius_m=5.,max_segment_length_m=500.)
+        info=dict(executor_threads=2,future_tolerance_ms=self.future_tolerance_ms,time_policy='STATIC_GEOMETRY_REQUEST_ENDPOINTS_NO_POSE_EXTRAPOLATION',query_source='ACTUAL_SDF_COLLISION_GEOMETRY',is_mock=False,world_file=str(self.engine.world),geometry_sha256=self.engine.geometry_hash,source_files=self.engine.manifest,collision_objects=len(self.engine.objects),triangle_count=sum(len(o['tri']) for o in self.engine.objects),self_models_excluded=self.engine.excluded,material_policy='UNKNOWN unless supplied; visual texture is not a propagation material',mesh_policy='surface intersections only; thickness/path length NaN',reflector_policy='nearest surface within radius, not a validated reflection path',max_radius_m=5.,max_segment_length_m=500.)
         self.info_pub.publish(String(data=json.dumps(info)))
         self.query_group=ReentrantCallbackGroup()
         self.create_service(QueryRay,'/scene/query_ray',self.query,callback_group=self.query_group,
@@ -85,7 +85,7 @@ class SceneQuery(Node):
                     status=res.status,processing_time_ms=res.processing_time_ms)
                 self.timing_pub.publish(String(data=json.dumps(diagnostic)))
 def main():
-    rclpy.init();node=SceneQuery();executor=MultiThreadedExecutor(num_threads=4);executor.add_node(node)
+    rclpy.init();node=SceneQuery();executor=MultiThreadedExecutor(num_threads=2);executor.add_node(node)
     try:executor.spin()
     except KeyboardInterrupt:pass
     finally:

@@ -70,6 +70,24 @@ public:
   for(int i=0;i<count;++i)for(int k=0;k<3;++k){triangles[i].lo[k]=std::min({data[i*9+k],data[i*9+3+k],data[i*9+6+k]});triangles[i].hi[k]=std::max({data[i*9+k],data[i*9+3+k],data[i*9+6+k]});}
   build(0,count);
  }
+ int ray_candidates(const double*a,const double*b,int*out,int capacity)const{
+  std::vector<int> stack{0},result;
+  while(!stack.empty()){
+   int index=stack.back();stack.pop_back();const auto&node=nodes[index];double enter=0.,exit=1.;bool possible=true;
+   for(int k=0;k<3;++k){
+    // Conservative bounds only; the original triangle formula decides actual hits.
+    double pad=1e-8*(1+std::max(std::abs(node.box.lo[k]),std::abs(node.box.hi[k])));
+    double lo=node.box.lo[k]-pad,hi=node.box.hi[k]+pad,d=b[k]-a[k];
+    if(d==0.){if(a[k]<lo||a[k]>hi){possible=false;break;}}
+    else{double x=(lo-a[k])/d,y=(hi-a[k])/d;enter=std::max(enter,std::min(x,y));exit=std::min(exit,std::max(x,y));if(enter>exit){possible=false;break;}}
+   }
+   if(!possible)continue;
+   if(node.left>=0){stack.push_back(node.left);stack.push_back(node.right);}
+   else for(int i=node.begin;i<node.end;++i)result.push_back(order[i]);
+  }
+  if(static_cast<int>(result.size())>capacity)return -1;
+  std::sort(result.begin(),result.end());std::copy(result.begin(),result.end(),out);return static_cast<int>(result.size());
+ }
  double query(const double*a,const double*b,double radius,double*out)const{
   double cutoff=radius+1e-10,best=cutoff*cutoff;int bestindex=std::numeric_limits<int>::max();bool found=false;
   std::vector<int> stack{0};double low[3],high[3];for(int k=0;k<3;++k){low[k]=std::min(a[k],b[k])-radius;high[k]=std::max(a[k],b[k])+radius;}
@@ -91,3 +109,4 @@ public:
 extern "C" void* build_surface_bvh(const double*t,int count){try{return count>0?new SurfaceBvh(t,count):nullptr;}catch(...){return nullptr;}}
 extern "C" void destroy_surface_bvh(void*p){delete static_cast<SurfaceBvh*>(p);}
 extern "C" double query_surface_bvh(void*p,const double*a,const double*b,double radius,double*out){return static_cast<SurfaceBvh*>(p)->query(a,b,radius,out);}
+extern "C" int ray_surface_bvh_candidates(void*p,const double*a,const double*b,int*out,int capacity){return static_cast<SurfaceBvh*>(p)->ray_candidates(a,b,out,capacity);}
