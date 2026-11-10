@@ -10,6 +10,10 @@ thin_wall_max_m: 0.25
 reflector_search_radius_m: 2.0
 max_range_m: 120.0
 
+# 状态滞回：连续多帧一致才切换
+hysteresis_enter_frames: 3
+hysteresis_exit_frames: 2
+
 # 状态映射：内部四级 -> 平台枚举
 state_mapping:
   LOS:

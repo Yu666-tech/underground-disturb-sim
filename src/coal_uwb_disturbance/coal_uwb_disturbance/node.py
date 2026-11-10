@@ -30,6 +30,8 @@ from std_msgs.msg import String
 from coal_platform_interfaces.msg import UwbDecision, UwbQueryTrace, UwbRangeObserved, UwbRangeRaw
 from coal_platform_interfaces.srv import QueryRay
 
+from coal_uwb_disturbance.hysteresis import StateHysteresis
+
 # 内部状态
 LOS, SOFT, HARD, OUTAGE, INPUT_INVALID, QUERY_FAILED = range(6)
 
@@ -71,6 +73,8 @@ class UwbDisturbance(Node):
         self.declare_parameter("max_range_m", 120.0)
         self.declare_parameter("params_version", "v0.1")
         self.declare_parameter("log_every", 200)
+        self.declare_parameter("hysteresis_enter_frames", 3)
+        self.declare_parameter("hysteresis_exit_frames", 2)
         self.declare_parameter("query_timeout_s", 5.0)
         self.declare_parameter("publish_processing_diagnostics", False)
 
@@ -92,6 +96,11 @@ class UwbDisturbance(Node):
         )
         self.params_version = str(cfg.get("params_version", self.get_parameter("params_version").value))
         self.log_every = int(self.get_parameter("log_every").value)
+        self.hyst = StateHysteresis(
+            int(cfg.get("hysteresis_enter_frames",
+                        self.get_parameter("hysteresis_enter_frames").value)),
+            int(cfg.get("hysteresis_exit_frames",
+                        self.get_parameter("hysteresis_exit_frames").value)))
 
         self._rng = {}
         self._ar = {}
@@ -230,6 +239,7 @@ class UwbDisturbance(Node):
                           request=request, query_error="Empty RPC response" if res is None else "")
             return
         state = self._classify(raw, res)
+        state = self.hyst.update(self._link_key(raw), state)
         # Outage 表示没有可用观测，不能当作有效测距。
         valid = state in (LOS, SOFT, HARD)
         self._publish(raw, state, res, valid=valid, request=request)
